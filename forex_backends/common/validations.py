@@ -5,9 +5,9 @@ from django.contrib.auth import authenticate
 
 class Validator:
     @staticmethod
-    def is_valid_user(contact):
+    def is_valid_user(email,password):
         try:
-            user = authenticate(contact=contact)
+            user = authenticate(email=email, password=password)
             print(user)
             return True, "Ok", user
 
