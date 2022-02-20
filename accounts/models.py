@@ -18,7 +18,6 @@ class UserManager(BaseUserManager):
         auth_provider="email",
         is_verified=False,
         password=None,
-     
     ):
         if username is None:
             raise TypeError("User should have a username")
@@ -69,11 +68,13 @@ ROLE_CHOICES = (
 
 
 class User(AbstractBaseUser, PermissionsMixin):
-    username = models.CharField(max_length=255, unique=True, db_index=True)
+    username = models.CharField(
+        max_length=255, unique=True, db_index=True, null=True, blank=True
+    )
     first_name = models.CharField(max_length=255)
     last_name = models.CharField(max_length=255)
-    email = models.EmailField(max_length=255, null=True, blank=True)
-    contact = models.CharField(max_length=15, unique=True)
+    email = models.EmailField(max_length=255, unique=True)
+    contact = models.CharField(max_length=15, null=True, blank=True)
     is_verified = models.BooleanField(default=False)
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
@@ -91,7 +92,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     objects = UserManager()
 
     def __str__(self):
-        return self.username
+        return str(self.email)
 
     def tokens(self):
         refresh = RefreshToken.for_user(self)
