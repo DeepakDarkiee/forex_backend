@@ -1,6 +1,15 @@
 from accounts.models import User
-from accounts.author.serializers import (RegisterAuthorSerializer,LoginAuthorSerializer,ForgetPasswordSerializer)
-from accounts.utils import create_user,verify_email_password,forget_user_password,forget_password_message_send
+from accounts.author.serializers import (
+    RegisterAuthorSerializer,
+    LoginAuthorSerializer,
+    ForgetPasswordSerializer,
+)
+from accounts.utils import (
+    create_user,
+    verify_email_password,
+    forget_user_password,
+    forget_password_message_send,
+)
 from drf_yasg.utils import swagger_serializer_method
 from forex_backends.common import app_logger, rest_utils
 from rest_framework import generics, status
@@ -70,10 +79,11 @@ class LoginAuthorAPIView(generics.GenericAPIView):
             return rest_utils.build_response(
                 status.HTTP_500_INTERNAL_SERVER_ERROR, message, data=None, errors=str(e)
             )
-            
+
 
 class ForgetPasswordView(generics.GenericAPIView):
     serializer_class = ForgetPasswordSerializer
+
     def post(self, request):
         try:
             data = request.data
@@ -86,13 +96,13 @@ class ForgetPasswordView(generics.GenericAPIView):
                 #      # create method for send sms with random_password to that particular contact number
                 #     result, message, response_data = forget_user_password(user, random_password)
                 #     result, message, response_data = forget_password_message_send(request.data["contact"],random_password)
-                    
+
                 # if result:
-                    # data = serializer.data
-                    # data["token"] = user.tokens().get("access")
-                    # data["refresh_token"] = user.tokens().get("refresh")
+                # data = serializer.data
+                # data["token"] = user.tokens().get("access")
+                # data["refresh_token"] = user.tokens().get("refresh")
                 return rest_utils.build_response(
-                    status.HTTP_200_OK, 'success', data=None, errors=None
+                    status.HTTP_200_OK, "success", data=None, errors=None
                 )
                 # else:
                 #     return rest_utils.build_response(
@@ -112,4 +122,4 @@ class ForgetPasswordView(generics.GenericAPIView):
             message = rest_utils.HTTP_REST_MESSAGES["500"]
             return rest_utils.build_response(
                 status.HTTP_500_INTERNAL_SERVER_ERROR, message, data=None, errors=str(e)
-            )           
+            )
