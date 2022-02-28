@@ -5,7 +5,7 @@ from django.contrib.auth import authenticate
 
 class Validator:
     @staticmethod
-    def is_valid_user(email,password):
+    def is_valid_user(email, password):
         try:
             user = authenticate(email=email, password=password)
             print(user)
@@ -47,6 +47,17 @@ class Validator:
         try:
             if not User.objects.filter(email=email).exists():
                 result, message = True, "OK"
+        except Exception as e:
+            message = f"{e}"
+        return result, message
+
+    @staticmethod
+    def is_contact_exists(email):
+        result, message = False, "Email is not exits"
+        try:
+            if User.objects.filter(email=email).exists():
+                result, message = True, "Ok"
+
         except Exception as e:
             message = f"{e}"
         return result, message

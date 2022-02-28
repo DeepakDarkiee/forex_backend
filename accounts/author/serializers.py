@@ -61,3 +61,16 @@ class LoginAuthorSerializer(serializers.Serializer):
             }
         else:
             raise serializers.ValidationError("Your account is Deactivated")    
+
+
+class ForgetPasswordSerializer(serializers.ModelSerializer):
+    email = serializers.CharField(write_only=True, required=True)
+    
+    class Meta:
+        model = User
+        fields = ["email"]
+    def validate(self, data):
+        result, message = Validator.is_contact_exists(data["email"])
+        if not result:
+            raise serializers.ValidationError(message)
+        return data

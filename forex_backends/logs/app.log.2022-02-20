@@ -1,0 +1,42 @@
+2022-02-20 18:09:10,827 DEBUG rest_utils.py:build_response:77  Response: 200 OK 200 User created successfully None None
+2022-02-20 18:09:36,453 ERROR rest_utils.py:build_response:60  Response: 500 Internal server error {'non_field_errors': ["name 'verify_email_password' is not defined"]} None
+2022-02-20 18:09:36,453 DEBUG rest_utils.py:build_response:77  Response: 200 OK 500 Internal server error {'non_field_errors': ["name 'verify_email_password' is not defined"]} None
+2022-02-20 18:10:17,773 ERROR rest_utils.py:build_response:60  Response: 500 Internal server error {'non_field_errors': ["name 'verify_email_password' is not defined"]} None
+2022-02-20 18:10:17,774 DEBUG rest_utils.py:build_response:77  Response: 200 OK 500 Internal server error {'non_field_errors': ["name 'verify_email_password' is not defined"]} None
+2022-02-20 18:11:02,271 ERROR rest_utils.py:build_response:60  Response: 500 Internal server error {'non_field_errors': ["name 'TwilioRestException' is not defined"]} None
+2022-02-20 18:11:02,272 DEBUG rest_utils.py:build_response:77  Response: 200 OK 500 Internal server error {'non_field_errors': ["name 'TwilioRestException' is not defined"]} None
+2022-02-20 18:11:03,380 ERROR rest_utils.py:build_response:60  Response: 500 Internal server error {'non_field_errors': ["name 'TwilioRestException' is not defined"]} None
+2022-02-20 18:11:03,380 DEBUG rest_utils.py:build_response:77  Response: 200 OK 500 Internal server error {'non_field_errors': ["name 'TwilioRestException' is not defined"]} None
+2022-02-20 18:13:46,315 ERROR rest_utils.py:build_response:60  Response: 500 Internal server error {'non_field_errors': ["'NoneType' object has no attribute 'email'"]} None
+2022-02-20 18:13:46,315 DEBUG rest_utils.py:build_response:77  Response: 200 OK 500 Internal server error {'non_field_errors': ["'NoneType' object has no attribute 'email'"]} None
+2022-02-20 18:15:18,089 ERROR rest_utils.py:build_response:60  Response: 500 Internal server error {'non_field_errors': ["'NoneType' object has no attribute 'email'"]} None
+2022-02-20 18:15:18,089 DEBUG rest_utils.py:build_response:77  Response: 200 OK 500 Internal server error {'non_field_errors': ["'NoneType' object has no attribute 'email'"]} None
+2022-02-20 18:15:30,890 ERROR rest_utils.py:build_response:60  Response: 500 Internal server error {'non_field_errors': ["'NoneType' object has no attribute 'email'"]} None
+2022-02-20 18:15:30,890 DEBUG rest_utils.py:build_response:77  Response: 200 OK 500 Internal server error {'non_field_errors': ["'NoneType' object has no attribute 'email'"]} None
+2022-02-20 18:16:04,326 ERROR rest_utils.py:build_response:60  Response: 500 Internal server error {'non_field_errors': ["'NoneType' object has no attribute 'email'"]} None
+2022-02-20 18:16:04,326 DEBUG rest_utils.py:build_response:77  Response: 200 OK 500 Internal server error {'non_field_errors': ["'NoneType' object has no attribute 'email'"]} None
+2022-02-20 18:16:36,674 ERROR rest_utils.py:build_response:60  Response: 500 Internal server error {'non_field_errors': ["'NoneType' object has no attribute 'email'"]} None
+2022-02-20 18:16:36,674 DEBUG rest_utils.py:build_response:77  Response: 200 OK 500 Internal server error {'non_field_errors': ["'NoneType' object has no attribute 'email'"]} None
+2022-02-20 18:17:24,010 ERROR rest_utils.py:build_response:60  Response: 500 Internal server error {'non_field_errors': ["'NoneType' object has no attribute 'email'"]} None
+2022-02-20 18:17:24,010 DEBUG rest_utils.py:build_response:77  Response: 200 OK 500 Internal server error {'non_field_errors': ["'NoneType' object has no attribute 'email'"]} None
+2022-02-20 18:17:47,549 ERROR rest_utils.py:build_response:60  Response: 500 Internal server error {'non_field_errors': ["'NoneType' object has no attribute 'email'"]} None
+2022-02-20 18:17:47,549 DEBUG rest_utils.py:build_response:77  Response: 200 OK 500 Internal server error {'non_field_errors': ["'NoneType' object has no attribute 'email'"]} None
+2022-02-20 18:19:01,968 ERROR rest_utils.py:build_response:60  Response: 500 Internal server error {'non_field_errors': ["'NoneType' object has no attribute 'email'"]} None
+2022-02-20 18:19:01,968 DEBUG rest_utils.py:build_response:77  Response: 200 OK 500 Internal server error {'non_field_errors': ["'NoneType' object has no attribute 'email'"]} None
+2022-02-20 18:19:20,519 ERROR rest_utils.py:build_response:60  Response: 500 Internal server error {'non_field_errors': ["'NoneType' object has no attribute 'email'"]} None
+2022-02-20 18:19:20,519 DEBUG rest_utils.py:build_response:77  Response: 200 OK 500 Internal server error {'non_field_errors': ["'NoneType' object has no attribute 'email'"]} None
+2022-02-20 18:21:59,931 DEBUG rest_utils.py:build_response:77  Response: 200 OK 200 User Successfully Login None None
+2022-02-20 18:22:29,601 DEBUG rest_utils.py:build_response:77  Response: 200 OK 200 User Successfully Login None None
+2022-02-20 18:24:11,485 ERROR rest_utils.py:build_response:60  Response: 500 Internal server error {'non_field_errors': ["name 'password_message' is not defined"]} None
+2022-02-20 18:24:11,485 DEBUG rest_utils.py:build_response:77  Response: 200 OK 500 Internal server error {'non_field_errors': ["name 'password_message' is not defined"]} None
+2022-02-20 18:24:32,157 DEBUG rest_utils.py:build_response:77  Response: 200 OK 200 User Successfully Login None None
+2022-02-20 18:25:12,739 ERROR rest_utils.py:build_response:60  Response: 400 Failed {'non_field_errors': [ErrorDetail(string='Your account is Deactivated', code='invalid')]} None
+2022-02-20 18:25:12,739 DEBUG rest_utils.py:build_response:77  Response: 200 OK 400 Failed {'non_field_errors': [ErrorDetail(string='Your account is Deactivated', code='invalid')]} None
+2022-02-20 18:25:16,160 ERROR rest_utils.py:build_response:60  Response: 400 Failed {'non_field_errors': [ErrorDetail(string='Your account is Deactivated', code='invalid')]} None
+2022-02-20 18:25:16,160 DEBUG rest_utils.py:build_response:77  Response: 200 OK 400 Failed {'non_field_errors': [ErrorDetail(string='Your account is Deactivated', code='invalid')]} None
+2022-02-20 18:37:27,984 ERROR rest_utils.py:build_response:60  Response: 400 Failed {'non_field_errors': [ErrorDetail(string='Your account is Deactivated', code='invalid')]} None
+2022-02-20 18:37:27,985 DEBUG rest_utils.py:build_response:77  Response: 200 OK 400 Failed {'non_field_errors': [ErrorDetail(string='Your account is Deactivated', code='invalid')]} None
+2022-02-20 18:37:28,974 ERROR rest_utils.py:build_response:60  Response: 400 Failed {'non_field_errors': [ErrorDetail(string='Your account is Deactivated', code='invalid')]} None
+2022-02-20 18:37:28,974 DEBUG rest_utils.py:build_response:77  Response: 200 OK 400 Failed {'non_field_errors': [ErrorDetail(string='Your account is Deactivated', code='invalid')]} None
+2022-02-20 18:37:34,989 ERROR rest_utils.py:build_response:60  Response: 400 Failed {'non_field_errors': [ErrorDetail(string='This email Already Exits', code='invalid')]} None
+2022-02-20 18:37:34,990 DEBUG rest_utils.py:build_response:77  Response: 200 OK 400 Failed {'non_field_errors': [ErrorDetail(string='This email Already Exits', code='invalid')]} None

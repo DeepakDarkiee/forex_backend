@@ -1,9 +1,13 @@
-from accounts.author.api import (RegisterAuthorView,LoginAuthorAPIView)
+from accounts.author.api import (
+    RegisterAuthorView,
+    LoginAuthorAPIView,
+    ForgetPasswordView,
+)
 from django.contrib import admin
 from django.urls import include, path
 
 urlpatterns = [
     path("register_author/", RegisterAuthorView.as_view(), name="register_author"),
     path("login_author/", LoginAuthorAPIView.as_view(), name="login_author"),
-    
+    path("forget-password/", ForgetPasswordView.as_view(), name="forget-password"),
 ]

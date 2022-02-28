@@ -1,5 +1,3 @@
-from decouple import config
-
 from .base import *
 
 DEBUG = True
@@ -13,7 +11,6 @@ DATABASES = {
     }
 }
 
-URL = config("URL")
 
 LOGGING = {
     "version": 1,
