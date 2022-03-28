@@ -1,7 +1,7 @@
-from accounts.author.serializers import (
-    ForgetPasswordSerializer,
-    LoginAuthorSerializer,
-    RegisterAuthorSerializer,
+from accounts.editor.serializers import (
+    ForgetEditorPasswordSerializer,
+    LoginEditorSerializer,
+    RegisterEditorSerializer,
 )
 from accounts.models import User
 from accounts.utils import (
@@ -17,8 +17,8 @@ from rest_framework.parsers import MultiPartParser
 from rest_framework.permissions import IsAuthenticated
 
 
-class RegisterAuthorView(generics.GenericAPIView):
-    serializer_class = RegisterAuthorSerializer
+class RegisterEditorView(generics.GenericAPIView):
+    serializer_class = RegisterEditorSerializer
 
     def post(self, request):
 
@@ -28,7 +28,7 @@ class RegisterAuthorView(generics.GenericAPIView):
 
             if serializer.is_valid():
                 user = serializer.save(email=data.get("email"))
-                result, message, response_data = create_user(user, data, role="Author")
+                result, message, response_data = create_user(user, data, role="Editor")
                 if result:
                     data = serializer.data
                     data["token"] = user.tokens().get("access")
@@ -54,8 +54,8 @@ class RegisterAuthorView(generics.GenericAPIView):
             )
 
 
-class LoginAuthorAPIView(generics.GenericAPIView):
-    serializer_class = LoginAuthorSerializer
+class LoginEditorAPIView(generics.GenericAPIView):
+    serializer_class = LoginEditorSerializer
 
     def post(self, request):
         try:
@@ -81,8 +81,8 @@ class LoginAuthorAPIView(generics.GenericAPIView):
             )
 
 
-class ForgetPasswordView(generics.GenericAPIView):
-    serializer_class = ForgetPasswordSerializer
+class ForgetEditorPasswordView(generics.GenericAPIView):
+    serializer_class = ForgetEditorPasswordSerializer
 
     def post(self, request):
         try:

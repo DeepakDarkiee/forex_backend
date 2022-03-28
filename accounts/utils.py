@@ -11,9 +11,15 @@ from django.contrib.auth import authenticate
 # verify = client.verify.services(settings.TWILIO_VERIFY_SERVICE_SID)
 
 
-def create_user(user, request_data):
+def create_user(user, request_data, role=None):
     result, message, data = False, "Failed", None
     try:
+        if role == "Editor":
+            user.role = "Editor"
+        elif role == "Author":
+            user.role = "Author"
+        else:
+            user.role = "Reviewer"
         user.set_password(request_data.get("password"))
         user = user.save()
         result, message, data = True, "User created successfully", None
@@ -87,7 +93,7 @@ def forget_password_message_send(phone, random_password):
             "authkey": settings.SMS_AUTH_TOKE,
             "mobiles": f"91{phone}",
             "message": message,
-            "sender": "Shkunj",
+            "sender": "Forex",
             "route": 4,
             "DLT_TE_ID": settings.SMS_DLT_ID,
         }
