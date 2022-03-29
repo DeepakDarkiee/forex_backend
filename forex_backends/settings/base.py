@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "accounts",
+    "journal",
     "corsheaders",
     "drf_yasg",
     "rest_framework_simplejwt",

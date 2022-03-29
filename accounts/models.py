@@ -64,6 +64,8 @@ ROLE_CHOICES = (
     ("Author", "Author"),
     ("Editor", "Editor"),
     ("Reviewer", "Reviewer"),
+    ("Subscriber", "Subscriber")
+
 )
 
 
