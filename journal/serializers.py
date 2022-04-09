@@ -8,22 +8,26 @@ class VolumeSerializers(serializers.ModelSerializer):
         model = Volume
         fields = "__all__"
 
+
 class IssueSerializers(serializers.ModelSerializer):
     class Meta:
-        model= Issue
+        model = Issue
         fields = "__all__"
 
+
 class ApcSerializers(serializers.ModelSerializer):
-    class Meta :
+    class Meta:
         model = APC
         fields = "__all__"
 
+
 class JournalMatrixSerializers(serializers.ModelSerializer):
-    class Meta :
+    class Meta:
         model = JournalMatrix
         fields = "__all__"
 
+
 class JournalSerializers(serializers.ModelSerializer):
-    class Meta :
+    class Meta:
         model = Journals
         fields = "__all__"
