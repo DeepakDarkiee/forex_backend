@@ -61,3 +61,13 @@ class Validator:
         except Exception as e:
             message = f"{e}"
         return result, message
+    
+    @staticmethod
+    def is_username_already_exists(username):
+        result, message = False, "username already exists!"
+        try:
+            if not User.objects.filter(username=username).exists():
+                result, message = True, "OK"
+        except Exception as e:
+            message = f"{e}"
+        return result, message

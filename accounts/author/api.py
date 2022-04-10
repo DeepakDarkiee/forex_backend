@@ -63,6 +63,7 @@ class LoginAuthorAPIView(generics.GenericAPIView):
             serializer = self.serializer_class(data=data)
             if serializer.is_valid():
                 message = "User Successfully Login"
+                
                 return rest_utils.build_response(
                     status.HTTP_200_OK, message, data=serializer.data, errors=None
                 )

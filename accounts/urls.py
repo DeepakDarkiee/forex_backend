@@ -17,6 +17,8 @@ from accounts.reviewer.api import (
     RegisterReviewerView,
 )
 
+from accounts.views import UpdateProfileApiView
+
 urlpatterns = [
     path("register_author/", RegisterAuthorView.as_view(), name="register_author"),
     path("login_author/", LoginAuthorAPIView.as_view(), name="login_author"),
@@ -39,4 +41,5 @@ urlpatterns = [
         ForgetReviewerPasswordView.as_view(),
         name="forget-reviewer-password",
     ),
+    path("update-profile/", UpdateProfileApiView.as_view(), name="update_profile")
 ]

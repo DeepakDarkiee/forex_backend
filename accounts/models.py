@@ -64,8 +64,7 @@ ROLE_CHOICES = (
     ("Author", "Author"),
     ("Editor", "Editor"),
     ("Reviewer", "Reviewer"),
-    ("Subscriber", "Subscriber")
-
+    ("Subscriber", "Subscriber"),
 )
 
 
@@ -82,7 +81,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     is_staff = models.BooleanField(default=False)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
-    profile_pic = models.ImageField(blank=True, upload_to="profile_pics")
+    profile_pic = models.ImageField(blank=True, upload_to="profile_pics",null=True)
     auth_provider = models.CharField(
         max_length=255, blank=False, null=False, default="email"
     )

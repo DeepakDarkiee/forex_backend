@@ -3,7 +3,7 @@ from django.conf import settings
 from forex_backends.common.validations import Validator
 from rest_framework import serializers
 from accounts.utils import verify_email_password
-
+from django.contrib.auth.models import update_last_login
 
 class RegisterAuthorSerializer(serializers.ModelSerializer):
     email = serializers.EmailField()
@@ -32,10 +32,11 @@ class LoginAuthorSerializer(serializers.Serializer):
 
     tokens = serializers.CharField(read_only=True)
     refresh_token = serializers.CharField(read_only=True)
+    role = serializers.CharField(read_only=True)
 
     class Meta:
         model = User
-        fields = ["tokens", "refresh_token", "email", "password"]
+        fields = ["tokens", "refresh_token", "email", "password","role"]
 
     def validate(self, attrs):
         email = attrs.get("email", None)
@@ -54,13 +55,14 @@ class LoginAuthorSerializer(serializers.Serializer):
                 result, message, user = Validator.is_valid_user(email, password)
                 if not result:
                     raise serializers.ValidationError(message)
-
+                update_last_login(None,user)
                 return {
                     "email": user.email,
                     "tokens": user.tokens().get("access"),
                     "refresh_token": user.tokens().get("refresh"),
                     "password": user.password,
                     "message": message,
+                    "role":user.role
                 }
             else:
                 raise serializers.ValidationError("Your account is Deactivated")
@@ -80,3 +82,5 @@ class ForgetPasswordSerializer(serializers.ModelSerializer):
         if not result:
             raise serializers.ValidationError(message)
         return data
+    
+    
