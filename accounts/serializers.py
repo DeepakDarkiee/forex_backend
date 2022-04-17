@@ -1,6 +1,8 @@
 from rest_framework import serializers
-from forex_backends.common.validations import Validator
+
 from accounts.models import User
+
+from forex_backends.common.validations import Validator
 
 
 class UpdateProfileSerializer(serializers.ModelSerializer):
@@ -37,3 +39,9 @@ class UpdateProfileSerializer(serializers.ModelSerializer):
                 raise serializers.ValidationError("Your account is Deactivated")
         except User.DoesNotExist:
             raise serializers.ValidationError("User Not Exists")
+
+
+class UserDetailSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = User
+        exclude = ("password",)

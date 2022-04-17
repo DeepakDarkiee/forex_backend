@@ -1,15 +1,21 @@
-from django.db import models
-from django.utils.translation import gettext as _
-from accounts.models import User
-
 import datetime
 
+from django.db import models# from djmoney.models.fields import MoneyField
+from django.utils.translation import gettext as _
+from django.core.validators import FileExtensionValidator
+
+from accounts.models import User
+
+# Create your models here.
 
 class Volume(models.Model):
+    
     def year_choices():
+        
         return [(r, r) for r in range(1984, datetime.date.today().year + 1)]
 
     def current_year():
+        
         return datetime.date.today().year
 
     volume = models.IntegerField()
@@ -33,6 +39,7 @@ class Issue(models.Model):
 
 
 class APC(models.Model):
+    
     fixed_amount = models.CharField(max_length=100000)
     discount_options = models.CharField(max_length=2)
     waive_off = models.CharField(max_length=10000)
@@ -42,15 +49,13 @@ class APC(models.Model):
 
 
 class PageNumber(models.Model):
+    
     page_from = models.CharField(max_length=100000)
     page_to = models.CharField(max_length=2)
 
     def __str__(self):
         return self.page_from
-
-
-# Create your models here.
-
+    
 
 class JournalMatrix(models.Model):
 
@@ -69,6 +74,7 @@ class JournalMatrix(models.Model):
 
 
 class ArticleType(models.Model):
+    
     article_type = models.CharField(max_length=100, unique=True)
 
     def __str__(self):
@@ -76,9 +82,11 @@ class ArticleType(models.Model):
 
 
 class JournalsManager(models.Manager):
+    
     def get_queryset(self):
         return super().get_queryset().filter(role="User.role.Author")
-    
+
+
 class Journals(models.Model):
 
     SCOPE_CHOICES = (
@@ -144,11 +152,7 @@ class Journals(models.Model):
 
     def __str__(self):
         return self.journal_title
-
-
-from django.core.validators import FileExtensionValidator
-from djmoney.models.fields import MoneyField
-
+    
 
 class Article(models.Model):
 
@@ -185,7 +189,7 @@ class Article(models.Model):
     # article_type = models.ForeignKey(
     #     Journals, on_delete=models.CASCADE, related_name="article_type"
     # )
-    article_type = models.ManyToManyField(ArticleType, null=True, blank=True)
+    article_type = models.ManyToManyField(ArticleType)
     scope = models.ForeignKey(
         Journals, on_delete=models.CASCADE, related_name="article_scope"
     )
@@ -207,11 +211,11 @@ class Article(models.Model):
         upload_to="foo/",
         validators=[FileExtensionValidator(allowed_extensions=["doc", "docx", "pdf"])],
     )
-    apc_receipt = models.FileField(
-        upload_to="foo/",
-        validators=[FileExtensionValidator(allowed_extensions=["pdf", "img"])],
-    )
-    apc_receipt = MoneyField(max_digits=14, decimal_places=2, default_currency="IDN")
+    # apc_receipt = models.FileField(
+    #     upload_to="foo/",
+    #     validators=[FileExtensionValidator(allowed_extensions=["pdf", "img"])],
+    # )
+    apc_receipt = models.CharField(max_length=255, null=True, blank=True)
     reviewer_report = models.FileField(
         upload_to="foo/",
         validators=[

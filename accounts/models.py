@@ -1,15 +1,17 @@
+from django.db import models
 from django.contrib.auth.models import (
     AbstractBaseUser,
     BaseUserManager,
     PermissionsMixin,
 )
-from django.db import models
+
 from rest_framework_simplejwt.tokens import RefreshToken
 
 # Create your models here.
 
 
 class UserManager(BaseUserManager):
+    
     def create_user(
         self,
         username,
@@ -69,6 +71,7 @@ ROLE_CHOICES = (
 
 
 class User(AbstractBaseUser, PermissionsMixin):
+    
     username = models.CharField(
         max_length=255, unique=True, db_index=True, null=True, blank=True
     )

@@ -1,20 +1,24 @@
+from rest_framework import generics, status
+from rest_framework.parsers import MultiPartParser
+from rest_framework.permissions import IsAuthenticated
+
+from drf_yasg.utils import swagger_serializer_method
+
+from accounts.models import User
 from accounts.editor.serializers import (
     ForgetEditorPasswordSerializer,
     LoginEditorSerializer,
     RegisterEditorSerializer,
 )
-from accounts.models import User
 from accounts.utils import (
     create_user,
     forget_password_message_send,
     forget_user_password,
     verify_email_password,
 )
-from drf_yasg.utils import swagger_serializer_method
+
 from forex_backends.common import app_logger, rest_utils
-from rest_framework import generics, status
-from rest_framework.parsers import MultiPartParser
-from rest_framework.permissions import IsAuthenticated
+
 
 
 class RegisterEditorView(generics.GenericAPIView):

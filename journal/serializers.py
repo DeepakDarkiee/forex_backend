@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from journal.models import APC, Issue, JournalMatrix, Journals, Volume
+from journal.models import APC, Issue, JournalMatrix, Journals, Volume, Article
 
 
 class VolumeSerializers(serializers.ModelSerializer):
@@ -30,4 +30,10 @@ class JournalMatrixSerializers(serializers.ModelSerializer):
 class JournalSerializers(serializers.ModelSerializer):
     class Meta:
         model = Journals
+        fields = "__all__"
+
+
+class ArticleSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Article
         fields = "__all__"

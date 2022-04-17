@@ -1,0 +1,102 @@
+2022-04-10 13:40:00,782 ERROR rest_utils.py:build_response:60  Response: 400 Failed {'non_field_errors': [ErrorDetail(string='User Not Exists', code='invalid')]} None
+2022-04-10 13:40:00,782 DEBUG rest_utils.py:build_response:77  Response: 200 OK 400 Failed {'non_field_errors': [ErrorDetail(string='User Not Exists', code='invalid')]} None
+2022-04-10 13:40:13,717 DEBUG rest_utils.py:build_response:77  Response: 200 OK 200 User created successfully None None
+2022-04-10 13:40:38,115 DEBUG rest_utils.py:build_response:77  Response: 200 OK 200 User Successfully Login None None
+2022-04-10 13:42:02,667 DEBUG rest_utils.py:build_response:77  Response: 200 OK 200 User Successfully Login None None
+2022-04-10 13:43:33,227 DEBUG rest_utils.py:build_response:77  Response: 200 OK 200 User Successfully Login None None
+2022-04-10 13:43:35,652 DEBUG rest_utils.py:build_response:77  Response: 200 OK 200 User Successfully Login None None
+2022-04-10 13:48:10,430 DEBUG rest_utils.py:build_response:77  Response: 200 OK 200 User Successfully Login None None
+2022-04-10 13:51:20,729 ERROR rest_utils.py:build_response:60  Response: 400 Failed {'non_field_errors': [ErrorDetail(string='This email Already Exits', code='invalid')]} None
+2022-04-10 13:51:20,729 DEBUG rest_utils.py:build_response:77  Response: 200 OK 400 Failed {'non_field_errors': [ErrorDetail(string='This email Already Exits', code='invalid')]} None
+2022-04-10 13:51:51,730 DEBUG rest_utils.py:build_response:77  Response: 200 OK 200 User created successfully None None
+2022-04-10 13:52:04,524 DEBUG rest_utils.py:build_response:77  Response: 200 OK 200 User Successfully Login None None
+2022-04-10 13:53:37,071 DEBUG rest_utils.py:build_response:77  Response: 200 OK 200 User created successfully None None
+2022-04-10 13:53:57,985 DEBUG rest_utils.py:build_response:77  Response: 200 OK 200 User Successfully Login None None
+2022-04-10 14:06:51,405 DEBUG rest_utils.py:build_response:77  Response: 200 OK 200 User Successfully Login None None
+2022-04-10 14:08:46,157 DEBUG rest_utils.py:build_response:77  Response: 200 OK 200 User Successfully Login None None
+2022-04-10 14:11:32,551 DEBUG rest_utils.py:build_response:77  Response: 200 OK 200 User Successfully Login None None
+2022-04-10 14:12:02,907 DEBUG rest_utils.py:build_response:77  Response: 200 OK 200 User Successfully Login None None
+2022-04-10 15:05:00,651 DEBUG rest_utils.py:build_response:77  Response: 200 OK 200 User Successfully Login None None
+2022-04-10 15:08:27,370 ERROR rest_utils.py:build_response:60  Response: 500 Internal server error {'non_field_errors': ["name 'User' is not defined"]} None
+2022-04-10 15:08:27,370 DEBUG rest_utils.py:build_response:77  Response: 200 OK 500 Internal server error {'non_field_errors': ["name 'User' is not defined"]} None
+2022-04-10 15:56:26,219 ERROR rest_utils.py:build_response:60  Response: 500 Internal server error {'non_field_errors': ["'UpdateProfileSerializer' object has no attribute 'request'"]} None
+2022-04-10 15:56:26,220 DEBUG rest_utils.py:build_response:77  Response: 200 OK 500 Internal server error {'non_field_errors': ["'UpdateProfileSerializer' object has no attribute 'request'"]} None
+2022-04-10 15:56:35,666 ERROR rest_utils.py:build_response:60  Response: 500 Internal server error {'non_field_errors': ["'UpdateProfileSerializer' object has no attribute 'request'"]} None
+2022-04-10 15:56:35,666 DEBUG rest_utils.py:build_response:77  Response: 200 OK 500 Internal server error {'non_field_errors': ["'UpdateProfileSerializer' object has no attribute 'request'"]} None
+2022-04-10 15:57:59,498 ERROR rest_utils.py:build_response:60  Response: 500 Internal server error {'non_field_errors': ["'request'"]} None
+2022-04-10 15:57:59,498 DEBUG rest_utils.py:build_response:77  Response: 200 OK 500 Internal server error {'non_field_errors': ["'request'"]} None
+2022-04-10 15:59:12,153 ERROR rest_utils.py:build_response:60  Response: 500 Internal server error {'non_field_errors': ["'request'"]} None
+2022-04-10 15:59:12,153 DEBUG rest_utils.py:build_response:77  Response: 200 OK 500 Internal server error {'non_field_errors': ["'request'"]} None
+2022-04-10 16:00:26,416 ERROR rest_utils.py:build_response:60  Response: 500 Internal server error {'non_field_errors': ["name 'CurrentUserDefault' is not defined"]} None
+2022-04-10 16:00:26,416 DEBUG rest_utils.py:build_response:77  Response: 200 OK 500 Internal server error {'non_field_errors': ["name 'CurrentUserDefault' is not defined"]} None
+2022-04-10 16:00:46,182 ERROR rest_utils.py:build_response:60  Response: 500 Internal server error {'non_field_errors': ["'CurrentUserDefault' object has no attribute 'is_active'"]} None
+2022-04-10 16:00:46,182 DEBUG rest_utils.py:build_response:77  Response: 200 OK 500 Internal server error {'non_field_errors': ["'CurrentUserDefault' object has no attribute 'is_active'"]} None
+2022-04-10 16:03:06,381 ERROR rest_utils.py:build_response:60  Response: 500 Internal server error {'non_field_errors': ['not enough values to unpack (expected 3, got 2)']} None
+2022-04-10 16:03:06,381 DEBUG rest_utils.py:build_response:77  Response: 200 OK 500 Internal server error {'non_field_errors': ['not enough values to unpack (expected 3, got 2)']} None
+2022-04-10 16:16:44,540 DEBUG rest_utils.py:build_response:77  Response: 200 OK 200 Profile Successfully Updated None None
+2022-04-10 16:20:03,626 ERROR rest_utils.py:build_response:60  Response: 400 Failed {'username': [ErrorDetail(string='user with this username already exists.', code='unique')]} None
+2022-04-10 16:20:03,626 DEBUG rest_utils.py:build_response:77  Response: 200 OK 400 Failed {'username': [ErrorDetail(string='user with this username already exists.', code='unique')]} None
+2022-04-10 16:22:32,804 ERROR rest_utils.py:build_response:60  Response: 400 Failed {'non_field_errors': [ErrorDetail(string='OK', code='invalid')]} None
+2022-04-10 16:22:32,804 DEBUG rest_utils.py:build_response:77  Response: 200 OK 400 Failed {'non_field_errors': [ErrorDetail(string='OK', code='invalid')]} None
+2022-04-10 16:22:51,450 ERROR rest_utils.py:build_response:60  Response: 400 Failed {'username': [ErrorDetail(string='user with this username already exists.', code='unique')]} None
+2022-04-10 16:22:51,450 DEBUG rest_utils.py:build_response:77  Response: 200 OK 400 Failed {'username': [ErrorDetail(string='user with this username already exists.', code='unique')]} None
+2022-04-10 16:25:33,594 ERROR rest_utils.py:build_response:60  Response: 500 Internal server error {'non_field_errors': ['UNIQUE constraint failed: accounts_user.email']} None
+2022-04-10 16:25:33,594 DEBUG rest_utils.py:build_response:77  Response: 200 OK 500 Internal server error {'non_field_errors': ['UNIQUE constraint failed: accounts_user.email']} None
+2022-04-10 16:27:37,019 ERROR rest_utils.py:build_response:60  Response: 500 Internal server error {'non_field_errors': ['UNIQUE constraint failed: accounts_user.email']} None
+2022-04-10 16:27:37,019 DEBUG rest_utils.py:build_response:77  Response: 200 OK 500 Internal server error {'non_field_errors': ['UNIQUE constraint failed: accounts_user.email']} None
+2022-04-10 16:27:38,112 ERROR rest_utils.py:build_response:60  Response: 500 Internal server error {'non_field_errors': ['UNIQUE constraint failed: accounts_user.email']} None
+2022-04-10 16:27:38,112 DEBUG rest_utils.py:build_response:77  Response: 200 OK 500 Internal server error {'non_field_errors': ['UNIQUE constraint failed: accounts_user.email']} None
+2022-04-10 16:28:00,953 ERROR rest_utils.py:build_response:60  Response: 500 Internal server error {'non_field_errors': ['UNIQUE constraint failed: accounts_user.email']} None
+2022-04-10 16:28:00,954 DEBUG rest_utils.py:build_response:77  Response: 200 OK 500 Internal server error {'non_field_errors': ['UNIQUE constraint failed: accounts_user.email']} None
+2022-04-10 16:29:08,400 ERROR rest_utils.py:build_response:60  Response: 500 Internal server error {'non_field_errors': ['UNIQUE constraint failed: accounts_user.email']} None
+2022-04-10 16:29:08,401 DEBUG rest_utils.py:build_response:77  Response: 200 OK 500 Internal server error {'non_field_errors': ['UNIQUE constraint failed: accounts_user.email']} None
+2022-04-10 16:29:30,089 ERROR rest_utils.py:build_response:60  Response: 400 Failed {'first_name': [ErrorDetail(string='This field is required.', code='required')], 'last_name': [ErrorDetail(string='This field is required.', code='required')]} None
+2022-04-10 16:29:30,089 DEBUG rest_utils.py:build_response:77  Response: 200 OK 400 Failed {'first_name': [ErrorDetail(string='This field is required.', code='required')], 'last_name': [ErrorDetail(string='This field is required.', code='required')]} None
+2022-04-10 16:30:12,841 ERROR rest_utils.py:build_response:60  Response: 500 Internal server error {'non_field_errors': ['UNIQUE constraint failed: accounts_user.email']} None
+2022-04-10 16:30:12,841 DEBUG rest_utils.py:build_response:77  Response: 200 OK 500 Internal server error {'non_field_errors': ['UNIQUE constraint failed: accounts_user.email']} None
+2022-04-10 16:31:08,850 ERROR rest_utils.py:build_response:60  Response: 400 Failed {'username': [ErrorDetail(string='user with this username already exists.', code='unique')]} None
+2022-04-10 16:31:08,850 DEBUG rest_utils.py:build_response:77  Response: 200 OK 400 Failed {'username': [ErrorDetail(string='user with this username already exists.', code='unique')]} None
+2022-04-10 16:31:18,953 ERROR rest_utils.py:build_response:60  Response: 500 Internal server error {'non_field_errors': ['UNIQUE constraint failed: accounts_user.email']} None
+2022-04-10 16:31:18,954 DEBUG rest_utils.py:build_response:77  Response: 200 OK 500 Internal server error {'non_field_errors': ['UNIQUE constraint failed: accounts_user.email']} None
+2022-04-10 16:33:14,555 ERROR rest_utils.py:build_response:60  Response: 500 Internal server error {'non_field_errors': ['UNIQUE constraint failed: accounts_user.email']} None
+2022-04-10 16:33:14,557 DEBUG rest_utils.py:build_response:77  Response: 200 OK 500 Internal server error {'non_field_errors': ['UNIQUE constraint failed: accounts_user.email']} None
+2022-04-10 16:34:12,033 ERROR rest_utils.py:build_response:60  Response: 500 Internal server error {'non_field_errors': ['UNIQUE constraint failed: accounts_user.email']} None
+2022-04-10 16:34:12,035 DEBUG rest_utils.py:build_response:77  Response: 200 OK 500 Internal server error {'non_field_errors': ['UNIQUE constraint failed: accounts_user.email']} None
+2022-04-10 16:38:02,129 ERROR rest_utils.py:build_response:60  Response: 500 Internal server error {'non_field_errors': ['UNIQUE constraint failed: accounts_user.email']} None
+2022-04-10 16:38:02,130 DEBUG rest_utils.py:build_response:77  Response: 200 OK 500 Internal server error {'non_field_errors': ['UNIQUE constraint failed: accounts_user.email']} None
+2022-04-10 16:39:24,131 ERROR rest_utils.py:build_response:60  Response: 500 Internal server error {'non_field_errors': ['UNIQUE constraint failed: accounts_user.email']} None
+2022-04-10 16:39:24,131 DEBUG rest_utils.py:build_response:77  Response: 200 OK 500 Internal server error {'non_field_errors': ['UNIQUE constraint failed: accounts_user.email']} None
+2022-04-10 16:43:11,243 ERROR rest_utils.py:build_response:60  Response: 400 Failed {'profile_pic': [ErrorDetail(string='No file was submitted.', code='required')]} None
+2022-04-10 16:43:11,243 DEBUG rest_utils.py:build_response:77  Response: 200 OK 400 Failed {'profile_pic': [ErrorDetail(string='No file was submitted.', code='required')]} None
+2022-04-10 16:43:52,100 DEBUG rest_utils.py:build_response:77  Response: 200 OK 200 User Successfully Login None None
+2022-04-10 16:44:19,279 ERROR rest_utils.py:build_response:60  Response: 400 Failed {'profile_pic': [ErrorDetail(string='No file was submitted.', code='required')]} None
+2022-04-10 16:44:19,279 DEBUG rest_utils.py:build_response:77  Response: 200 OK 400 Failed {'profile_pic': [ErrorDetail(string='No file was submitted.', code='required')]} None
+2022-04-10 16:44:34,276 ERROR rest_utils.py:build_response:60  Response: 500 Internal server error {'non_field_errors': ['UNIQUE constraint failed: accounts_user.email']} None
+2022-04-10 16:44:34,277 DEBUG rest_utils.py:build_response:77  Response: 200 OK 500 Internal server error {'non_field_errors': ['UNIQUE constraint failed: accounts_user.email']} None
+2022-04-10 16:45:17,798 ERROR rest_utils.py:build_response:60  Response: 500 Internal server error {'non_field_errors': ['UNIQUE constraint failed: accounts_user.email']} None
+2022-04-10 16:45:17,798 DEBUG rest_utils.py:build_response:77  Response: 200 OK 500 Internal server error {'non_field_errors': ['UNIQUE constraint failed: accounts_user.email']} None
+2022-04-10 16:45:19,351 ERROR rest_utils.py:build_response:60  Response: 500 Internal server error {'non_field_errors': ['UNIQUE constraint failed: accounts_user.email']} None
+2022-04-10 16:45:19,352 DEBUG rest_utils.py:build_response:77  Response: 200 OK 500 Internal server error {'non_field_errors': ['UNIQUE constraint failed: accounts_user.email']} None
+2022-04-10 16:47:09,347 ERROR rest_utils.py:build_response:60  Response: 400 Failed {'profile_pic': [ErrorDetail(string='No file was submitted.', code='required')]} None
+2022-04-10 16:47:09,347 DEBUG rest_utils.py:build_response:77  Response: 200 OK 400 Failed {'profile_pic': [ErrorDetail(string='No file was submitted.', code='required')]} None
+2022-04-10 16:47:49,983 ERROR rest_utils.py:build_response:60  Response: 400 Failed {'profile_pic': [ErrorDetail(string='No file was submitted.', code='required')]} None
+2022-04-10 16:47:49,983 DEBUG rest_utils.py:build_response:77  Response: 200 OK 400 Failed {'profile_pic': [ErrorDetail(string='No file was submitted.', code='required')]} None
+2022-04-10 16:47:53,384 ERROR rest_utils.py:build_response:60  Response: 400 Failed {'profile_pic': [ErrorDetail(string='No file was submitted.', code='required')]} None
+2022-04-10 16:47:53,384 DEBUG rest_utils.py:build_response:77  Response: 200 OK 400 Failed {'profile_pic': [ErrorDetail(string='No file was submitted.', code='required')]} None
+2022-04-10 16:48:08,518 DEBUG rest_utils.py:build_response:77  Response: 200 OK 200 Profile Successfully Updated None None
+2022-04-10 16:49:48,673 DEBUG rest_utils.py:build_response:77  Response: 200 OK 200 Profile Successfully Updated None None
+2022-04-10 16:49:49,862 DEBUG rest_utils.py:build_response:77  Response: 200 OK 200 Profile Successfully Updated None None
+2022-04-10 16:50:08,046 DEBUG rest_utils.py:build_response:77  Response: 200 OK 200 Profile Successfully Updated None None
+2022-04-10 16:50:31,617 ERROR rest_utils.py:build_response:60  Response: 400 Failed {'username': [ErrorDetail(string='user with this username already exists.', code='unique')]} None
+2022-04-10 16:50:31,618 DEBUG rest_utils.py:build_response:77  Response: 200 OK 400 Failed {'username': [ErrorDetail(string='user with this username already exists.', code='unique')]} None
+2022-04-10 16:50:40,652 DEBUG rest_utils.py:build_response:77  Response: 200 OK 200 Profile Successfully Updated None None
+2022-04-10 16:51:03,726 ERROR rest_utils.py:build_response:60  Response: 400 Failed {'non_field_errors': [ErrorDetail(string='OK', code='invalid')]} None
+2022-04-10 16:51:03,726 DEBUG rest_utils.py:build_response:77  Response: 200 OK 400 Failed {'non_field_errors': [ErrorDetail(string='OK', code='invalid')]} None
+2022-04-10 16:51:21,867 ERROR rest_utils.py:build_response:60  Response: 400 Failed {'non_field_errors': [ErrorDetail(string='OK', code='invalid')]} None
+2022-04-10 16:51:21,867 DEBUG rest_utils.py:build_response:77  Response: 200 OK 400 Failed {'non_field_errors': [ErrorDetail(string='OK', code='invalid')]} None
+2022-04-10 16:52:01,140 DEBUG rest_utils.py:build_response:77  Response: 200 OK 200 Profile Successfully Updated None None
+2022-04-10 16:52:13,612 ERROR rest_utils.py:build_response:60  Response: 400 Failed {'non_field_errors': [ErrorDetail(string='username already exists!', code='invalid')]} None
+2022-04-10 16:52:13,612 DEBUG rest_utils.py:build_response:77  Response: 200 OK 400 Failed {'non_field_errors': [ErrorDetail(string='username already exists!', code='invalid')]} None
+2022-04-10 16:52:51,405 DEBUG rest_utils.py:build_response:77  Response: 200 OK 200 Profile Successfully Updated None None
+2022-04-10 16:52:55,654 ERROR rest_utils.py:build_response:60  Response: 400 Failed {'non_field_errors': [ErrorDetail(string='username already exists!', code='invalid')]} None
+2022-04-10 16:52:55,654 DEBUG rest_utils.py:build_response:77  Response: 200 OK 400 Failed {'non_field_errors': [ErrorDetail(string='username already exists!', code='invalid')]} None

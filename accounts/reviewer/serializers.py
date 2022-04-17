@@ -1,10 +1,12 @@
-from accounts.models import User
 from django.conf import settings
-from forex_backends.common.validations import Validator
-from rest_framework import serializers
-from accounts.utils import verify_email_password
 from django.contrib.auth.models import update_last_login
 
+from rest_framework import serializers
+
+from forex_backends.common.validations import Validator
+
+from accounts.models import User
+from accounts.utils import verify_email_password
 
 
 class RegisterReviewerSerializer(serializers.ModelSerializer):
