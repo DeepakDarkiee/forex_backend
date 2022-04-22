@@ -130,8 +130,8 @@ class Journals(models.Model):
     description = models.TextField()
     scope = models.ForeignKey(ScopeType,on_delete=models.CASCADE,null=True, blank=True)
     article_type = models.ManyToManyField(ArticleType, null=True, blank=True)
-    ISSN_PRINT = models.CharField(max_length=50)  # must be 4-digits
-    ISSN_ONLINE = models.IntegerField(null=True, blank=True)  # must be 4-digits
+    ISSN_PRINT = models.CharField(max_length=50,null=True, blank=True)  # must be 4-digits
+    ISSN_ONLINE = models.IntegerField()  # must be 4-digits
     DOI = models.CharField(max_length=1000)
     frequency = models.CharField(max_length=100, choices=FREQUENCY_CHOICES)
     publication_year = models.CharField(max_length=4)
@@ -141,15 +141,15 @@ class Journals(models.Model):
     issue = models.ForeignKey(
         Issue, on_delete=models.CASCADE, related_name="subscriber_issue"
     )
-    special_issue = models.CharField(max_length=2000)
+    special_issue = models.CharField(max_length=2000,null=True, blank=True)
     journal_subscriber = models.ForeignKey(
-        User, on_delete=models.CASCADE, related_name="subscriber_journal"
+        User, on_delete=models.CASCADE, related_name="subscriber_journal",null=True, blank=True
     )
     journal_author = models.ForeignKey(
-        User, on_delete=models.CASCADE, related_name="subscriber_author_journal"
+        User, on_delete=models.CASCADE, related_name="subscriber_author_journal",null=True, blank=True
     )
     journal_reviewer = models.ForeignKey(
-        User, on_delete=models.CASCADE, related_name="subscriber_reviewer_journal"
+        User, on_delete=models.CASCADE, related_name="subscriber_reviewer_journal",null=True, blank=True
     )
     journal_matrix = models.ForeignKey(JournalMatrix,on_delete=models.CASCADE, related_name="journal_matrix",null=True, blank=True)
 
