@@ -1,6 +1,6 @@
 import datetime
 
-from django.db import models  # from djmoney.models.fields import MoneyField
+from django.db import models# from djmoney.models.fields import MoneyField
 from django.utils.translation import gettext as _
 from django.core.validators import FileExtensionValidator
 
@@ -8,14 +8,14 @@ from accounts.models import User
 
 # Create your models here.
 
-
 class Volume(models.Model):
+    
     def year_choices():
-
+        
         return [(r, r) for r in range(1984, datetime.date.today().year + 1)]
 
     def current_year():
-
+        
         return datetime.date.today().year
 
     volume = models.IntegerField()
@@ -39,7 +39,7 @@ class Issue(models.Model):
 
 
 class APC(models.Model):
-
+    
     fixed_amount = models.CharField(max_length=100000)
     discount_options = models.CharField(max_length=2)
     waive_off = models.CharField(max_length=10000)
@@ -49,13 +49,13 @@ class APC(models.Model):
 
 
 class PageNumber(models.Model):
-
+    
     page_from = models.CharField(max_length=100000)
     page_to = models.CharField(max_length=2)
 
     def __str__(self):
         return self.page_from
-
+    
 
 class JournalMatrix(models.Model):
 
@@ -74,14 +74,22 @@ class JournalMatrix(models.Model):
 
 
 class ArticleType(models.Model):
-
+    
     article_type = models.CharField(max_length=100, unique=True)
 
     def __str__(self):
         return self.article_type
+    
+class ScopeType(models.Model):
+    
+    scope_type = models.CharField(max_length=100, unique=True)
+
+    def __str__(self):
+        return self.scope_type
 
 
 class JournalsManager(models.Manager):
+    
     def get_queryset(self):
         return super().get_queryset().filter(role="User.role.Author")
 
@@ -115,16 +123,14 @@ class Journals(models.Model):
         ("half_yearly", "half_yearly"),
         ("yearly", "yearly"),
     )
-    is_lock = models.BooleanField(default=False)
+    is_lock =models.BooleanField(default=False)
     journal_id = models.IntegerField(null=True, blank=True)
     journal_title = models.CharField(unique=True, max_length=200)
     journal_image = models.ImageField(upload_to="journal-image")
     description = models.TextField()
-    scope = models.CharField(max_length=200)
+    scope = models.ForeignKey(ScopeType,on_delete=models.CASCADE,null=True, blank=True)
     article_type = models.ManyToManyField(ArticleType, null=True, blank=True)
-    ISSN_PRINT = models.CharField(
-        max_length=50, null=True, blank=True
-    )  # must be 4-digits
+    ISSN_PRINT = models.CharField(max_length=50,null=True, blank=True)  # must be 4-digits
     ISSN_ONLINE = models.IntegerField()  # must be 4-digits
     DOI = models.CharField(max_length=1000)
     frequency = models.CharField(max_length=100, choices=FREQUENCY_CHOICES)
@@ -135,35 +141,17 @@ class Journals(models.Model):
     issue = models.ForeignKey(
         Issue, on_delete=models.CASCADE, related_name="subscriber_issue"
     )
-    special_issue = models.CharField(max_length=2000, null=True, blank=True)
+    special_issue = models.CharField(max_length=2000,null=True, blank=True)
     journal_subscriber = models.ForeignKey(
-        User,
-        on_delete=models.CASCADE,
-        related_name="subscriber_journal",
-        null=True,
-        blank=True,
+        User, on_delete=models.CASCADE, related_name="subscriber_journal",null=True, blank=True
     )
     journal_author = models.ForeignKey(
-        User,
-        on_delete=models.CASCADE,
-        related_name="subscriber_author_journal",
-        null=True,
-        blank=True,
+        User, on_delete=models.CASCADE, related_name="subscriber_author_journal",null=True, blank=True
     )
     journal_reviewer = models.ForeignKey(
-        User,
-        on_delete=models.CASCADE,
-        related_name="subscriber_reviewer_journal",
-        null=True,
-        blank=True,
+        User, on_delete=models.CASCADE, related_name="subscriber_reviewer_journal",null=True, blank=True
     )
-    journal_matrix = models.ForeignKey(
-        JournalMatrix,
-        on_delete=models.CASCADE,
-        related_name="journal_matrix",
-        null=True,
-        blank=True,
-    )
+    journal_matrix = models.ForeignKey(JournalMatrix,on_delete=models.CASCADE, related_name="journal_matrix",null=True, blank=True)
 
     objects = models.Manager()
 
@@ -171,7 +159,7 @@ class Journals(models.Model):
 
     def __str__(self):
         return self.journal_title
-
+    
 
 class Article(models.Model):
 
@@ -205,7 +193,7 @@ class Article(models.Model):
     )
     paper_id = models.CharField(max_length=225, unique=True)
     title = models.CharField(max_length=100, unique=True)
-    refrence = models.TextField(null=True, blank=True)
+    refrence=models.TextField(null=True, blank=True)
     # article_type = models.ForeignKey(
     #     Journals, on_delete=models.CASCADE, related_name="article_type"
     # )
