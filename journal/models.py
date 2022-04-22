@@ -116,7 +116,7 @@ class Journals(models.Model):
         ("half_yearly", "half_yearly"),
         ("yearly", "yearly"),
     )
-
+    is_lock =models.BooleanField(default=False)
     journal_id = models.IntegerField(null=True, blank=True)
     journal_title = models.CharField(unique=True, max_length=200)
     journal_image = models.ImageField(upload_to="journal-image")
@@ -144,7 +144,7 @@ class Journals(models.Model):
     journal_reviewer = models.ForeignKey(
         User, on_delete=models.CASCADE, related_name="subscriber_reviewer_journal"
     )
-    journal_matrix = models.CharField(max_length=100)
+    journal_matrix = models.ForeignKey(JournalMatrix,on_delete=models.CASCADE, related_name="journal_matrix",null=True, blank=True)
 
     objects = models.Manager()
 
@@ -186,11 +186,12 @@ class Article(models.Model):
     )
     paper_id = models.CharField(max_length=225, unique=True)
     title = models.CharField(max_length=100, unique=True)
+    refrence=models.TextField(null=True, blank=True)
     # article_type = models.ForeignKey(
     #     Journals, on_delete=models.CASCADE, related_name="article_type"
     # )
     article_type = models.ManyToManyField(ArticleType)
-    scope = models.ForeignKey(
+    journal = models.ForeignKey(
         Journals, on_delete=models.CASCADE, related_name="article_scope"
     )
     abstract = models.CharField(max_length=300)
