@@ -79,6 +79,13 @@ class ArticleType(models.Model):
 
     def __str__(self):
         return self.article_type
+    
+class ScopeType(models.Model):
+    
+    scope_type = models.CharField(max_length=100, unique=True)
+
+    def __str__(self):
+        return self.scope_type
 
 
 class JournalsManager(models.Manager):
@@ -121,7 +128,7 @@ class Journals(models.Model):
     journal_title = models.CharField(unique=True, max_length=200)
     journal_image = models.ImageField(upload_to="journal-image")
     description = models.TextField()
-    scope = models.CharField(max_length=100, choices=SCOPE_CHOICES)
+    scope = models.ForeignKey(ScopeType,on_delete=models.CASCADE,null=True, blank=True)
     article_type = models.ManyToManyField(ArticleType, null=True, blank=True)
     ISSN_PRINT = models.CharField(max_length=50)  # must be 4-digits
     ISSN_ONLINE = models.IntegerField(null=True, blank=True)  # must be 4-digits

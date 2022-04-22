@@ -10,6 +10,7 @@ from journal.models import (
     JournalMatrix,
     Article,
     PageNumber,
+    ScopeType
 )
 
 
@@ -71,3 +72,6 @@ admin.site.register(JournalMatrix, JournalMatrixAdmin)
 admin.site.register(ArticleType, ArticleTypeAdmin)
 admin.site.register(Article)
 admin.site.register(PageNumber)
+admin.site.register(ScopeType)
+
+
