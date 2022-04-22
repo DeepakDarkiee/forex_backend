@@ -128,7 +128,7 @@ class Journals(models.Model):
     journal_title = models.CharField(unique=True, max_length=200)
     journal_image = models.ImageField(upload_to="journal-image")
     description = models.TextField()
-    scope = models.ForeignKey(ScopeType,on_delete=models.CASCADE,null=True, blank=True)
+    scope = models.ManyToManyField(ScopeType,null=True, blank=True)
     article_type = models.ManyToManyField(ArticleType, null=True, blank=True)
     ISSN_PRINT = models.CharField(max_length=50,null=True, blank=True)  # must be 4-digits
     ISSN_ONLINE = models.IntegerField()  # must be 4-digits

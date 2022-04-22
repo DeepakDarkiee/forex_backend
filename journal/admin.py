@@ -21,7 +21,6 @@ class JournalsAdmin(admin.ModelAdmin):
         "journal_title",
         "journal_image",
         "description",
-        "scope",
         "ISSN_PRINT",
         "DOI",
         "frequency",
