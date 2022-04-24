@@ -50,6 +50,7 @@ INSTALLED_APPS = [
     "drf_yasg",
     "rest_framework_simplejwt",
     "rest_framework",
+    "import_export",
 ]
 
 MIDDLEWARE = [
@@ -230,7 +231,7 @@ JAZZMIN_SETTINGS = {
     # Related Modal #
     #################
     # Use modals instead of popups
-    "related_modal_active": True,
+    "related_modal_active": False,
     #############
     # UI Tweaks #
     #############
@@ -291,3 +292,5 @@ JAZZMIN_UI_TWEAKS = {
 }
 
 FORCE_SCRIPT_NAME = "/"
+
+IMPORT_EXPORT_USE_TRANSACTIONS = True
