@@ -35,7 +35,8 @@ URL = config("URL")
 # Application definition
 
 INSTALLED_APPS = [
-    "jazzmin",
+    # "jazzmin",
+    "jet",
     "admin_tools_stats",
     "django_nvd3",
     "django.contrib.admin",
