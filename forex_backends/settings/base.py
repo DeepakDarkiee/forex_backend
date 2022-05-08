@@ -35,8 +35,7 @@ URL = config("URL")
 # Application definition
 
 INSTALLED_APPS = [
-    # "jazzmin",
-    "jet",
+    "jazzmin",
     "admin_tools_stats",
     "django_nvd3",
     "django.contrib.admin",
@@ -52,6 +51,7 @@ INSTALLED_APPS = [
     "rest_framework_simplejwt",
     "rest_framework",
     "import_export",
+    "tinymce",
 ]
 
 MIDDLEWARE = [
@@ -241,6 +241,7 @@ JAZZMIN_SETTINGS = {
     "custom_js": None,
     # Whether to show the UI customizer on the sidebar
     "show_ui_builder": True,
+    
     ###############
     # Change view #
     ###############
@@ -295,3 +296,32 @@ JAZZMIN_UI_TWEAKS = {
 FORCE_SCRIPT_NAME = "/"
 
 IMPORT_EXPORT_USE_TRANSACTIONS = True
+
+TINYMCE_DEFAULT_CONFIG = {
+    'cleanup_on_startup': True,
+    'custom_undo_redo_levels': 20,
+    'selector': 'textarea',
+    'theme': 'silver',
+    'plugins': '''
+            textcolor save link image media preview codesample contextmenu
+            table code lists fullscreen  insertdatetime  nonbreaking
+            contextmenu directionality searchreplace wordcount visualblocks
+            visualchars code fullscreen autolink lists  charmap print  hr
+            anchor pagebreak
+            ''',
+    'toolbar1': '''
+            fullscreen preview bold italic underline | fontselect,
+            fontsizeselect  | forecolor backcolor | alignleft alignright |
+            aligncenter alignjustify | indent outdent | bullist numlist table |
+            | link image media | codesample |
+            ''',
+    'toolbar2': '''
+            visualblocks visualchars |
+            charmap hr pagebreak nonbreaking anchor |  code |
+            ''',
+    'contextmenu': 'formats | link image',
+    'menubar': True,
+    'statusbar': True,
+    'width': '100%',
+    'height': 500,
+}

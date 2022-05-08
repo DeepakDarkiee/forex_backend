@@ -27,7 +27,7 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("api/account/", include("accounts.urls")),
     path("api/journal/", include("journal.urls")),
-    path("jet/", include("jet.urls", "jet")),
+    path('tinymce/', include('tinymce.urls')),
 ]
 
 urlpatterns += [

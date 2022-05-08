@@ -4,6 +4,8 @@ from django.db import models# from djmoney.models.fields import MoneyField
 from django.utils.translation import gettext as _
 from django.core.validators import FileExtensionValidator
 
+from tinymce.models import HTMLField
+
 from accounts.models import User
 
 # Create your models here.
@@ -93,7 +95,6 @@ class JournalsManager(models.Manager):
     def get_queryset(self):
         return super().get_queryset().filter(role="User.role.Author")
 
-
 class Journals(models.Model):
 
     SCOPE_CHOICES = (
@@ -123,11 +124,12 @@ class Journals(models.Model):
         ("half_yearly", "half_yearly"),
         ("yearly", "yearly"),
     )
-    is_lock =models.BooleanField(default=False)
-    journal_id = models.IntegerField(null=True, blank=True)
     journal_title = models.CharField(unique=True, max_length=200)
+    journal_slug = models.SlugField(max_length = 200)
     journal_image = models.ImageField(upload_to="journal-image")
-    description = models.TextField()
+    is_lock =models.BooleanField(default=False)
+    # description = models.TextField()
+    description = HTMLField()    
     scope = models.ManyToManyField(ScopeType,null=True, blank=True)
     article_type = models.ManyToManyField(ArticleType, null=True, blank=True)
     ISSN_PRINT = models.CharField(max_length=50,null=True, blank=True)  # must be 4-digits
@@ -160,7 +162,7 @@ class Journals(models.Model):
     def __str__(self):
         return self.journal_title
     
-
+    
 class Article(models.Model):
 
     FUNDINFG_SOURCE = (
@@ -191,9 +193,10 @@ class Article(models.Model):
         ("article_in_press", "article_in_press"),
         ("article_published", "article_published"),
     )
-    paper_id = models.CharField(max_length=225, unique=True)
     title = models.CharField(max_length=100, unique=True)
-    refrence=models.TextField(null=True, blank=True)
+    article_slug = models.SlugField(max_length=225)
+    # refrence=models.TextField(null=True, blank=True)
+    refrence = HTMLField()
     # article_type = models.ForeignKey(
     #     Journals, on_delete=models.CASCADE, related_name="article_type"
     # )
