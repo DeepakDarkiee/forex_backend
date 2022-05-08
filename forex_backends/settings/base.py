@@ -324,4 +324,5 @@ TINYMCE_DEFAULT_CONFIG = {
     'statusbar': True,
     'width': '100%',
     'height': 500,
+    'branding': False
 }
