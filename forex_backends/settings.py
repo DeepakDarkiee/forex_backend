@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     "journals",
     "rest_framework_simplejwt",
     "rest_framework",
+    "tinymce",
 ]
 
 MIDDLEWARE = [
@@ -137,3 +138,7 @@ REST_FRAMEWORK = {
         "rest_framework_simplejwt.authentication.JWTAuthentication",
     )
 }
+
+tinymce.init({
+    toolbar: 'link',
+})
