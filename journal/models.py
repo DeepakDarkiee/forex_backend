@@ -133,7 +133,7 @@ class Journals(models.Model):
     scope = models.ManyToManyField(ScopeType,null=True, blank=True)
     article_type = models.ManyToManyField(ArticleType, null=True, blank=True)
     ISSN_PRINT = models.CharField(max_length=50,null=True, blank=True)  # must be 4-digits
-    ISSN_ONLINE = models.IntegerField()  # must be 4-digits
+    ISSN_ONLINE = models.CharField(max_length=50,null=True, blank=True)  # must be 4-digits
     DOI = models.CharField(max_length=1000)
     frequency = models.CharField(max_length=100, choices=FREQUENCY_CHOICES)
     publication_year = models.CharField(max_length=4)
@@ -155,9 +155,6 @@ class Journals(models.Model):
     )
     journal_matrix = models.ForeignKey(JournalMatrix,on_delete=models.CASCADE, related_name="journal_matrix",null=True, blank=True)
 
-    objects = models.Manager()
-
-    user_role_objects = JournalsManager()
 
     def __str__(self):
         return self.journal_title
