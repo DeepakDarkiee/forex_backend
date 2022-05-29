@@ -96,6 +96,14 @@ class JournalsManager(models.Manager):
         return super().get_queryset().filter(role="User.role.Author")
 
 class Journals(models.Model):
+    def year_choices():
+        
+        return [(r, r) for r in range(1984, datetime.date.today().year + 1)]
+
+    def current_year():
+        
+        return datetime.date.today().year
+
 
     SCOPE_CHOICES = (
         ("author", "author"),
@@ -136,7 +144,7 @@ class Journals(models.Model):
     ISSN_ONLINE = models.CharField(max_length=50,null=True, blank=True)  # must be 4-digits
     DOI = models.CharField(max_length=1000)
     frequency = models.CharField(max_length=100, choices=FREQUENCY_CHOICES)
-    publication_year = models.CharField(max_length=4)
+    publication_year = models.IntegerField(_("year"), choices=year_choices(), default=current_year)
     volume = models.ForeignKey(
         Volume, on_delete=models.CASCADE, related_name="subscriber_volume"
     )
