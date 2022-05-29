@@ -29,7 +29,6 @@ class JournalsAdmin(ImportExportModelAdmin):
     list_display = [
         "journal_title",
         "journal_image",
-        "description",
         "ISSN_PRINT",
         "DOI",
         "frequency",
