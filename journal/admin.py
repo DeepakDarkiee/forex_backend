@@ -44,16 +44,6 @@ class JournalsAdmin(ImportExportModelAdmin):
     ]
 
 
-    def get_readonly_fields(self, request, obj=None):
-        if obj: # editing an existing object
-            return self.readonly_fields + ('journal_slug')
-        return self.readonly_fields
-
-    # def get_readonly_fields(self, request, obj = None):
-    #     if obj and obj.lock_slug == True:
-    #         return ('journal_slug',) + self.readonly_fields
-    #     return self.readonly_fields
-
 class JournalsInline1(admin.StackedInline):
     model = Journals
     extra = 1  
