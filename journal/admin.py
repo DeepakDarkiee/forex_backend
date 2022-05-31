@@ -94,7 +94,7 @@ class ArticleTypeAdmin(ImportExportModelAdmin):
 class ArticleAdmin(ImportExportModelAdmin):
 
     model = Article
-    list_display = ["title","refrence"]  
+    list_display = ["title"]  
     prepopulated_fields = {"article_slug": ("title",)}
 
 

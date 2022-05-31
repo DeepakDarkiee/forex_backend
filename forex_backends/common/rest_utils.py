@@ -8,6 +8,7 @@ logger = app_logger.createLogger("app")
 HTTP_REST_MESSAGES = {
     "200": _("Success"),
     "400": _("Failed"),
+    "404": _("Deleted or Not Found"),
     "401": _("Authentication Failed"),
     "426": _("Version Mismatch"),
     "429": _("Too many requests"),
