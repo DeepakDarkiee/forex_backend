@@ -1,0 +1,50 @@
+2022-05-29 14:20:20,338 DEBUG rest_utils.py:build_response:77  Response: 200 OK 200 Ok None None
+2022-05-29 14:27:36,416 ERROR rest_utils.py:build_response:60  Response: 400 Failed {'non_field_errors': [ErrorDetail(string='User Not Exists', code='invalid')]} None
+2022-05-29 14:27:36,417 DEBUG rest_utils.py:build_response:77  Response: 200 OK 400 Failed {'non_field_errors': [ErrorDetail(string='User Not Exists', code='invalid')]} None
+2022-05-29 14:28:04,415 DEBUG rest_utils.py:build_response:77  Response: 200 OK 200 User created successfully None None
+2022-05-29 14:29:42,223 ERROR rest_utils.py:build_response:60  Response: 500 Internal server error {'non_field_errors': ["Cannot resolve keyword 'author_details' into field. Choices are: id, subscriber_volume, volume, year"]} None
+2022-05-29 14:29:42,224 DEBUG rest_utils.py:build_response:77  Response: 200 OK 500 Internal server error {'non_field_errors': ["Cannot resolve keyword 'author_details' into field. Choices are: id, subscriber_volume, volume, year"]} None
+2022-05-29 14:36:07,020 DEBUG rest_utils.py:build_response:77  Response: 200 OK 200 User Successfully Login None None
+2022-05-29 14:53:21,930 ERROR rest_utils.py:build_response:60  Response: 500 Internal server error {'non_field_errors': ["name 'user' is not defined"]} None
+2022-05-29 14:53:21,930 DEBUG rest_utils.py:build_response:77  Response: 200 OK 500 Internal server error {'non_field_errors': ["name 'user' is not defined"]} None
+2022-05-29 14:53:57,465 DEBUG rest_utils.py:build_response:77  Response: 200 OK 200 Volume Successfully Updated None None
+2022-05-29 14:54:35,175 DEBUG rest_utils.py:build_response:77  Response: 200 OK 200 Volume Successfully Updated None None
+2022-05-29 15:05:27,985 ERROR rest_utils.py:build_response:60  Response: 404 Failed {'non_field_errors': ['Volume matching query does not exist.']} None
+2022-05-29 15:05:27,985 DEBUG rest_utils.py:build_response:77  Response: 200 OK 404 Failed {'non_field_errors': ['Volume matching query does not exist.']} None
+2022-05-29 15:07:31,316 ERROR rest_utils.py:build_response:61  Response: 404 Deleted or Not Found {'non_field_errors': ['Deleted or Not Found']} None
+2022-05-29 15:07:31,317 DEBUG rest_utils.py:build_response:78  Response: 200 OK 404 Deleted or Not Found {'non_field_errors': ['Deleted or Not Found']} None
+2022-05-29 15:08:08,363 ERROR rest_utils.py:build_response:61  Response: 404 Deleted or Not Found {'non_field_errors': ['Deleted or Not Found']} None
+2022-05-29 15:08:08,363 DEBUG rest_utils.py:build_response:78  Response: 200 OK 404 Deleted or Not Found {'non_field_errors': ['Deleted or Not Found']} None
+2022-05-29 15:08:31,728 ERROR rest_utils.py:build_response:61  Response: 404 Deleted or Not Found {'non_field_errors': ['Deleted or Not Found']} None
+2022-05-29 15:08:31,728 DEBUG rest_utils.py:build_response:78  Response: 200 OK 404 Deleted or Not Found {'non_field_errors': ['Deleted or Not Found']} None
+2022-05-29 15:08:57,684 ERROR rest_utils.py:build_response:61  Response: 404 Deleted or Not Found {'non_field_errors': ['Deleted or Not Found']} None
+2022-05-29 15:08:57,685 DEBUG rest_utils.py:build_response:78  Response: 200 OK 404 Deleted or Not Found {'non_field_errors': ['Deleted or Not Found']} None
+2022-05-29 15:09:26,713 ERROR rest_utils.py:build_response:61  Response: 204 Volume Successfully Deleted {'non_field_errors': ['Volume Successfully Deleted']} None
+2022-05-29 15:09:26,716 DEBUG rest_utils.py:build_response:78  Response: 200 OK 204 Volume Successfully Deleted {'non_field_errors': ['Volume Successfully Deleted']} None
+2022-05-29 15:09:28,029 ERROR rest_utils.py:build_response:61  Response: 204 Volume Successfully Deleted {'non_field_errors': ['Volume Successfully Deleted']} None
+2022-05-29 15:09:28,029 DEBUG rest_utils.py:build_response:78  Response: 200 OK 204 Volume Successfully Deleted {'non_field_errors': ['Volume Successfully Deleted']} None
+2022-05-29 15:09:33,777 ERROR rest_utils.py:build_response:61  Response: 204 Volume Successfully Deleted {'non_field_errors': ['Volume Successfully Deleted']} None
+2022-05-29 15:09:33,777 DEBUG rest_utils.py:build_response:78  Response: 200 OK 204 Volume Successfully Deleted {'non_field_errors': ['Volume Successfully Deleted']} None
+2022-05-29 15:10:41,980 ERROR rest_utils.py:build_response:61  Response: 204 Volume Successfully Deleted {'non_field_errors': ['Volume Successfully Deleted']} None
+2022-05-29 15:10:41,981 DEBUG rest_utils.py:build_response:78  Response: 200 OK 204 Volume Successfully Deleted {'non_field_errors': ['Volume Successfully Deleted']} None
+2022-05-29 15:11:19,826 ERROR rest_utils.py:build_response:61  Response: 204 Volume Successfully Deleted {'non_field_errors': ['Volume Successfully Deleted']} None
+2022-05-29 15:11:19,827 DEBUG rest_utils.py:build_response:78  Response: 200 OK 204 Volume Successfully Deleted {'non_field_errors': ['Volume Successfully Deleted']} None
+2022-05-29 15:11:27,007 ERROR rest_utils.py:build_response:61  Response: 204 Volume Successfully Deleted {'non_field_errors': ['Volume Successfully Deleted']} None
+2022-05-29 15:11:27,007 DEBUG rest_utils.py:build_response:78  Response: 200 OK 204 Volume Successfully Deleted {'non_field_errors': ['Volume Successfully Deleted']} None
+2022-05-29 15:13:21,260 ERROR rest_utils.py:build_response:61  Response: 500 Internal server error {'non_field_errors': ['Volume matching query does not exist.']} None
+2022-05-29 15:13:21,260 DEBUG rest_utils.py:build_response:78  Response: 200 OK 500 Internal server error {'non_field_errors': ['Volume matching query does not exist.']} None
+2022-05-29 15:13:54,015 ERROR rest_utils.py:build_response:61  Response: 500 Internal server error {'non_field_errors': ["'QuerySet' object has no attribute 'is_exist'"]} None
+2022-05-29 15:13:54,021 DEBUG rest_utils.py:build_response:78  Response: 200 OK 500 Internal server error {'non_field_errors': ["'QuerySet' object has no attribute 'is_exist'"]} None
+2022-05-29 15:14:31,834 ERROR rest_utils.py:build_response:61  Response: 500 Internal server error {'non_field_errors': ["name 'serializer' is not defined"]} None
+2022-05-29 15:14:31,835 DEBUG rest_utils.py:build_response:78  Response: 200 OK 500 Internal server error {'non_field_errors': ["name 'serializer' is not defined"]} None
+2022-05-29 15:14:43,536 ERROR rest_utils.py:build_response:61  Response: 500 Internal server error {'non_field_errors': ["name 'serializer' is not defined"]} None
+2022-05-29 15:14:43,536 DEBUG rest_utils.py:build_response:78  Response: 200 OK 500 Internal server error {'non_field_errors': ["name 'serializer' is not defined"]} None
+2022-05-29 15:15:07,371 ERROR rest_utils.py:build_response:61  Response: 404 Deleted or Not Found {'non_field_errors': ['Deleted or Not Found']} None
+2022-05-29 15:15:07,371 DEBUG rest_utils.py:build_response:78  Response: 200 OK 404 Deleted or Not Found {'non_field_errors': ['Deleted or Not Found']} None
+2022-05-29 15:15:32,424 ERROR rest_utils.py:build_response:61  Response: 204 Volume Successfully Updated {'non_field_errors': ['Volume Successfully Updated']} None
+2022-05-29 15:15:32,424 DEBUG rest_utils.py:build_response:78  Response: 200 OK 204 Volume Successfully Updated {'non_field_errors': ['Volume Successfully Updated']} None
+2022-05-29 15:34:49,580 DEBUG rest_utils.py:build_response:78  Response: 200 OK 200 Issue Successfully Updated None None
+2022-05-29 15:35:23,698 ERROR rest_utils.py:build_response:61  Response: 204 Issue Successfully Deleted {'non_field_errors': ['Issue Successfully Deleted']} None
+2022-05-29 15:35:23,698 DEBUG rest_utils.py:build_response:78  Response: 200 OK 204 Issue Successfully Deleted {'non_field_errors': ['Issue Successfully Deleted']} None
+2022-05-29 15:39:59,663 ERROR rest_utils.py:build_response:61  Response: 500 Internal server error {'non_field_errors': ['APC matching query does not exist.']} None
+2022-05-29 15:39:59,663 DEBUG rest_utils.py:build_response:78  Response: 200 OK 500 Internal server error {'non_field_errors': ['APC matching query does not exist.']} None

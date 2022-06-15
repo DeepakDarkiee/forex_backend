@@ -1,0 +1,10 @@
+2022-05-31 21:01:40,285 ERROR rest_utils.py:build_response:61  Response: 400 Failed {'volume': [ErrorDetail(string='Invalid pk "1" - object does not exist.', code='does_not_exist')], 'issue': [ErrorDetail(string='Invalid pk "1" - object does not exist.', code='does_not_exist')]} None
+2022-05-31 21:01:40,287 DEBUG rest_utils.py:build_response:78  Response: 200 OK 400 Failed {'volume': [ErrorDetail(string='Invalid pk "1" - object does not exist.', code='does_not_exist')], 'issue': [ErrorDetail(string='Invalid pk "1" - object does not exist.', code='does_not_exist')]} None
+2022-05-31 21:03:08,145 ERROR rest_utils.py:build_response:61  Response: 201 Created {'non_field_errors': ['Created']} None
+2022-05-31 21:03:08,146 DEBUG rest_utils.py:build_response:78  Response: 200 OK 201 Created {'non_field_errors': ['Created']} None
+2022-05-31 21:59:04,827 DEBUG rest_utils.py:build_response:78  Response: 200 OK 200 Ok None None
+2022-05-31 22:28:35,782 DEBUG rest_utils.py:build_response:78  Response: 200 OK 200 User Successfully Login None None
+2022-05-31 22:30:49,554 DEBUG rest_utils.py:build_response:78  Response: 200 OK 200 Ok None None
+2022-05-31 23:52:51,147 ERROR rest_utils.py:build_response:61  Response: 500 Internal server error {'non_field_errors': ["name 'issue' is not defined"]} None
+2022-05-31 23:52:51,147 DEBUG rest_utils.py:build_response:78  Response: 200 OK 500 Internal server error {'non_field_errors': ["name 'issue' is not defined"]} None
+2022-05-31 23:55:20,685 DEBUG rest_utils.py:build_response:78  Response: 200 OK 200 JournalMatrix Successfully Updated None None

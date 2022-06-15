@@ -153,17 +153,18 @@ class Journals(models.Model):
     )
     special_issue = models.CharField(max_length=2000,null=True, blank=True)
     journal_subscriber = models.ForeignKey(
-        User, on_delete=models.CASCADE, related_name="subscriber_journal",null=True, blank=True
+        User, on_delete=models.CASCADE, related_name="subscriber_journal",null=True, blank=True, limit_choices_to={'role': 'Subscriber'}
     )
     journal_author = models.ForeignKey(
-        User, on_delete=models.CASCADE, related_name="subscriber_author_journal",null=True, blank=True
+        User, on_delete=models.CASCADE, related_name="subscriber_author_journal",null=True, blank=True,limit_choices_to={'role': 'Author'}
     )
     journal_reviewer = models.ForeignKey(
-        User, on_delete=models.CASCADE, related_name="subscriber_reviewer_journal",null=True, blank=True
+        User, on_delete=models.CASCADE, related_name="subscriber_reviewer_journal",null=True, blank=True,limit_choices_to={'role': 'Reviewer'}
     )
     journal_matrix = models.ForeignKey(JournalMatrix,on_delete=models.CASCADE, related_name="journal_matrix",null=True, blank=True)
 
 
+    
     def __str__(self):
         return self.journal_title
     
@@ -212,7 +213,7 @@ class Article(models.Model):
     abstract = models.CharField(max_length=300)
     keywords = models.CharField(max_length=225)
     author_details = models.ForeignKey(
-        User, on_delete=models.CASCADE, related_name="article_author_details"
+        User, on_delete=models.CASCADE, related_name="article_author_details",limit_choices_to={'role': 'Author'}
     )
     funding_source = models.CharField(max_length=100, choices=FUNDINFG_SOURCE)
     upload = models.FileField(

@@ -139,6 +139,4 @@ REST_FRAMEWORK = {
     )
 }
 
-tinymce.init({
-    toolbar: 'link',
-})
+
