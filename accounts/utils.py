@@ -16,10 +16,12 @@ def create_user(user, request_data, role=None):
     try:
         if role == "Editor":
             user.role = "Editor"
-        elif role == "Author":
-            user.role = "Author"
-        else:
+        elif role == "Reviewer":
             user.role = "Reviewer"
+        elif role == "Both-ER":
+            user.role = "Both-ER"
+        else:
+            user.role = "Author"
         user.set_password(request_data.get("password"))
         user = user.save()
         result, message, data = True, "User created successfully", None

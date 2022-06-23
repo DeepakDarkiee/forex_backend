@@ -5,7 +5,7 @@ from rest_framework.permissions import IsAuthenticated
 
 from accounts.models import User
 from accounts.serializers import UpdateProfileSerializer, UserDetailSerializer
-
+from django.contrib.auth import logout
 from forex_backends.common import app_logger, rest_utils
 
 # Create your views here.
@@ -52,8 +52,8 @@ class UserDetailApiView(generics.GenericAPIView):
             message = "Ok"
             serializer = UserDetailSerializer(user_obj, many=False)
             return rest_utils.build_response(
-                    status.HTTP_200_OK,message, data=serializer.data, errors=None
-                )
+                status.HTTP_200_OK, message, data=serializer.data, errors=None
+            )
         except Exception as e:
             message = rest_utils.HTTP_REST_MESSAGES["500"]
             return rest_utils.build_response(
