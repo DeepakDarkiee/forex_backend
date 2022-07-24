@@ -1,0 +1,1 @@
+web: gunicorn forex_backends.wsgi --log-file -

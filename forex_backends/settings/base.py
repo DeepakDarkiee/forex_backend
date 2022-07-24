@@ -56,6 +56,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
@@ -70,7 +71,7 @@ ROOT_URLCONF = "forex_backends.urls"
 TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
-        "DIRS": ['templates'],
+        "DIRS": ["templates"],
         "APP_DIRS": True,
         "OPTIONS": {
             "context_processors": [
@@ -85,7 +86,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = "forex_backends.wsgi.application"
 
-
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
@@ -135,8 +136,8 @@ USE_TZ = True
 
 STATIC_URL = "/static/"
 STATIC_ROOT = os.path.join("static")
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = "/media/"
+MEDIA_ROOT = os.path.join(BASE_DIR, "media")
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
@@ -244,7 +245,6 @@ JAZZMIN_SETTINGS = {
     "custom_js": None,
     # Whether to show the UI customizer on the sidebar
     "show_ui_builder": True,
-    
     ###############
     # Change view #
     ###############
@@ -301,33 +301,33 @@ FORCE_SCRIPT_NAME = "/"
 IMPORT_EXPORT_USE_TRANSACTIONS = True
 
 TINYMCE_DEFAULT_CONFIG = {
-    'cleanup_on_startup': True,
-    'custom_undo_redo_levels': 20,
-    'selector': 'textarea',
-    'theme': 'silver',
-    'plugins': '''
+    "cleanup_on_startup": True,
+    "custom_undo_redo_levels": 20,
+    "selector": "textarea",
+    "theme": "silver",
+    "plugins": """
             textcolor save link image media preview codesample contextmenu
             table code lists fullscreen  insertdatetime  nonbreaking
             contextmenu directionality searchreplace wordcount visualblocks
             visualchars code fullscreen autolink lists  charmap print  hr
             anchor pagebreak
-            ''',
-    'toolbar1': '''
+            """,
+    "toolbar1": """
             fullscreen preview bold italic underline | fontselect,
             fontsizeselect  | forecolor backcolor | alignleft alignright |
             aligncenter alignjustify | indent outdent | bullist numlist table |
             | link image media | codesample |
-            ''',
-    'toolbar2': '''
+            """,
+    "toolbar2": """
             visualblocks visualchars |
             charmap hr pagebreak nonbreaking anchor |  code |
-            ''',
-    'contextmenu': 'formats | link image',
-    'menubar': True,
-    'statusbar': True,
-    'width': '100%',
-    'height': 500,
-    'branding': False
+            """,
+    "contextmenu": "formats | link image",
+    "menubar": True,
+    "statusbar": True,
+    "width": "100%",
+    "height": 500,
+    "branding": False,
 }
 
 import sentry_sdk
@@ -338,13 +338,11 @@ sentry_sdk.init(
     integrations=[
         DjangoIntegration(),
     ],
-
     # Set traces_sample_rate to 1.0 to capture 100%
     # of transactions for performance monitoring.
     # We recommend adjusting this value in production.
     traces_sample_rate=1.0,
-
     # If you wish to associate users to errors (assuming you are using
     # django.contrib.auth) you may enable sending PII data.
-    send_default_pii=True
+    send_default_pii=True,
 )
