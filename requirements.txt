@@ -22,7 +22,7 @@ flake8==4.0.1
 Pillow==9.0.1
 psycopg2-binary==2.9.3
 py-moneyed==1.2
-PyJWT==2.3.0
+PyJWT==2.4.0
 pyparsing==3.0.7
 python-dateutil==2.8.2
 python-decouple==3.6
