@@ -11,7 +11,7 @@ coreschema==0.0.4
 datetime-truncate==1.1.1
 defusedxml==0.7.1
 diff-match-patch==20200713
-Django==3.2.13
+Django==3.2.14
 django-3-jet==1.0.8
 django-admin-charts==1.0.0
 django-admin-volt==0.0.5
