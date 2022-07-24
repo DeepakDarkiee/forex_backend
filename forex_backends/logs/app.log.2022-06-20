@@ -1,0 +1,19 @@
+2022-06-20 00:05:36,594 ERROR rest_utils.py:build_response:61  Response: 500 Internal server error {'non_field_errors': ['.validate() should return the validated data']} None
+2022-06-20 00:05:36,595 DEBUG rest_utils.py:build_response:78  Response: 200 OK 500 Internal server error {'non_field_errors': ['.validate() should return the validated data']} None
+2022-06-20 00:08:32,632 ERROR rest_utils.py:build_response:61  Response: 500 Internal server error {'non_field_errors': ['.validate() should return the validated data']} None
+2022-06-20 00:08:32,633 DEBUG rest_utils.py:build_response:78  Response: 200 OK 500 Internal server error {'non_field_errors': ['.validate() should return the validated data']} None
+2022-06-20 00:17:45,787 DEBUG rest_utils.py:build_response:78  Response: 200 OK 200 User created successfully None None
+2022-06-20 00:18:15,095 ERROR rest_utils.py:build_response:61  Response: 400 Failed {'non_field_errors': [ErrorDetail(string='This email Already Exits', code='invalid')]} None
+2022-06-20 00:18:15,095 DEBUG rest_utils.py:build_response:78  Response: 200 OK 400 Failed {'non_field_errors': [ErrorDetail(string='This email Already Exits', code='invalid')]} None
+2022-06-20 00:18:49,341 ERROR rest_utils.py:build_response:61  Response: 400 Failed {'non_field_errors': [ErrorDetail(string='This email Already Exits', code='invalid')]} None
+2022-06-20 00:18:49,342 DEBUG rest_utils.py:build_response:78  Response: 200 OK 400 Failed {'non_field_errors': [ErrorDetail(string='This email Already Exits', code='invalid')]} None
+2022-06-20 00:19:06,698 DEBUG rest_utils.py:build_response:78  Response: 200 OK 200 User created successfully None None
+2022-06-20 22:26:26,748 ERROR rest_utils.py:build_response:61  Response: 201 Created {'non_field_errors': ['Created']} None
+2022-06-20 22:26:26,748 DEBUG rest_utils.py:build_response:78  Response: 200 OK 201 Created {'non_field_errors': ['Created']} None
+2022-06-20 22:27:43,777 DEBUG rest_utils.py:build_response:78  Response: 200 OK 200 Ok None None
+2022-06-20 22:28:36,247 DEBUG rest_utils.py:build_response:78  Response: 200 OK 200 Ok None None
+2022-06-20 22:29:11,551 DEBUG rest_utils.py:build_response:78  Response: 200 OK 200 Ok None None
+2022-06-20 22:29:24,789 DEBUG rest_utils.py:build_response:78  Response: 200 OK 200 Ok None None
+2022-06-20 22:29:42,486 DEBUG rest_utils.py:build_response:78  Response: 200 OK 200 Ok None None
+2022-06-20 22:30:06,166 ERROR rest_utils.py:build_response:61  Response: 500 Internal server error {'non_field_errors': ["local variable 'query' referenced before assignment"]} None
+2022-06-20 22:30:06,167 DEBUG rest_utils.py:build_response:78  Response: 200 OK 500 Internal server error {'non_field_errors': ["local variable 'query' referenced before assignment"]} None

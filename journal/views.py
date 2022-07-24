@@ -442,7 +442,8 @@ class JournalsView(generics.GenericAPIView):
 
 class JournalsPutDeleteView(generics.GenericAPIView):
     serializer_class = JournalSerializers   
-    # parser_classes = (MultiPartParser,)
+    parser_classes = (MultiPartParser,FormParser,JSONParser,)
+
     
     def put(self, request, id, format=None):
         try:
