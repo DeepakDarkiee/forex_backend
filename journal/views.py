@@ -5,7 +5,7 @@ from rest_framework.views import APIView
 from rest_framework import generics, status
 from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
-from rest_framework.parsers import MultiPartParser, FormParser
+from rest_framework.parsers import MultiPartParser, FormParser,JSONParser
 
 from accounts.models import User
 from accounts.editor.serializers import (
@@ -394,7 +394,7 @@ class JournalMatrixPutDeleteView(generics.GenericAPIView):
             )
 class JournalsView(generics.GenericAPIView):
     serializer_class = JournalSerializers
-    parser_classes = (MultiPartParser,)
+    parser_classes = (MultiPartParser,FormParser,JSONParser,)
 
     def get(self, request, format=None):
         try:
@@ -403,7 +403,7 @@ class JournalsView(generics.GenericAPIView):
             # return Response(serializer.data)
             message = "Ok"
             return rest_utils.build_response(
-                status.HTTP_201_CREATED, message, data=serializer.data, errors=None
+                status.HTTP_200_OK, message, data=serializer.data, errors=None
             )
         except Exception as e:
             message = rest_utils.HTTP_REST_MESSAGES["500"]
@@ -413,6 +413,7 @@ class JournalsView(generics.GenericAPIView):
 
     def post(self, request, format=None):
         try:
+            
             serializer = JournalSerializers(data=request.data)
 
             if serializer.is_valid():

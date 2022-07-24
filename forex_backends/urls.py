@@ -1,6 +1,7 @@
 from django.conf import settings
 from django.contrib import admin
 from django.urls import include, path
+from django.http import HttpResponse
 from django.conf.urls.static import static
 
 from drf_yasg import openapi
@@ -22,12 +23,21 @@ schema_view = get_schema_view(
     url=(f"{settings.URL}/"),
 )
 
+def trigger_error(request):
+    try:
+       division_by_zero = 1 / 0
+    except:
+        division_by_zero = "Hello World"
+
+    return HttpResponse(division_by_zero)
+
 urlpatterns = [
     path("admin_tools_stats/", include("admin_tools_stats.urls")),
     path("admin/", admin.site.urls),
     path("api/account/", include("accounts.urls")),
     path("api/journal/", include("journal.urls")),
     path('tinymce/', include('tinymce.urls')),
+    path('sentry-debug/', trigger_error),
 ]
 
 urlpatterns += [
