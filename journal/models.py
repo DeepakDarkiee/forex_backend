@@ -143,7 +143,7 @@ class Journals(models.Model):
     ISSN_PRINT = models.CharField(max_length=50,null=True, blank=True)  # must be 4-digits
     ISSN_ONLINE = models.CharField(max_length=50,null=True, blank=True)  # must be 4-digits
     DOI = models.CharField(max_length=1000)
-    frequency = models.CharField(max_length=100, choices=FREQUENCY_CHOICES)
+    frequency = models.CharField(max_length=100, choices=FREQUENCY_CHOICES,default="monthly")
     publication_year = models.IntegerField(_("publication_year"), choices=year_choices(), default=current_year)
     volume = models.ForeignKey(
         Volume, on_delete=models.CASCADE, related_name="subscriber_volume"
