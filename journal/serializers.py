@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from journal.models import APC, Issue, JournalMatrix, Journals, Volume, Article, ScopeType, ArticleType
+from journal.models import APC, Issue, JournalMatrix, Journals, Volume, Article, ScopeType, ArticleType, PageNumber
 
 
 class VolumeSerializers(serializers.ModelSerializer):
@@ -27,15 +27,15 @@ class JournalMatrixSerializers(serializers.ModelSerializer):
         fields = "__all__"
 
 
-# class ScopeTypeSerializer(serializers.ModelSerializer):
-#     class Meta:
-#         model = ScopeType
-#         fields = "__all__"
+class ScopeTypeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ScopeType
+        fields = "__all__"
         
-# class ArticleTypeSerializer(serializers.ModelSerializer):
-#     class Meta:
-#         model = ArticleType
-#         fields = "__all__"   
+class ArticleTypeSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = ArticleType
+        fields = "__all__"   
 
 class JournalSerializers(serializers.ModelSerializer):
     # scope = ScopeTypeSerializer(many=True)
@@ -70,3 +70,9 @@ class ArticleSerializer(serializers.ModelSerializer):
             
          
         return rep
+    
+
+class PageNumberSerializers(serializers.ModelSerializer):
+    class Meta:
+        model = PageNumber
+        fields = "__all__"    
