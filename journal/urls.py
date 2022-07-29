@@ -22,4 +22,15 @@ urlpatterns = [
     
     
     path("artical/", views.ArticleView.as_view(), name="artical"),
+    
+    path("pagenumber/", views.PageNumberView.as_view(), name="pagenumber"),
+    path("page_number/<int:id>", views.PageNumberPutDeleteView.as_view(), name="page_number"),    
+    
+    
+    path("articletype/", views.ArticleTypeView.as_view(), name="articletype"),
+    path("article_type/<int:id>", views.ArticleTypePutDeleteView.as_view(), name="article_type"),  
+    
+    path("scopetype/", views.ScopeTypeView.as_view(), name="scopetype"),
+    path("scope_type/<int:id>", views.ScopeTypePutDeleteView.as_view(), name="scope_type"),  
+    
 ]

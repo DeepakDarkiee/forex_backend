@@ -16,14 +16,17 @@ from accounts.editor.serializers import (
 from forex_backends.common import app_logger, rest_utils
 
 from journal import serializers
-from journal.models import APC, Issue, JournalMatrix, Journals, Volume, Article
+from journal.models import APC, Issue, JournalMatrix, Journals, Volume, Article, PageNumber, ArticleType, ScopeType
 from journal.serializers import (
     ApcSerializers,
+    ArticleTypeSerializer,
     IssueSerializers,
     JournalMatrixSerializers,
     JournalSerializers,
     VolumeSerializers,
     ArticleSerializer,
+    PageNumberSerializers,
+    ScopeTypeSerializer
 )
 
 # Create your views here.
@@ -307,7 +310,7 @@ class JournalMatrixView(generics.GenericAPIView):
             serializer = JournalMatrixSerializers(journal_matrix_obj, many=True)
             message = "Ok"
             return rest_utils.build_response(
-                status.HTTP_201_CREATED, message, data=serializer.data, errors=None
+                status.HTTP_200_OK, message, data=serializer.data, errors=None
             )
             # return Response(serializer.data)
         except Exception as e:
@@ -392,6 +395,8 @@ class JournalMatrixPutDeleteView(generics.GenericAPIView):
             return rest_utils.build_response(
                 status.HTTP_500_INTERNAL_SERVER_ERROR, message, data=None, errors=str(e)
             )
+            
+            
 class JournalsView(generics.GenericAPIView):
     serializer_class = JournalSerializers
     parser_classes = (MultiPartParser,FormParser,JSONParser,)
@@ -438,8 +443,6 @@ class JournalsView(generics.GenericAPIView):
             )
 
 
-
-
 class JournalsPutDeleteView(generics.GenericAPIView):
     serializer_class = JournalSerializers   
     parser_classes = (MultiPartParser,FormParser,JSONParser,)
@@ -473,7 +476,7 @@ class JournalsPutDeleteView(generics.GenericAPIView):
             journal_matrix_obj = JournalMatrix.objects.filter(id=id)
             if journal_matrix_obj.exists():
                 journal_matrix_obj.delete()
-                message = "Journal Matrix Successfully Deleted"
+                message = "Journals Successfully Deleted"
                 return rest_utils.build_response(
                         status.HTTP_204_NO_CONTENT, message, data=None, errors=None
                 )
@@ -489,6 +492,8 @@ class JournalsPutDeleteView(generics.GenericAPIView):
             return rest_utils.build_response(
                 status.HTTP_500_INTERNAL_SERVER_ERROR, message, data=None, errors=str(e)
             )
+            
+            
 class ArticleView(generics.GenericAPIView):
     serializer_class = ArticleSerializer
     parser_classes = (MultiPartParser,)
@@ -581,3 +586,274 @@ class ArticleView(generics.GenericAPIView):
             return rest_utils.build_response(
                 status.HTTP_500_INTERNAL_SERVER_ERROR, message, data=None, errors=str(e)
             )
+            
+
+class PageNumberView(generics.GenericAPIView):
+    serializer_class = PageNumberSerializers
+
+    def get(self, request, format=None):
+        try:
+            PageNumber_obj = PageNumber.objects.all()
+            serializer = PageNumberSerializers(PageNumber_obj, many=True)
+            message = "Ok"
+            return rest_utils.build_response(
+                status.HTTP_200_OK, message, data=serializer.data, errors=None
+            )
+        except Exception as e:
+            message = rest_utils.HTTP_REST_MESSAGES["500"]
+            return rest_utils.build_response(
+                status.HTTP_500_INTERNAL_SERVER_ERROR, message, data=None, errors=str(e)
+            )
+
+    def post(self, request, format=None):
+        try:
+            serializer = PageNumberSerializers(data=request.data)
+
+            if serializer.is_valid():
+                serializer.save()
+                message = "Created"
+                return rest_utils.build_response(
+                    status.HTTP_201_CREATED, message, data=serializer.data, errors=None
+                )
+            else:
+                return rest_utils.build_response(
+                    status.HTTP_400_BAD_REQUEST,
+                    rest_utils.HTTP_REST_MESSAGES["400"],
+                    data=None,
+                    errors=serializer.errors,
+                )
+        except Exception as e:
+            message = rest_utils.HTTP_REST_MESSAGES["500"]
+            return rest_utils.build_response(
+                status.HTTP_500_INTERNAL_SERVER_ERROR, message, data=None, errors=str(e)
+            )
+            
+            
+class PageNumberPutDeleteView(generics.GenericAPIView):
+    serializer_class = PageNumberSerializers   
+    
+    def put(self, request, id, format=None):
+        try:
+            PageNumber_obj = PageNumber.objects.get(id=id)
+            serializer = self.serializer_class(PageNumber_obj, data=request.data)
+            if serializer.is_valid():
+                serializer.save()
+                message = "Page Number Successfully Updated"
+                return rest_utils.build_response(
+                    status.HTTP_200_OK, message, data=serializer.data, errors=None
+                )
+            else:
+                return rest_utils.build_response(
+                    status.HTTP_400_BAD_REQUEST,
+                    rest_utils.HTTP_REST_MESSAGES["400"],
+                    data=None,
+                    errors=serializer.errors,
+                )
+        except Exception as e:
+            message = rest_utils.HTTP_REST_MESSAGES["500"]
+            return rest_utils.build_response(
+                status.HTTP_500_INTERNAL_SERVER_ERROR, message, data=None, errors=str(e)
+            )
+            
+    def delete(self, request, id, format=None):
+        try:
+            PageNumber_obj = PageNumber.objects.filter(id=id)
+            if PageNumber_obj.exists():
+                PageNumber_obj.delete()
+                message = "Page Number Successfully Deleted"
+                return rest_utils.build_response(
+                        status.HTTP_204_NO_CONTENT, message, data=None, errors=None
+                )
+            else:
+                return rest_utils.build_response(
+                    status.HTTP_404_NOT_FOUND,
+                    rest_utils.HTTP_REST_MESSAGES["404"],
+                    data=None,
+                    errors=None,
+                )
+        except Exception as e:
+            message = rest_utils.HTTP_REST_MESSAGES["500"]
+            return rest_utils.build_response(
+                status.HTTP_500_INTERNAL_SERVER_ERROR, message, data=None, errors=str(e)
+            )          
+
+
+class ArticleTypeView(generics.GenericAPIView):
+    serializer_class = ArticleTypeSerializer
+
+    def get(self, request, format=None):
+        try:
+            articletype_obj = ArticleType.objects.all()
+            serializer = ArticleTypeSerializer(articletype_obj, many=True)
+            message = "Ok"
+            return rest_utils.build_response(
+                status.HTTP_200_OK, message, data=serializer.data, errors=None
+            )
+        except Exception as e:
+            message = rest_utils.HTTP_REST_MESSAGES["500"]
+            return rest_utils.build_response(
+                status.HTTP_500_INTERNAL_SERVER_ERROR, message, data=None, errors=str(e)
+            )
+
+    def post(self, request, format=None):
+        try:
+            serializer = ArticleTypeSerializer(data=request.data)
+
+            if serializer.is_valid():
+                serializer.save()
+                message = "Created"
+                return rest_utils.build_response(
+                    status.HTTP_201_CREATED, message, data=serializer.data, errors=None
+                )
+            else:
+                return rest_utils.build_response(
+                    status.HTTP_400_BAD_REQUEST,
+                    rest_utils.HTTP_REST_MESSAGES["400"],
+                    data=None,
+                    errors=serializer.errors,
+                )
+        except Exception as e:
+            message = rest_utils.HTTP_REST_MESSAGES["500"]
+            return rest_utils.build_response(
+                status.HTTP_500_INTERNAL_SERVER_ERROR, message, data=None, errors=str(e)
+            )
+            
+            
+class ArticleTypePutDeleteView(generics.GenericAPIView):
+    serializer_class = ArticleTypeSerializer   
+    
+    def put(self, request, id, format=None):
+        try:
+            articletype_obj = ArticleType.objects.get(id=id)
+            serializer = self.serializer_class(articletype_obj, data=request.data)
+            if serializer.is_valid():
+                serializer.save()
+                message = "Article Type Successfully Updated"
+                return rest_utils.build_response(
+                    status.HTTP_200_OK, message, data=serializer.data, errors=None
+                )
+            else:
+                return rest_utils.build_response(
+                    status.HTTP_400_BAD_REQUEST,
+                    rest_utils.HTTP_REST_MESSAGES["400"],
+                    data=None,
+                    errors=serializer.errors,
+                )
+        except Exception as e:
+            message = rest_utils.HTTP_REST_MESSAGES["500"]
+            return rest_utils.build_response(
+                status.HTTP_500_INTERNAL_SERVER_ERROR, message, data=None, errors=str(e)
+            )
+            
+    def delete(self, request, id, format=None):
+        try:
+            articletype_obj = ArticleType.objects.filter(id=id)
+            if articletype_obj.exists():
+                articletype_obj.delete()
+                message = "Article Type Successfully Deleted"
+                return rest_utils.build_response(
+                        status.HTTP_204_NO_CONTENT, message, data=None, errors=None
+                )
+            else:
+                return rest_utils.build_response(
+                    status.HTTP_404_NOT_FOUND,
+                    rest_utils.HTTP_REST_MESSAGES["404"],
+                    data=None,
+                    errors=None,
+                )
+        except Exception as e:
+            message = rest_utils.HTTP_REST_MESSAGES["500"]
+            return rest_utils.build_response(
+                status.HTTP_500_INTERNAL_SERVER_ERROR, message, data=None, errors=str(e)
+            )          
+
+
+
+class ScopeTypeView(generics.GenericAPIView):
+    serializer_class = ScopeTypeSerializer
+
+    def get(self, request, format=None):
+        try:
+            scopetype_obj = ScopeType.objects.all()
+            serializer = ScopeTypeSerializer(scopetype_obj, many=True)
+            message = "Ok"
+            return rest_utils.build_response(
+                status.HTTP_200_OK, message, data=serializer.data, errors=None
+            )
+        except Exception as e:
+            message = rest_utils.HTTP_REST_MESSAGES["500"]
+            return rest_utils.build_response(
+                status.HTTP_500_INTERNAL_SERVER_ERROR, message, data=None, errors=str(e)
+            )
+
+    def post(self, request, format=None):
+        try:
+            serializer = ScopeTypeSerializer(data=request.data)
+
+            if serializer.is_valid():
+                serializer.save()
+                message = "Created"
+                return rest_utils.build_response(
+                    status.HTTP_201_CREATED, message, data=serializer.data, errors=None
+                )
+            else:
+                return rest_utils.build_response(
+                    status.HTTP_400_BAD_REQUEST,
+                    rest_utils.HTTP_REST_MESSAGES["400"],
+                    data=None,
+                    errors=serializer.errors,
+                )
+        except Exception as e:
+            message = rest_utils.HTTP_REST_MESSAGES["500"]
+            return rest_utils.build_response(
+                status.HTTP_500_INTERNAL_SERVER_ERROR, message, data=None, errors=str(e)
+            )
+            
+            
+class ScopeTypePutDeleteView(generics.GenericAPIView):
+    serializer_class = ScopeTypeSerializer   
+    
+    def put(self, request, id, format=None):
+        try:
+            scopetype_obj = ScopeType.objects.get(id=id)
+            serializer = self.serializer_class(scopetype_obj, data=request.data)
+            if serializer.is_valid():
+                serializer.save()
+                message = "Scop Type Successfully Updated"
+                return rest_utils.build_response(
+                    status.HTTP_200_OK, message, data=serializer.data, errors=None
+                )
+            else:
+                return rest_utils.build_response(
+                    status.HTTP_400_BAD_REQUEST,
+                    rest_utils.HTTP_REST_MESSAGES["400"],
+                    data=None,
+                    errors=serializer.errors,
+                )
+        except Exception as e:
+            message = rest_utils.HTTP_REST_MESSAGES["500"]
+            return rest_utils.build_response(
+                status.HTTP_500_INTERNAL_SERVER_ERROR, message, data=None, errors=str(e)
+            )
+            
+    def delete(self, request, id, format=None):
+        try:
+            scopetype_obj = ScopeType.objects.filter(id=id)
+            if scopetype_obj.exists():
+                scopetype_obj.delete()
+                message = "Scope Type Successfully Deleted"
+                return rest_utils.build_response(
+                        status.HTTP_204_NO_CONTENT, message, data=None, errors=None
+                )
+            else:
+                return rest_utils.build_response(
+                    status.HTTP_404_NOT_FOUND,
+                    rest_utils.HTTP_REST_MESSAGES["404"],
+                    data=None,
+                    errors=None,
+                )
+        except Exception as e:
+            message = rest_utils.HTTP_REST_MESSAGES["500"]
+            return rest_utils.build_response(
+                status.HTTP_500_INTERNAL_SERVER_ERROR, message, data=None, errors=str(e)
+            )          
