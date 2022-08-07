@@ -19,7 +19,7 @@ from accounts.reviewer.api import (
 
 from accounts.join_us.api import RegisterRoleView
 
-from accounts.views import UpdateProfileApiView, UserDetailApiView
+from accounts.views import UpdateProfileApiView, UserDetailApiView, UserListApiView
 
 urlpatterns = [
     path("register_author/", RegisterAuthorView.as_view(), name="register_author"),
@@ -51,6 +51,8 @@ urlpatterns = [
     
     path("update-profile/", UpdateProfileApiView.as_view(), name="update_profile"),
     path("user-detail/", UserDetailApiView.as_view(), name="user_detail"),
+    path("user-list/", UserListApiView.as_view(), name="user_list"),
+    
     
     
 ]
