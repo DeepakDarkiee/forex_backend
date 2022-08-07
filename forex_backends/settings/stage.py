@@ -1,4 +1,5 @@
 from .base import *
+import dj_database_url
 
 DEBUG = True
 ALLOWED_HOSTS = ["*"]
@@ -21,6 +22,9 @@ DATABASES = {
         "PORT": "5432",
     }
 }
+
+db_from_env = dj_database_url.config('DATABASE_URL')
+DATABASES['default'].update(db_from_env)
 
 CORS_ORIGIN_ALLOW_ALL = True
 
