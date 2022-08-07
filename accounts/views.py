@@ -4,7 +4,7 @@ from rest_framework import generics, status
 from rest_framework.permissions import IsAuthenticated
 
 from accounts.models import User
-from accounts.serializers import UpdateProfileSerializer, UserDetailSerializer
+from accounts.serializers import UpdateProfileSerializer, UserDetailSerializer, UserListSerializer
 from django.contrib.auth import logout
 from forex_backends.common import app_logger, rest_utils
 
@@ -61,3 +61,20 @@ class UserDetailApiView(generics.GenericAPIView):
             )
 
 
+class UserListApiView(generics.GenericAPIView):
+    serializer_class = UserListSerializer
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request, format=None):
+        try:
+            user_obj = User.objects.all()
+            message = "Ok"
+            serializer = UserDetailSerializer(user_obj, many=True)
+            return rest_utils.build_response(
+                status.HTTP_200_OK, message, data=serializer.data, errors=None
+            )
+        except Exception as e:
+            message = rest_utils.HTTP_REST_MESSAGES["500"]
+            return rest_utils.build_response(
+                status.HTTP_500_INTERNAL_SERVER_ERROR, message, data=None, errors=str(e)
+            )
