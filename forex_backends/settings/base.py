@@ -130,7 +130,7 @@ USE_L10N = True
 
 USE_TZ = True
 
-
+User = "auth.user"
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
@@ -193,7 +193,7 @@ JAZZMIN_SETTINGS = {
             "new_window": True,
         },
         # model admin to link to (Permissions checked against model)
-        {"model": "auth.User"},
+        {"model": User},
         # App with dropdown menu to all its models pages (Permissions checked against models)
         {"app": "accounts"},
     ],
@@ -207,7 +207,7 @@ JAZZMIN_SETTINGS = {
             "url": "https://github.com/farridav/django-jazzmin/issues",
             "new_window": True,
         },
-        {"model": "auth.user"},
+        {"model": User},
     ],
     #############
     # Side Menu #
@@ -224,7 +224,7 @@ JAZZMIN_SETTINGS = {
     # "order_with_respect_to": ["auth", "post", "post.author", "post.created_on"],
     "icons": {
         "auth": "fas fa-users-cog",
-        "auth.user": "fas fa-user",
+        User: "fas fa-user",
         "users.User": "fas fa-user",
         "auth.Group": "fas fa-users",
         "admin.LogEntry": "fas fa-file",
@@ -257,7 +257,7 @@ JAZZMIN_SETTINGS = {
     "changeform_format": "horizontal_tabs",
     # override change forms on a per modeladmin basis
     "changeform_format_overrides": {
-        "auth.user": "collapsible",
+        User: "collapsible",
         "auth.group": "vertical_tabs",
     },
     # Add a language dropdown into the admin

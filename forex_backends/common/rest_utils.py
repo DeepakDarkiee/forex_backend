@@ -38,7 +38,6 @@ def build_response(
                 isinstance(errors, dict)
                 and errors.get("non_field_errors", [""])[0] in []
             ):
-                # errors_code = common.errors.ERRORCODE[errors["non_field_errors"][0]]
                 logger.error(
                     "Response: %s %s %s %s",
                     str(status),
@@ -55,9 +54,6 @@ def build_response(
                     pass
                     logger.error(f"Exception : {str(e)}")
             else:
-                # errors_code = common.errors.ERRORCODE.get(
-                #     str(errors), common.errors.DEFAULT_ERRORCODE
-                # )
                 logger.error(
                     "Response: %s %s %s %s",
                     str(status),
@@ -67,9 +63,6 @@ def build_response(
                 )
                 try:
                     if isinstance(errors, dict):
-                        # for key, values in errors.items():
-                        #     error = [value[:] for value in values]
-                        # error[:] = [_(x) for x in error]
                         errors = dict(zip(list(errors.keys()), errors.values()))
                 except Exception as e:
                     pass

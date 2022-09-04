@@ -1,6 +1,6 @@
 import datetime
 
-from django.db import models# from djmoney.models.fields import MoneyField
+from django.db import models
 from django.utils.translation import gettext as _
 from django.core.validators import FileExtensionValidator
 
@@ -112,19 +112,6 @@ class Journals(models.Model):
         ("article_processing_charge", "article_processing_charge"),
     )
 
-    #     ARTICLE_TYPE = (
-    #     ("book_review", "book_review"),
-    #     ("clinical_case_study", "clinical_case_study"),
-    #     ("clinical_trial", "clinical_trial"),
-    #     ("dissertation_report", "dissertation_report"),
-    #     ("letters", "letters"),
-    #     ("opnion", "opnion"),
-    #     ("research_article", "research_article"),
-    #     ("review_article", "review_article"),
-    #     ("survey_report", "survey_report"),
-    #     ("conference_report", "conference_report"),
-    # )
-
     FREQUENCY_CHOICES = (
         ("monthly", "monthly"),
         ("bimonthly", "bimonthly"),
@@ -136,7 +123,6 @@ class Journals(models.Model):
     journal_slug = models.SlugField(max_length = 200)
     journal_image = models.ImageField(upload_to="journal-image")
     is_lock =models.BooleanField(default=False)
-    # description = models.TextField()
     description = HTMLField()    
     scope = models.ManyToManyField(ScopeType,null=True, blank=True)
     article_type = models.ManyToManyField(ArticleType, null=True, blank=True)
@@ -201,11 +187,7 @@ class Article(models.Model):
     )
     title = models.CharField(max_length=100, unique=True)
     article_slug = models.SlugField(max_length=225)
-    # refrence=models.TextField(null=True, blank=True)
     refrence = HTMLField()
-    # article_type = models.ForeignKey(
-    #     Journals, on_delete=models.CASCADE, related_name="article_type"
-    # )
     article_type = models.ManyToManyField(ArticleType)
     journal = models.ForeignKey(
         Journals, on_delete=models.CASCADE, related_name="article_scope"
@@ -228,10 +210,6 @@ class Article(models.Model):
         upload_to="foo/",
         validators=[FileExtensionValidator(allowed_extensions=["doc", "docx", "pdf"])],
     )
-    # apc_receipt = models.FileField(
-    #     upload_to="foo/",
-    #     validators=[FileExtensionValidator(allowed_extensions=["pdf", "img"])],
-    # )
     apc_receipt = models.CharField(max_length=255, null=True, blank=True)
     reviewer_report = models.FileField(
         upload_to="foo/",
