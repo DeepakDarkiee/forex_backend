@@ -8,7 +8,7 @@ from tinymce.models import HTMLField
 
 from accounts.models import User
 
-# Create your models here.
+
 
 class Volume(models.Model):
     
