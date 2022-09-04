@@ -21,7 +21,7 @@ class UpdateProfileApiView(generics.GenericAPIView):
                 user, data=request.data, context={"request": request}
             )
             if serializer.is_valid():
-                serializer.save()
+                serializer.save()                
                 message = "Profile Successfully Updated"
                 return rest_utils.build_response(
                     status.HTTP_200_OK, message, data=serializer.data, errors=None
@@ -116,7 +116,7 @@ class SingleUserUpdateApiView(generics.GenericAPIView):
             )
             if serializer.is_valid():
                 serializer.save()
-                message = "Profile Successfully Updated"
+                message = "User Successfully Updated"
                 return rest_utils.build_response(
                     status.HTTP_200_OK, message, data=serializer.data, errors=None
                 )
@@ -141,7 +141,7 @@ class SingleUserUpdateApiView(generics.GenericAPIView):
             )
             if serializer.is_valid():
                 serializer.save()
-                message = "Profile Successfully Updated"
+                message = "User Successfully Updated"
                 return rest_utils.build_response(
                     status.HTTP_200_OK, message, data=serializer.data, errors=None
                 )

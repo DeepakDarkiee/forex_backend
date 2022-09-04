@@ -1,3 +1,4 @@
+from email.policy import default
 from .base import *
 import dj_database_url
 
@@ -15,11 +16,11 @@ ALLOWED_HOSTS = ["*"]
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql_psycopg2",
-        "NAME": "foaj",
-        "USER": "postgres",
-        "PASSWORD": "postgres",
-        "HOST": "localhost",
-        "PORT": "5432",
+        "NAME": config('DB_NAME', default='db'),
+        "USER": config('DB_USER', default='db'),
+        "PASSWORD": config('DB_PASSWORD', default='db'),
+        "HOST": config('DB_HOST', default='localhost'),
+        "PORT": config('DB_PORT', default=5432),
     }
 }
 

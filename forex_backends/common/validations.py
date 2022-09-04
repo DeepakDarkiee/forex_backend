@@ -1,4 +1,3 @@
-# from accounts.auth import ContactAuthBackend
 from accounts.models import User
 from django.contrib.auth import authenticate
 
@@ -16,13 +15,6 @@ class Validator:
 
             if not user.is_verified:
                 return False, "phone is not verified", None
-
-            # if user.auth_provider != "contact":
-            #     return (
-            #         False,
-            #         "Please continue your login using " + user.auth_provider,
-            #         None,
-            #     )
 
             if not user.is_active:
                 return False, "Account disabled, contact admin", None
