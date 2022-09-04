@@ -544,7 +544,6 @@ class ArticleView(generics.GenericAPIView):
     def patch(self, request):
         try:
             user_id = self.request.user.id
-            user = User.objects.get(id=user_id)
             article = Article.objects.get(author_details=user_id)
             serializer = self.serializer_class(
                 article, data=request.data, partial=True
@@ -574,8 +573,8 @@ class PageNumberView(generics.GenericAPIView):
 
     def get(self, request, format=None):
         try:
-            PageNumber_obj = PageNumber.objects.all()
-            serializer = PageNumberSerializers(PageNumber_obj, many=True)
+            page_number_obj = PageNumber.objects.all()
+            serializer = PageNumberSerializers(page_number_obj, many=True)
             message = "Ok"
             return rest_utils.build_response(
                 status.HTTP_200_OK, message, data=serializer.data, errors=None
@@ -615,8 +614,8 @@ class PageNumberPutDeleteView(generics.GenericAPIView):
     
     def put(self, request, id, format=None):
         try:
-            PageNumber_obj = PageNumber.objects.get(id=id)
-            serializer = self.serializer_class(PageNumber_obj, data=request.data)
+            page_number_obj = PageNumber.objects.get(id=id)
+            serializer = self.serializer_class(page_number_obj, data=request.data)
             if serializer.is_valid():
                 serializer.save()
                 message = "Page Number Successfully Updated"
@@ -638,9 +637,9 @@ class PageNumberPutDeleteView(generics.GenericAPIView):
             
     def delete(self, request, id, format=None):
         try:
-            PageNumber_obj = PageNumber.objects.filter(id=id)
-            if PageNumber_obj.exists():
-                PageNumber_obj.delete()
+            page_number_obj = PageNumber.objects.filter(id=id)
+            if page_number_obj.exists():
+                page_number_obj.delete()
                 message = "Page Number Successfully Deleted"
                 return rest_utils.build_response(
                         status.HTTP_204_NO_CONTENT, message, data=None, errors=None

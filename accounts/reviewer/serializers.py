@@ -42,7 +42,6 @@ class LoginReviewerSerializer(serializers.Serializer):
         try:
             user = User.objects.get(email=email)
             if user.is_active:
-                validated_data = {"email": email, "password": password}
                 result, message, user = Validator.is_valid_user(email, password)
                 if not result:
                     raise serializers.ValidationError(message)

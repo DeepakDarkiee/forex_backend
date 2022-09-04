@@ -2,7 +2,7 @@ from django.utils.translation import gettext as _
 from forex_backends.common import app_logger
 from rest_framework.response import Response
 
-logger = app_logger.createLogger("app")
+logger = app_logger.create_logger("app")
 
 
 HTTP_REST_MESSAGES = {

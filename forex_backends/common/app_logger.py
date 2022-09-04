@@ -1,6 +1,6 @@
 import logging
 
 
-def createLogger(logHandler):
-    logger = logging.getLogger(logHandler)
+def create_logger(log_handler):
+    logger = logging.getLogger(log_handler)
     return logger
