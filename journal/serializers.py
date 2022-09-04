@@ -38,8 +38,6 @@ class ArticleTypeSerializer(serializers.ModelSerializer):
         fields = "__all__"   
 
 class JournalSerializers(serializers.ModelSerializer):
-    # scope = ScopeTypeSerializer(many=True)
-    # article_type = ArticleTypeSerializer(many=True)
     class Meta:
         model = Journals
         fields = "__all__"

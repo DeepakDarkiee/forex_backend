@@ -37,7 +37,6 @@ class VolumeGetPostView(generics.GenericAPIView):
         try:
             volume_obj = Volume.objects.all()
             serializer = VolumeSerializers(volume_obj, many=True)
-            # return Response(volume_serializer.data)
             message = "Ok"
             return rest_utils.build_response(
                 status.HTTP_200_OK, message, data=serializer.data, errors=None
@@ -54,12 +53,10 @@ class VolumeGetPostView(generics.GenericAPIView):
 
             if serializer.is_valid():
                 serializer.save()
-                # return Response(volume_serializer.data, status=status.HTTP_201_CREATED)
                 message = "Created"
                 return rest_utils.build_response(
                     status.HTTP_201_CREATED, message, data=serializer.data, errors=None
                 )
-            # return Response(volume_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
             else:
                 return rest_utils.build_response(
                     status.HTTP_400_BAD_REQUEST,
@@ -128,7 +125,6 @@ class IssueView(generics.GenericAPIView):
         try:
             issue_obj = Issue.objects.all()
             serializer = IssueSerializers(issue_obj, many=True)
-            # return Response(issue_serializer.data)
             message = "Ok"
             return rest_utils.build_response(
                 status.HTTP_200_OK, message, data=serializer.data, errors=None
@@ -156,8 +152,6 @@ class IssueView(generics.GenericAPIView):
                     data=None,
                     errors=serializer.errors,
                 )
-            #     return Response(serializer.data, status=status.HTTP_201_CREATED)
-            # return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
         except Exception as e:
             message = rest_utils.HTTP_REST_MESSAGES["500"]
             return rest_utils.build_response(
@@ -218,7 +212,6 @@ class APCView(generics.GenericAPIView):
         try:
             apc_obj = APC.objects.all()
             serializer = ApcSerializers(apc_obj, many=True)
-            # return Response(serializer.data)
             message = "Ok"
             return rest_utils.build_response(
                 status.HTTP_200_OK, message, data=serializer.data, errors=None
@@ -246,8 +239,6 @@ class APCView(generics.GenericAPIView):
                     data=None,
                     errors=serializer.errors,
                 )
-            #     return Response(serializer.data, status=status.HTTP_201_CREATED)
-            # return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
         except Exception as e:
             message = rest_utils.HTTP_REST_MESSAGES["500"]
             return rest_utils.build_response(
@@ -312,7 +303,6 @@ class JournalMatrixView(generics.GenericAPIView):
             return rest_utils.build_response(
                 status.HTTP_200_OK, message, data=serializer.data, errors=None
             )
-            # return Response(serializer.data)
         except Exception as e:
             message = rest_utils.HTTP_REST_MESSAGES["500"]
             return rest_utils.build_response(
@@ -336,12 +326,6 @@ class JournalMatrixView(generics.GenericAPIView):
                     data=None,
                     errors=serializer.errors,
                 )
-            #     return Response(
-            #         serializer.data, status=status.HTTP_201_CREATED
-            #     )
-            # return Response(
-            #     serializer.errors, status=status.HTTP_400_BAD_REQUEST
-            # )
         except Exception as e:
             message = rest_utils.HTTP_REST_MESSAGES["500"]
             return rest_utils.build_response(
@@ -405,7 +389,6 @@ class JournalsView(generics.GenericAPIView):
         try:
             journal_obj = Journals.objects.all()
             serializer = JournalSerializers(journal_obj, many=True)
-            # return Response(serializer.data)
             message = "Ok"
             return rest_utils.build_response(
                 status.HTTP_200_OK, message, data=serializer.data, errors=None
@@ -434,8 +417,6 @@ class JournalsView(generics.GenericAPIView):
                     data=None,
                     errors=serializer.errors,
                 )
-            #     return Response(serializer.data, status=status.HTTP_201_CREATED)
-            # return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
         except Exception as e:
             message = rest_utils.HTTP_REST_MESSAGES["500"]
             return rest_utils.build_response(

@@ -21,12 +21,6 @@ class RegisterReviewerSerializer(serializers.ModelSerializer):
         result, message = Validator.is_valid_email(data["email"])
         if not result:
             raise serializers.ValidationError(message)
-
-        # if data["email"] != "":
-        #     result, message = Validator.is_valid_exists_email(data["email"])
-        #     if not result:
-        #         raise serializers.ValidationError(message)
-
         return data
 
 
@@ -49,13 +43,6 @@ class LoginReviewerSerializer(serializers.Serializer):
             user = User.objects.get(email=email)
             if user.is_active:
                 validated_data = {"email": email, "password": password}
-                # password_result, password_message, data = verify_email_password(validated_data)
-                # if not password_result:
-                #     raise serializers.ValidationError(password_message)
-                #     return {
-                #         "message": password_message,
-                #     }
-                # else:
                 result, message, user = Validator.is_valid_user(email, password)
                 if not result:
                     raise serializers.ValidationError(message)
