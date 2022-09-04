@@ -20,7 +20,6 @@ class UpdateProfileSerializer(serializers.ModelSerializer):
         try:
             user = self.context.get("request").user
             if user.is_active:
-                validated_data = {"username": username, "contact": contact}
                 result_username, message = Validator.is_username_already_exists(
                     username
                 )

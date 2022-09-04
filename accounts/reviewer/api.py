@@ -93,7 +93,6 @@ class ForgetReviewerPasswordView(generics.GenericAPIView):
             serializer = self.serializer_class(data=data)
 
             if serializer.is_valid():
-                user = User.objects.filter(email=data.get("email")).last()
                 return rest_utils.build_response(
                     status.HTTP_200_OK, "success", data=None, errors=None
                 )

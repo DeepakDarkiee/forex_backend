@@ -27,7 +27,7 @@ def user_check_password(email, password):
             return True
         else:
             return False
-    except Exception as e:
+    except Exception:
         return False
         
 
