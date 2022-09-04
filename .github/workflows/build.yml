@@ -1,4 +1,4 @@
-name: Build
+name: Security-Scan
 on:
   push:
     branches:
