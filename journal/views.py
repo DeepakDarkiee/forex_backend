@@ -32,7 +32,7 @@ from journal.serializers import (
 # Create your views here.
 class VolumeGetPostView(generics.GenericAPIView):
     serializer_class = VolumeSerializers
-
+    parser_classes = (MultiPartParser,FormParser,JSONParser,)
     def get(self, request, format=None):
         try:
             volume_obj = Volume.objects.all()
@@ -73,6 +73,7 @@ class VolumeGetPostView(generics.GenericAPIView):
 
 class VolumePutDeleteView(generics.GenericAPIView):
     serializer_class = VolumeSerializers   
+    parser_classes = (MultiPartParser,FormParser,JSONParser,)
     def put(self, request, id, format=None):
         try:
             volume = Volume.objects.get(id=id)
@@ -120,7 +121,7 @@ class VolumePutDeleteView(generics.GenericAPIView):
 
 class IssueView(generics.GenericAPIView):
     serializer_class = IssueSerializers
-
+    parser_classes = (MultiPartParser,FormParser,JSONParser,)
     def get(self, request, format=None):
         try:
             issue_obj = Issue.objects.all()
@@ -160,6 +161,7 @@ class IssueView(generics.GenericAPIView):
 
 class IssuePutDeleteView(generics.GenericAPIView):
     serializer_class = IssueSerializers   
+    parser_classes = (MultiPartParser,FormParser,JSONParser,)
     def put(self, request, id, format=None):
         try:
             issue = Issue.objects.get(id=id)
@@ -207,7 +209,7 @@ class IssuePutDeleteView(generics.GenericAPIView):
 
 class APCView(generics.GenericAPIView):
     serializer_class = ApcSerializers
-
+    parser_classes = (MultiPartParser,FormParser,JSONParser,)
     def get(self, request, format=None):
         try:
             apc_obj = APC.objects.all()
@@ -246,7 +248,8 @@ class APCView(generics.GenericAPIView):
             )
 
 class APCPutDeleteView(generics.GenericAPIView):
-    serializer_class = ApcSerializers   
+    serializer_class = ApcSerializers  
+    parser_classes = (MultiPartParser,FormParser,JSONParser,) 
     def put(self, request, id, format=None):
         try:
             apc = APC.objects.get(id=id)
@@ -294,7 +297,7 @@ class APCPutDeleteView(generics.GenericAPIView):
 
 class JournalMatrixView(generics.GenericAPIView):
     serializer_class = JournalMatrixSerializers
-
+    parser_classes = (MultiPartParser,FormParser,JSONParser,)
     def get(self, request, format=None):
         try:
             journal_matrix_obj = JournalMatrix.objects.all()
@@ -334,7 +337,7 @@ class JournalMatrixView(generics.GenericAPIView):
             
 class JournalMatrixPutDeleteView(generics.GenericAPIView):
     serializer_class = JournalMatrixSerializers   
-    
+    parser_classes = (MultiPartParser,FormParser,JSONParser,)
     def put(self, request, id, format=None):
         try:
             journal_matrix_obj = JournalMatrix.objects.get(id=id)
@@ -477,7 +480,7 @@ class JournalsPutDeleteView(generics.GenericAPIView):
             
 class ArticleView(generics.GenericAPIView):
     serializer_class = ArticleSerializer
-    parser_classes = (MultiPartParser,)
+    parser_classes = (MultiPartParser,FormParser,JSONParser,)
     permission_classes = [IsAuthenticated]
 
     def post(self, request, format=None):
@@ -570,7 +573,7 @@ class ArticleView(generics.GenericAPIView):
 
 class PageNumberView(generics.GenericAPIView):
     serializer_class = PageNumberSerializers
-
+    parser_classes = (MultiPartParser,FormParser,JSONParser,)
     def get(self, request, format=None):
         try:
             page_number_obj = PageNumber.objects.all()
@@ -611,7 +614,7 @@ class PageNumberView(generics.GenericAPIView):
             
 class PageNumberPutDeleteView(generics.GenericAPIView):
     serializer_class = PageNumberSerializers   
-    
+    parser_classes = (MultiPartParser,FormParser,JSONParser,)
     def put(self, request, id, format=None):
         try:
             page_number_obj = PageNumber.objects.get(id=id)
@@ -660,7 +663,7 @@ class PageNumberPutDeleteView(generics.GenericAPIView):
 
 class ArticleTypeView(generics.GenericAPIView):
     serializer_class = ArticleTypeSerializer
-
+    parser_classes = (MultiPartParser,FormParser,JSONParser,)
     def get(self, request, format=None):
         try:
             articletype_obj = ArticleType.objects.all()
@@ -701,7 +704,7 @@ class ArticleTypeView(generics.GenericAPIView):
             
 class ArticleTypePutDeleteView(generics.GenericAPIView):
     serializer_class = ArticleTypeSerializer   
-    
+    parser_classes = (MultiPartParser,FormParser,JSONParser,)
     def put(self, request, id, format=None):
         try:
             articletype_obj = ArticleType.objects.get(id=id)
@@ -751,7 +754,7 @@ class ArticleTypePutDeleteView(generics.GenericAPIView):
 
 class ScopeTypeView(generics.GenericAPIView):
     serializer_class = ScopeTypeSerializer
-
+    parser_classes = (MultiPartParser,FormParser,JSONParser,)
     def get(self, request, format=None):
         try:
             scopetype_obj = ScopeType.objects.all()
@@ -792,7 +795,7 @@ class ScopeTypeView(generics.GenericAPIView):
             
 class ScopeTypePutDeleteView(generics.GenericAPIView):
     serializer_class = ScopeTypeSerializer   
-    
+    parser_classes = (MultiPartParser,FormParser,JSONParser,)
     def put(self, request, id, format=None):
         try:
             scopetype_obj = ScopeType.objects.get(id=id)
