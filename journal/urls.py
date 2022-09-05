@@ -21,7 +21,6 @@ urlpatterns = [
     path("journals/<int:id>", views.JournalsPutDeleteView.as_view(), name="journals"),    
     
     
-    path("artical/", views.ArticleView.as_view(), name="artical"),
     
     path("pagenumber/", views.PageNumberView.as_view(), name="pagenumber"),
     path("page_number/<int:id>", views.PageNumberPutDeleteView.as_view(), name="page_number"),    
