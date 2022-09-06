@@ -1,7 +1,9 @@
 from django.urls import path
 
-from editorial import views
+from editorial.author_rights import apis
 
 urlpatterns = [
-    path("artical/", views.ArticleView.as_view(), name="artical"),
+    path("article/", apis.ArticleView.as_view(), name="artical"),
+    path("single/article/<int:id>/", apis.SingleArticleView.as_view(), name="single_artical"),
+
 ]
