@@ -8,9 +8,10 @@ from tinymce.models import HTMLField
 
 from accounts.models import User
 
+from journal.base_model import BaseModel
 
 
-class Volume(models.Model):
+class Volume(BaseModel):
     
     def year_choices():
         
@@ -27,7 +28,7 @@ class Volume(models.Model):
         return str(self.volume)
 
 
-class Issue(models.Model):
+class Issue(BaseModel):
 
     STATUS_CHOICES = (("open", "open"), ("close", "close"))
 
@@ -40,7 +41,7 @@ class Issue(models.Model):
         return str(self.issue)
 
 
-class APC(models.Model):
+class APC(BaseModel):
     
     fixed_amount = models.CharField(max_length=100000)
     discount_options = models.CharField(max_length=2)
@@ -59,7 +60,7 @@ class PageNumber(models.Model):
         return self.page_from
     
 
-class JournalMatrix(models.Model):
+class JournalMatrix(BaseModel):
 
     submission_count = models.IntegerField()
     publication_count = models.IntegerField()
@@ -75,14 +76,14 @@ class JournalMatrix(models.Model):
         return self.views
 
 
-class ArticleType(models.Model):
+class ArticleType(BaseModel):
     
     article_type = models.CharField(max_length=100, unique=True)
 
     def __str__(self):
         return self.article_type
     
-class ScopeType(models.Model):
+class ScopeType(BaseModel):
     
     scope_type = models.CharField(max_length=100, unique=True)
 
@@ -95,7 +96,7 @@ class JournalsManager(models.Manager):
     def get_queryset(self):
         return super().get_queryset().filter(role="User.role.Author")
 
-class Journals(models.Model):
+class Journals(BaseModel):
     def year_choices():
         
         return [(r, r) for r in range(1984, datetime.date.today().year + 1)]
