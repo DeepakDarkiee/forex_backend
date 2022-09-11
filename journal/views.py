@@ -16,7 +16,7 @@ from accounts.editor.serializers import (
 from forex_backends.common import app_logger, rest_utils
 
 from journal import serializers
-from journal.models import APC, Issue, JournalMatrix, Journals, Volume, Article, PageNumber, ArticleType, ScopeType
+from journal.models import APC, Issue, JournalMatrix, Journals, Volume, PageNumber, ArticleType, ScopeType
 from journal.serializers import (
     ApcSerializers,
     ArticleTypeSerializer,
@@ -24,7 +24,6 @@ from journal.serializers import (
     JournalMatrixSerializers,
     JournalSerializers,
     VolumeSerializers,
-    ArticleSerializer,
     PageNumberSerializers,
     ScopeTypeSerializer
 )
@@ -33,6 +32,7 @@ from journal.serializers import (
 class VolumeGetPostView(generics.GenericAPIView):
     serializer_class = VolumeSerializers
     parser_classes = (MultiPartParser,FormParser,JSONParser,)
+
     def get(self, request, format=None):
         try:
             volume_obj = Volume.objects.all()
@@ -74,9 +74,10 @@ class VolumeGetPostView(generics.GenericAPIView):
 class VolumePutDeleteView(generics.GenericAPIView):
     serializer_class = VolumeSerializers   
     parser_classes = (MultiPartParser,FormParser,JSONParser,)
+
     def put(self, request, id, format=None):
         try:
-            volume = Volume.objects.get(id=id)
+            volume = Volume.objects.filter(id=id)
             serializer = self.serializer_class(volume, data=request.data)
             if serializer.is_valid():
                 serializer.save()
@@ -162,9 +163,10 @@ class IssueView(generics.GenericAPIView):
 class IssuePutDeleteView(generics.GenericAPIView):
     serializer_class = IssueSerializers   
     parser_classes = (MultiPartParser,FormParser,JSONParser,)
+
     def put(self, request, id, format=None):
         try:
-            issue = Issue.objects.get(id=id)
+            issue = Issue.objects.filter(id=id)
             serializer = self.serializer_class(issue, data=request.data)
             if serializer.is_valid():
                 serializer.save()
@@ -210,6 +212,7 @@ class IssuePutDeleteView(generics.GenericAPIView):
 class APCView(generics.GenericAPIView):
     serializer_class = ApcSerializers
     parser_classes = (MultiPartParser,FormParser,JSONParser,)
+
     def get(self, request, format=None):
         try:
             apc_obj = APC.objects.all()
@@ -250,9 +253,10 @@ class APCView(generics.GenericAPIView):
 class APCPutDeleteView(generics.GenericAPIView):
     serializer_class = ApcSerializers  
     parser_classes = (MultiPartParser,FormParser,JSONParser,) 
+
     def put(self, request, id, format=None):
         try:
-            apc = APC.objects.get(id=id)
+            apc = APC.objects.filter(id=id)
             serializer = self.serializer_class(apc, data=request.data)
             if serializer.is_valid():
                 serializer.save()
@@ -298,6 +302,7 @@ class APCPutDeleteView(generics.GenericAPIView):
 class JournalMatrixView(generics.GenericAPIView):
     serializer_class = JournalMatrixSerializers
     parser_classes = (MultiPartParser,FormParser,JSONParser,)
+
     def get(self, request, format=None):
         try:
             journal_matrix_obj = JournalMatrix.objects.all()
@@ -338,9 +343,10 @@ class JournalMatrixView(generics.GenericAPIView):
 class JournalMatrixPutDeleteView(generics.GenericAPIView):
     serializer_class = JournalMatrixSerializers   
     parser_classes = (MultiPartParser,FormParser,JSONParser,)
+
     def put(self, request, id, format=None):
         try:
-            journal_matrix_obj = JournalMatrix.objects.get(id=id)
+            journal_matrix_obj = JournalMatrix.objects.filter(id=id)
             serializer = self.serializer_class(journal_matrix_obj, data=request.data)
             if serializer.is_valid():
                 serializer.save()
@@ -434,7 +440,7 @@ class JournalsPutDeleteView(generics.GenericAPIView):
     
     def put(self, request, id, format=None):
         try:
-            journals_obj = Journals.objects.get(id=id)
+            journals_obj = Journals.objects.filter(id=id)
             serializer = self.serializer_class(journals_obj, data=request.data)
             if serializer.is_valid():
                 serializer.save()
@@ -477,103 +483,10 @@ class JournalsPutDeleteView(generics.GenericAPIView):
                 status.HTTP_500_INTERNAL_SERVER_ERROR, message, data=None, errors=str(e)
             )
             
-            
-class ArticleView(generics.GenericAPIView):
-    serializer_class = ArticleSerializer
-    parser_classes = (MultiPartParser,FormParser,JSONParser,)
-    permission_classes = [IsAuthenticated]
-
-    def post(self, request, format=None):
-        try:
-            serializer = ArticleSerializer(data=request.data)
-            if serializer.is_valid():
-                serializer.save()
-                message = "Created"
-                return rest_utils.build_response(
-                    status.HTTP_201_CREATED, message, data=serializer.data, errors=None
-                )
-            else:
-                return rest_utils.build_response(
-                    status.HTTP_400_BAD_REQUEST,
-                    rest_utils.HTTP_REST_MESSAGES["400"],
-                    data=None,
-                    errors=serializer.errors,
-                )
-        except Exception as e:
-            message = rest_utils.HTTP_REST_MESSAGES["500"]
-            return rest_utils.build_response(
-                status.HTTP_500_INTERNAL_SERVER_ERROR, message, data=None, errors=str(e)
-            )
-
-    def put(self, request, format=None):
-        try:
-            user_id = self.request.user.id
-            user = User.objects.get(id=user_id)
-            article = Article.objects.get(author_details=user_id)
-            serializer = self.serializer_class(article, data=request.data)
-            if serializer.is_valid():
-                serializer.save(author_details=user)
-                message = "Article Successfully Updated"
-                return rest_utils.build_response(
-                    status.HTTP_200_OK, message, data=serializer.data, errors=None
-                )
-            else:
-                return rest_utils.build_response(
-                    status.HTTP_400_BAD_REQUEST,
-                    rest_utils.HTTP_REST_MESSAGES["400"],
-                    data=None,
-                    errors=serializer.errors,
-                )
-        except Exception as e:
-            message = rest_utils.HTTP_REST_MESSAGES["500"]
-            return rest_utils.build_response(
-                status.HTTP_500_INTERNAL_SERVER_ERROR, message, data=None, errors=str(e)
-            )
-
-    def get(self, request, format=None):
-        try:
-            article = Article.objects.all()
-            serializer = self.serializer_class(article, many=True)
-            message = "Ok"
-            return rest_utils.build_response(
-                status.HTTP_200_OK, message, data=serializer.data, errors=None
-            )
-        except Exception as e:
-            message = rest_utils.HTTP_REST_MESSAGES["500"]
-            return rest_utils.build_response(
-                status.HTTP_500_INTERNAL_SERVER_ERROR, message, data=None, errors=str(e)
-            )
-
-    def patch(self, request):
-        try:
-            user_id = self.request.user.id
-            article = Article.objects.get(author_details=user_id)
-            serializer = self.serializer_class(
-                article, data=request.data, partial=True
-            )  # set partial=True to update a data partially
-            if serializer.is_valid():
-                serializer.save()
-                message = "Article Successfully Updated"
-                return rest_utils.build_response(
-                    status.HTTP_200_OK, message, data=serializer.data, errors=None
-                )
-            else:
-                return rest_utils.build_response(
-                    status.HTTP_400_BAD_REQUEST,
-                    rest_utils.HTTP_REST_MESSAGES["400"],
-                    data=None,
-                    errors=serializer.errors,
-                )
-        except Exception as e:
-            message = rest_utils.HTTP_REST_MESSAGES["500"]
-            return rest_utils.build_response(
-                status.HTTP_500_INTERNAL_SERVER_ERROR, message, data=None, errors=str(e)
-            )
-            
-
 class PageNumberView(generics.GenericAPIView):
     serializer_class = PageNumberSerializers
     parser_classes = (MultiPartParser,FormParser,JSONParser,)
+
     def get(self, request, format=None):
         try:
             page_number_obj = PageNumber.objects.all()
@@ -615,9 +528,10 @@ class PageNumberView(generics.GenericAPIView):
 class PageNumberPutDeleteView(generics.GenericAPIView):
     serializer_class = PageNumberSerializers   
     parser_classes = (MultiPartParser,FormParser,JSONParser,)
+
     def put(self, request, id, format=None):
         try:
-            page_number_obj = PageNumber.objects.get(id=id)
+            page_number_obj = PageNumber.objects.filter(id=id)
             serializer = self.serializer_class(page_number_obj, data=request.data)
             if serializer.is_valid():
                 serializer.save()
@@ -664,6 +578,7 @@ class PageNumberPutDeleteView(generics.GenericAPIView):
 class ArticleTypeView(generics.GenericAPIView):
     serializer_class = ArticleTypeSerializer
     parser_classes = (MultiPartParser,FormParser,JSONParser,)
+
     def get(self, request, format=None):
         try:
             articletype_obj = ArticleType.objects.all()
@@ -705,9 +620,10 @@ class ArticleTypeView(generics.GenericAPIView):
 class ArticleTypePutDeleteView(generics.GenericAPIView):
     serializer_class = ArticleTypeSerializer   
     parser_classes = (MultiPartParser,FormParser,JSONParser,)
+
     def put(self, request, id, format=None):
         try:
-            articletype_obj = ArticleType.objects.get(id=id)
+            articletype_obj = ArticleType.objects.filter(id=id)
             serializer = self.serializer_class(articletype_obj, data=request.data)
             if serializer.is_valid():
                 serializer.save()
@@ -755,6 +671,7 @@ class ArticleTypePutDeleteView(generics.GenericAPIView):
 class ScopeTypeView(generics.GenericAPIView):
     serializer_class = ScopeTypeSerializer
     parser_classes = (MultiPartParser,FormParser,JSONParser,)
+
     def get(self, request, format=None):
         try:
             scopetype_obj = ScopeType.objects.all()
@@ -796,9 +713,10 @@ class ScopeTypeView(generics.GenericAPIView):
 class ScopeTypePutDeleteView(generics.GenericAPIView):
     serializer_class = ScopeTypeSerializer   
     parser_classes = (MultiPartParser,FormParser,JSONParser,)
+
     def put(self, request, id, format=None):
         try:
-            scopetype_obj = ScopeType.objects.get(id=id)
+            scopetype_obj = ScopeType.objects.filter(id=id)
             serializer = self.serializer_class(scopetype_obj, data=request.data)
             if serializer.is_valid():
                 serializer.save()

@@ -11,10 +11,10 @@ from journal.models import (
     Issue,
     APC,
     JournalMatrix,
-    Article,
     PageNumber,
     ScopeType,
 )
+from editorial.models import Article
 
 class ArticleInline1(admin.StackedInline):
     model = Article

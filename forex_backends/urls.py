@@ -36,6 +36,7 @@ urlpatterns = [
     path("admin/", admin.site.urls),
     path("api/account/", include("accounts.urls")),
     path("api/journal/", include("journal.urls")),
+    path("api/editorial/", include("editorial.urls")),
     path('tinymce/', include('tinymce.urls')),
     path('sentry-debug/', trigger_error),
 ]
