@@ -1,3 +1,5 @@
+from pydoc import apropos
+from re import T
 from django.db import models
 from django.core.validators import FileExtensionValidator
 from django.utils.translation import gettext as _
@@ -8,10 +10,11 @@ from accounts.models import User
 
 from journal.models import Journals, PageNumber ,ArticleType
 
+from journal.base_model import BaseModel
 # Create your models here.
 
 
-class Article(models.Model):
+class Article(BaseModel):
 
     FUNDINFG_SOURCE = (
         ("self", "self"),
@@ -50,21 +53,28 @@ class Article(models.Model):
     )
     abstract = models.CharField(max_length=300)
     keywords = models.CharField(max_length=225)
-    author_details = models.ForeignKey(
+    author_details = models.OneToOneField(
         User, on_delete=models.CASCADE, related_name="article_author_details",limit_choices_to={'role': 'Author'}
+    )
+    editor_details = models.ForeignKey(
+        User, on_delete=models.CASCADE, related_name="article_editor_details",limit_choices_to={'role': 'Editor'},
+        null=True,blank=True
     )
     funding_source = models.CharField(max_length=100, choices=FUNDINFG_SOURCE)
     upload = models.FileField(
         upload_to="foo/",
         validators=[FileExtensionValidator(allowed_extensions=["doc", "docx", "zip"])],
+        null=True,blank=True
     )
     supplementary_file = models.FileField(
         upload_to="foo/",
         validators=[FileExtensionValidator(allowed_extensions=["doc", "docx", "zip"])],
+        null=True,blank=True
     )
     copyright_form = models.FileField(
         upload_to="foo/",
         validators=[FileExtensionValidator(allowed_extensions=["doc", "docx", "pdf"])],
+        null=True,blank=True
     )
     apc_receipt = models.CharField(max_length=255, null=True, blank=True)
     reviewer_report = models.FileField(
@@ -76,6 +86,7 @@ class Article(models.Model):
                 ]
             )
         ],
+        null=True,blank=True
     )
     published_article = models.FileField(
         upload_to="foo/",
@@ -86,6 +97,7 @@ class Article(models.Model):
                 ]
             )
         ],
+        null=True,blank=True
     )
     published_xml = models.FileField(
         upload_to="foo/",
@@ -96,6 +108,7 @@ class Article(models.Model):
                 ]
             )
         ],
+        null=True,blank=True
     )
     published_html = models.FileField(
         upload_to="foo/",
@@ -106,19 +119,36 @@ class Article(models.Model):
                 ]
             )
         ],
+        null=True,blank=True
     )
-    date_of_submission = models.DateField()
-    date_of_acceptance = models.DateField()
-    date_of_published = models.DateField()
-    volume = models.CharField(max_length=225)
-    issue = models.CharField(max_length=225)
+    date_of_submission = models.DateField(null=True,blank=True)
+    date_of_acceptance = models.DateField(null=True,blank=True)
+    date_of_published = models.DateField(null=True,blank=True)
+    volume = models.CharField(max_length=225,null=True,blank=True)
+    issue = models.CharField(max_length=225,null=True,blank=True)
     special_issue = models.CharField(max_length=225)
     page_number = models.ForeignKey(
-        PageNumber, on_delete=models.CASCADE, related_name="article_page_number"
+        PageNumber, on_delete=models.CASCADE, related_name="article_page_number",null=True,blank=True
     )
-    doi = models.CharField(max_length=225)
+    doi = models.CharField(max_length=225,null=True,blank=True)
     article_status = models.CharField(max_length=100, choices=ArticleStatus)
-    citation = models.CharField(max_length=225)
-    download_count = models.CharField(max_length=225)
-    view_count = models.CharField(max_length=225)
-    multiple_image_in = models.CharField(max_length=225)
+    citation = models.CharField(max_length=225,null=True,blank=True)
+    download_count = models.CharField(max_length=225,null=True,blank=True)
+    view_count = models.CharField(max_length=225,null=True,blank=True)
+    multiple_image_in = models.CharField(max_length=225,null=True,blank=True)
+
+    def __str__(self):
+        return self.title
+
+
+class ArticleActivity(BaseModel):
+    article = models.OneToOneField(
+        Article, on_delete=models.CASCADE, related_name="article_activity"
+    )
+    is_editor_approved = models.BooleanField(default=False)
+    is_admin_approved = models.BooleanField(default=False)
+    is_reviewer_approved = models.BooleanField(default=False)
+
+
+    def __str__(self):
+        return self.article.title

@@ -1,26 +1,21 @@
-from django.shortcuts import render
-from editorial.models import Article
-from editorial.author_rights.serializers import ArticleSerializer
-from rest_framework import status
-from rest_framework.views import APIView
 from rest_framework import generics, status
-from rest_framework.response import Response
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.parsers import MultiPartParser, FormParser,JSONParser
-from forex_backends.common import app_logger, rest_utils
-from accounts.models import User
-    
-# Create your views here.
-class ArticleView(generics.GenericAPIView):
-    serializer_class = ArticleSerializer
-    parser_classes = (MultiPartParser,FormParser,)
-    permission_classes = [IsAuthenticated]
+
+
+from forex_backends.common import rest_utils
+from editorial.models import ArticleActivity
+from .serializers import ArticleActivitySerializer
+
+
+class ArticleActivityView(generics.GenericAPIView):
+    serializer_class = ArticleActivitySerializer
+    parser_classes = (MultiPartParser,FormParser,JSONParser,)
 
     def get(self, request, format=None):
         try:
-            user = self.request.user
-            article = Article.objects.filter(author_details=user)
-            serializer = self.serializer_class(article, many=True)
+            article_activity_obj = ArticleActivity.objects.all()
+            serializer = self.serializer_class(article_activity_obj,many=True)
             message = "Ok"
             return rest_utils.build_response(
                 status.HTTP_200_OK, message, data=serializer.data, errors=None
@@ -33,10 +28,10 @@ class ArticleView(generics.GenericAPIView):
 
     def post(self, request, format=None):
         try:
-            user = self.request.user
-            serializer = ArticleSerializer(data=request.data)
+            serializer = ArticleActivitySerializer(data=request.data)
+
             if serializer.is_valid():
-                serializer.save(author_details=user)
+                serializer.save()
                 message = "Created"
                 return rest_utils.build_response(
                     status.HTTP_201_CREATED, message, data=serializer.data, errors=None
@@ -53,17 +48,16 @@ class ArticleView(generics.GenericAPIView):
             return rest_utils.build_response(
                 status.HTTP_500_INTERNAL_SERVER_ERROR, message, data=None, errors=str(e)
             )
-
-class SingleArticleView(generics.GenericAPIView):
-    serializer_class = ArticleSerializer
+            
+class SingleArticleActivityView(generics.GenericAPIView):
+    serializer_class = ArticleActivitySerializer
     parser_classes = (MultiPartParser,FormParser,)
-    permission_classes = [IsAuthenticated]
+    # permission_classes = [IsAuthenticated]
 
     def get(self, request,id, format=None):
         try:
-            user = self.request.user
-            article = Article.objects.filter(author_details=user, id=id)
-            serializer = self.serializer_class(article, many=True)
+            article_activity = ArticleActivity.objects.filter( id=id)
+            serializer = self.serializer_class(article_activity, many=True)
             message = "Ok"
             return rest_utils.build_response(
                 status.HTTP_200_OK, message, data=serializer.data, errors=None
@@ -74,14 +68,14 @@ class SingleArticleView(generics.GenericAPIView):
                 status.HTTP_500_INTERNAL_SERVER_ERROR, message, data=None, errors=str(e)
             )
 
+    
     def put(self, request, id, format=None):
         try:
-            user = self.request.user
-            article = Article.objects.filter(author_details=user,id=id)
-            serializer = self.serializer_class(article, data=request.data)
+            article_activity = ArticleActivity.objects.get(id=id)
+            serializer = self.serializer_class(article_activity, data=request.data)
             if serializer.is_valid():
-                serializer.save(author_details=user)
-                message = "Article Successfully Updated"
+                serializer.save()
+                message = "ArticleActivity Successfully Updated"
                 return rest_utils.build_response(
                     status.HTTP_200_OK, message, data=serializer.data, errors=None
                 )
@@ -98,16 +92,16 @@ class SingleArticleView(generics.GenericAPIView):
                 status.HTTP_500_INTERNAL_SERVER_ERROR, message, data=None, errors=str(e)
             )
 
+
     def patch(self, request, id, format=None):
         try:
-            user = self.request.user
-            article = Article.objects.filter(author_details=user,id=id)
+            articleactivity = ArticleActivity.objects.get(id=id)
             serializer = self.serializer_class(
-                article, data=request.data, partial=True
+                articleactivity, data=request.data, partial=True
             )  # set partial=True to update a data partially
             if serializer.is_valid():
-                serializer.save(author_details=user)
-                message = "Article Successfully Updated"
+                serializer.save()
+                message = "Article Activity Successfully Updated"
                 return rest_utils.build_response(
                     status.HTTP_200_OK, message, data=serializer.data, errors=None
                 )
@@ -126,10 +120,9 @@ class SingleArticleView(generics.GenericAPIView):
 
     def delete(self, request, id, format=None):
         try:
-            user = self.request.user
-            article = Article.objects.filter(author_details=user,id=id)
-            if article.exists():
-                article.delete()
+            articleactivity = ArticleActivity.objects.filter(id=id)
+            if articleactivity.exists():
+                articleactivity.delete()
                 message = "Article Successfully Deleted"
                 return rest_utils.build_response(
                         status.HTTP_204_NO_CONTENT, message, data=None, errors=None
@@ -145,4 +138,4 @@ class SingleArticleView(generics.GenericAPIView):
             message = rest_utils.HTTP_REST_MESSAGES["500"]
             return rest_utils.build_response(
                 status.HTTP_500_INTERNAL_SERVER_ERROR, message, data=None, errors=str(e)
-            )
+            )        
