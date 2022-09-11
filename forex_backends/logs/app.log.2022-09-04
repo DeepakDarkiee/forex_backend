@@ -1,0 +1,14 @@
+2022-09-04 18:42:20,087 DEBUG rest_utils.py:build_response:78  Response: 200 OK 200 User created successfully None None
+2022-09-04 18:42:41,654 ERROR rest_utils.py:build_response:61  Response: 400 Failed {'non_field_errors': [ErrorDetail(string='This email Already Exits', code='invalid')]} None
+2022-09-04 18:42:41,659 DEBUG rest_utils.py:build_response:78  Response: 200 OK 400 Failed {'non_field_errors': [ErrorDetail(string='This email Already Exits', code='invalid')]} None
+2022-09-04 18:43:09,304 DEBUG rest_utils.py:build_response:78  Response: 200 OK 200 Ok None None
+2022-09-04 18:43:24,541 DEBUG rest_utils.py:build_response:78  Response: 200 OK 200 Ok None None
+2022-09-04 19:02:31,886 DEBUG rest_utils.py:build_response:78  Response: 200 OK 200 User Successfully Login None None
+2022-09-04 19:06:20,623 DEBUG rest_utils.py:build_response:78  Response: 200 OK 200 User Successfully Login None None
+2022-09-04 19:07:18,941 DEBUG rest_utils.py:build_response:78  Response: 200 OK 200 Profile Successfully Updated None None
+2022-09-04 19:08:18,887 DEBUG rest_utils.py:build_response:78  Response: 200 OK 200 Profile Successfully Updated None None
+2022-09-04 19:12:32,792 DEBUG rest_utils.py:build_response:78  Response: 200 OK 200 Profile Successfully Updated None None
+2022-09-04 19:12:41,281 ERROR rest_utils.py:build_response:61  Response: 400 Failed {'non_field_errors': [ErrorDetail(string='username already exists!', code='invalid')]} None
+2022-09-04 19:12:41,285 DEBUG rest_utils.py:build_response:78  Response: 200 OK 400 Failed {'non_field_errors': [ErrorDetail(string='username already exists!', code='invalid')]} None
+2022-09-04 19:12:49,583 ERROR rest_utils.py:build_response:61  Response: 500 Internal server error {'non_field_errors': ['NOT NULL constraint failed: accounts_user.first_name']} None
+2022-09-04 19:12:49,587 DEBUG rest_utils.py:build_response:78  Response: 200 OK 500 Internal server error {'non_field_errors': ['NOT NULL constraint failed: accounts_user.first_name']} None
