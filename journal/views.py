@@ -70,7 +70,7 @@ class VolumePutDeleteView(generics.GenericAPIView):
 
     def put(self, request, id, format=None):
         try:
-            volume = Volume.objects.filter(id=id)
+            volume = Volume.objects.get(id=id)
             serializer = self.serializer_class(volume, data=request.data)
             if serializer.is_valid():
                 serializer.save()
@@ -159,7 +159,7 @@ class IssuePutDeleteView(generics.GenericAPIView):
 
     def put(self, request, id, format=None):
         try:
-            issue = Issue.objects.filter(id=id)
+            issue = Issue.objects.get(id=id)
             serializer = self.serializer_class(issue, data=request.data)
             if serializer.is_valid():
                 serializer.save()
@@ -249,7 +249,7 @@ class APCPutDeleteView(generics.GenericAPIView):
 
     def put(self, request, id, format=None):
         try:
-            apc = APC.objects.filter(id=id)
+            apc = APC.objects.get(id=id)
             serializer = self.serializer_class(apc, data=request.data)
             if serializer.is_valid():
                 serializer.save()
@@ -339,7 +339,7 @@ class JournalMatrixPutDeleteView(generics.GenericAPIView):
 
     def put(self, request, id, format=None):
         try:
-            journal_matrix_obj = JournalMatrix.objects.filter(id=id)
+            journal_matrix_obj = JournalMatrix.objects.get(id=id)
             serializer = self.serializer_class(journal_matrix_obj, data=request.data)
             if serializer.is_valid():
                 serializer.save()
@@ -433,7 +433,7 @@ class JournalsPutDeleteView(generics.GenericAPIView):
     
     def put(self, request, id, format=None):
         try:
-            journals_obj = Journals.objects.filter(id=id)
+            journals_obj = Journals.objects.get(id=id)
             serializer = self.serializer_class(journals_obj, data=request.data)
             if serializer.is_valid():
                 serializer.save()
@@ -524,7 +524,7 @@ class PageNumberPutDeleteView(generics.GenericAPIView):
 
     def put(self, request, id, format=None):
         try:
-            page_number_obj = PageNumber.objects.filter(id=id)
+            page_number_obj = PageNumber.objects.get(id=id)
             serializer = self.serializer_class(page_number_obj, data=request.data)
             if serializer.is_valid():
                 serializer.save()
@@ -616,7 +616,7 @@ class ArticleTypePutDeleteView(generics.GenericAPIView):
 
     def put(self, request, id, format=None):
         try:
-            articletype_obj = ArticleType.objects.filter(id=id)
+            articletype_obj = ArticleType.objects.get(id=id)
             serializer = self.serializer_class(articletype_obj, data=request.data)
             if serializer.is_valid():
                 serializer.save()
@@ -709,7 +709,7 @@ class ScopeTypePutDeleteView(generics.GenericAPIView):
 
     def put(self, request, id, format=None):
         try:
-            scopetype_obj = ScopeType.objects.filter(id=id)
+            scopetype_obj = ScopeType.objects.get(id=id)
             serializer = self.serializer_class(scopetype_obj, data=request.data)
             if serializer.is_valid():
                 serializer.save()
