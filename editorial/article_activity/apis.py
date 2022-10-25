@@ -5,7 +5,7 @@ from rest_framework.parsers import MultiPartParser, FormParser,JSONParser
 
 from forex_backends.common import rest_utils
 from editorial.models import ArticleActivity
-from .serializers import ArticleActivitySerializer
+from .serializers import ArticleActivitySerializer,ArticleStatusSerializer,ArticleCommentSerializer
 
 
 class ArticleActivityView(generics.GenericAPIView):
@@ -139,3 +139,64 @@ class SingleArticleActivityView(generics.GenericAPIView):
             return rest_utils.build_response(
                 status.HTTP_500_INTERNAL_SERVER_ERROR, message, data=None, errors=str(e)
             )        
+
+
+class ArticleStatusUpdateView(generics.GenericAPIView):
+    serializer_class = ArticleStatusSerializer
+    parser_classes = (MultiPartParser,FormParser,)
+    # permission_classes = [IsAuthenticated]
+
+    def patch(self, request, id, format=None):
+        try:
+            articleactivity = ArticleActivity.objects.get(id=id)
+            serializer = self.serializer_class(
+                articleactivity, data=request.data, partial=True
+            )  # set partial=True to update a data partially
+            if serializer.is_valid():
+                serializer.save()
+                message = "Article Status Successfully Updated"
+                return rest_utils.build_response(
+                    status.HTTP_200_OK, message, data=serializer.data, errors=None
+                )
+            else:
+                return rest_utils.build_response(
+                    status.HTTP_400_BAD_REQUEST,
+                    rest_utils.HTTP_REST_MESSAGES["400"],
+                    data=None,
+                    errors=serializer.errors,
+                )
+        except Exception as e:
+            message = rest_utils.HTTP_REST_MESSAGES["500"]
+            return rest_utils.build_response(
+                status.HTTP_500_INTERNAL_SERVER_ERROR, message, data=None, errors=str(e)
+            )
+
+class ArticleCommentUpdateView(generics.GenericAPIView):
+    serializer_class = ArticleCommentSerializer
+    parser_classes = (MultiPartParser,FormParser,)
+    # permission_classes = [IsAuthenticated]
+
+    def patch(self, request, id, format=None):
+        try:
+            articleactivity = ArticleActivity.objects.get(id=id)
+            serializer = self.serializer_class(
+                articleactivity, data=request.data, partial=True
+            )  # set partial=True to update a data partially
+            if serializer.is_valid():
+                serializer.save()
+                message = "Article Comment Successfully Updated"
+                return rest_utils.build_response(
+                    status.HTTP_200_OK, message, data=serializer.data, errors=None
+                )
+            else:
+                return rest_utils.build_response(
+                    status.HTTP_400_BAD_REQUEST,
+                    rest_utils.HTTP_REST_MESSAGES["400"],
+                    data=None,
+                    errors=serializer.errors,
+                )
+        except Exception as e:
+            message = rest_utils.HTTP_REST_MESSAGES["500"]
+            return rest_utils.build_response(
+                status.HTTP_500_INTERNAL_SERVER_ERROR, message, data=None, errors=str(e)
+            )

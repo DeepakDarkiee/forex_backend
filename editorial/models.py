@@ -140,15 +140,25 @@ class Article(BaseModel):
     def __str__(self):
         return self.title
 
+STATUS_CHOICES = (
+        ("Approved", "Approved"),
+        ("Pending", "Pending"),
+        ("Rejected", "Rejected"),
+    )
 
 class ArticleActivity(BaseModel):
     article = models.OneToOneField(
         Article, on_delete=models.CASCADE, related_name="article_activity"
     )
-    is_editor_approved = models.BooleanField(default=False)
-    is_admin_approved = models.BooleanField(default=False)
-    is_reviewer_approved = models.BooleanField(default=False)
-
+    status = models.CharField(choices=STATUS_CHOICES,default="Pending",max_length=10)
+    comment = models.TextField(null=True,blank=True)
+    commented_by = models.ForeignKey(
+        User, on_delete=models.DO_NOTHING, related_name="editor_article_feed",null=True, blank=True,limit_choices_to={'role': 'Editor'}
+    )
+    approved_by = models.ForeignKey(
+        User, on_delete=models.DO_NOTHING, related_name="Approver_article_feed",null=True, blank=True,
+    )
 
     def __str__(self):
         return self.article.title
+
