@@ -8,9 +8,11 @@ https://docs.djangoproject.com/en/3.2/howto/deployment/wsgi/
 """
 
 import os
+from decouple import config
+ENV = config("ENV")
 
 from django.core.wsgi import get_wsgi_application
 
-os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'forex_backends.settings.stage')
+os.environ.setdefault('DJANGO_SETTINGS_MODULE', f'forex_backends.settings.{ENV}')
 
 application = get_wsgi_application()
