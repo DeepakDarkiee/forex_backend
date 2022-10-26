@@ -1,0 +1,7 @@
+2022-09-26 23:39:02,749 ERROR rest_utils.py:build_response:57  Response: 201 Created {'non_field_errors': ['Created']} None
+2022-09-26 23:39:02,750 DEBUG rest_utils.py:build_response:71  Response: 200 OK 201 Created {'non_field_errors': ['Created']} None
+2022-09-26 23:39:32,913 ERROR rest_utils.py:build_response:57  Response: 400 Failed {'discount_options': [ErrorDetail(string='Ensure this field has no more than 2 characters.', code='max_length')]} None
+2022-09-26 23:39:32,913 DEBUG rest_utils.py:build_response:71  Response: 200 OK 400 Failed {'discount_options': [ErrorDetail(string='Ensure this field has no more than 2 characters.', code='max_length')]} None
+2022-09-26 23:39:51,194 ERROR rest_utils.py:build_response:57  Response: 500 Internal server error {'non_field_errors': ["'QuerySet' object has no attribute '_meta'"]} None
+2022-09-26 23:39:51,194 DEBUG rest_utils.py:build_response:71  Response: 200 OK 500 Internal server error {'non_field_errors': ["'QuerySet' object has no attribute '_meta'"]} None
+2022-09-26 23:40:49,498 DEBUG rest_utils.py:build_response:71  Response: 200 OK 200 APC Successfully Updated None None
