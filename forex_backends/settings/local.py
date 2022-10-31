@@ -14,6 +14,17 @@ DATABASES = {
     }
 }
 
+CORS_ORIGIN_ALLOW_ALL = True
+
+CORS_ALLOW_CREDENTIALS = True
+
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:1234',
+    'http://localhost:3000',
+    'http://localhost:*',
+    'http://127.0.0.1:*',
+    'http://0.0.0.0:8000'
+]
 
 LOGGING = {
     "version": 1,
