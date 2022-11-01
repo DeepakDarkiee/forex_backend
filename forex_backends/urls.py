@@ -32,7 +32,7 @@ def trigger_error(request):
     return HttpResponse(division_by_zero)
 
 urlpatterns = [
-    path("admin_tools_stats/", include("admin_tools_stats.urls")),
+    # path("admin_tools_stats/", include("admin_tools_stats.urls")),
     path("admin/", admin.site.urls),
     path("api/account/", include("accounts.urls")),
     path("api/journal/", include("journal.urls")),
