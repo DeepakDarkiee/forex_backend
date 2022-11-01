@@ -12,7 +12,7 @@ from journal.models import (
     APC,
     JournalMatrix,
     PageNumber,
-    ScopeType,
+    # ScopeType,
 )
 from editorial.models import Article
 
@@ -20,8 +20,8 @@ class ArticleInline1(admin.StackedInline):
     model = Article
     extra = 1 
 
-class ScopeTypeInline(admin.StackedInline):
-    pass
+# class ScopeTypeInline(admin.StackedInline):
+#     pass
 
 class JournalsAdmin(ImportExportModelAdmin):
 
@@ -110,10 +110,10 @@ class PageNumberAdmin(ImportExportModelAdmin):
     ArticleInline2,
     ]
 
-class ScopeTypeAdmin(ImportExportModelAdmin):
+# class ScopeTypeAdmin(ImportExportModelAdmin):
 
-    model = ScopeType
-    list_display = ["scope_type"]
+#     model = ScopeType
+#     list_display = ["scope_type"]
 
 class ArticleInline(admin.StackedInline):
   model = Article
@@ -128,4 +128,4 @@ admin.site.register(JournalMatrix, JournalMatrixAdmin)
 admin.site.register(ArticleType, ArticleTypeAdmin)
 admin.site.register(Article, ArticleAdmin)
 admin.site.register(PageNumber, PageNumberAdmin)
-admin.site.register(ScopeType, ScopeTypeAdmin)
+# admin.site.register(ScopeType, ScopeTypeAdmin)
