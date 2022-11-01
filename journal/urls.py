@@ -29,7 +29,7 @@ urlpatterns = [
     path("article/type/", views.ArticleTypeView.as_view(), name="articletype"),
     path("article/type/<int:id>/", views.ArticleTypePutDeleteView.as_view(), name="article_type"),  
     
-    path("scope/type/", views.ScopeTypeView.as_view(), name="scopetype"),
-    path("scope/type/<int:id>/", views.ScopeTypePutDeleteView.as_view(), name="scope_type"),  
+    # path("scope/type/", views.ScopeTypeView.as_view(), name="scopetype"),
+    # path("scope/type/<int:id>/", views.ScopeTypePutDeleteView.as_view(), name="scope_type"),  
     
 ]
