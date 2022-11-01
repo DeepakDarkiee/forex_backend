@@ -1,4 +1,4 @@
-# forex_backend
+# forex_backend with docker
 
 #### Docker Build
 `sudo docker build -t foaj .`
