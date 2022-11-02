@@ -54,10 +54,10 @@ class Article(BaseModel):
     abstract = models.CharField(max_length=300)
     keywords = models.CharField(max_length=225)
     author_details = models.OneToOneField(
-        User, on_delete=models.CASCADE, related_name="article_author_details",limit_choices_to={'role': 1}
+        User, on_delete=models.CASCADE, related_name="article_author_details",limit_choices_to={'role__name': "Author"}
     )
     editor_details = models.ForeignKey(
-        User, on_delete=models.CASCADE, related_name="article_editor_details",limit_choices_to={'role': 2},
+        User, on_delete=models.CASCADE, related_name="article_editor_details",limit_choices_to={'role__name': "Editor"},
         null=True,blank=True
     )
     funding_source = models.CharField(max_length=100, choices=FUNDINFG_SOURCE)

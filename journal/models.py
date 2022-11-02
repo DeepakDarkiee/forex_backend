@@ -143,10 +143,10 @@ class Journals(BaseModel):
         User, on_delete=models.CASCADE, related_name="subscriber_journal",null=True, blank=True, 
     )
     journal_author = models.ForeignKey(
-        User, on_delete=models.CASCADE, related_name="subscriber_author_journal",null=True, blank=True,limit_choices_to={'role': 1}
+        User, on_delete=models.CASCADE, related_name="subscriber_author_journal",null=True, blank=True,limit_choices_to={'role__name': "Author"}
     )
     journal_reviewer = models.ForeignKey(
-        User, on_delete=models.CASCADE, related_name="subscriber_reviewer_journal",null=True, blank=True,limit_choices_to={'role': 3}
+        User, on_delete=models.CASCADE, related_name="subscriber_reviewer_journal",null=True, blank=True,limit_choices_to={'role__name': "Reviewer"}
     )
     journal_matrix = models.ForeignKey(JournalMatrix,on_delete=models.CASCADE, related_name="journal_matrix",null=True, blank=True)
 
