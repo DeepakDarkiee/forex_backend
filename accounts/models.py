@@ -6,7 +6,7 @@ from django.contrib.auth.models import (
 )
 
 from rest_framework_simplejwt.tokens import RefreshToken
-
+from journal.base_model import BaseModel
 # Create your models here.
 
 
@@ -89,7 +89,8 @@ class User(AbstractBaseUser, PermissionsMixin):
     auth_provider = models.CharField(
         max_length=255, blank=False, null=False, default="email"
     )
-    role = models.CharField(max_length=20, choices=ROLE_CHOICES)
+    role = models.OneToOneField("Role",on_delete=models.DO_NOTHING,null=True,blank=True)
+    permissions = models.TextField(null=True,blank=True)
 
     USERNAME_FIELD = "email"
     REQUIRED_FIELDS = ["username"]
@@ -102,3 +103,11 @@ class User(AbstractBaseUser, PermissionsMixin):
     def tokens(self):
         refresh = RefreshToken.for_user(self)
         return {"refresh": str(refresh), "access": str(refresh.access_token)}
+
+
+class Role(BaseModel):
+    name = models.CharField(max_length=100,unique=True)
+    permissions = models.TextField(null=True,blank=True)
+    
+    def __str__(self) -> str:
+        return self.name

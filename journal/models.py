@@ -140,13 +140,13 @@ class Journals(BaseModel):
     )
     special_issue = models.CharField(max_length=2000,null=True, blank=True)
     journal_subscriber = models.ForeignKey(
-        User, on_delete=models.CASCADE, related_name="subscriber_journal",null=True, blank=True, limit_choices_to={'role': 'Subscriber'}
+        User, on_delete=models.CASCADE, related_name="subscriber_journal",null=True, blank=True, 
     )
     journal_author = models.ForeignKey(
-        User, on_delete=models.CASCADE, related_name="subscriber_author_journal",null=True, blank=True,limit_choices_to={'role': 'Author'}
+        User, on_delete=models.CASCADE, related_name="subscriber_author_journal",null=True, blank=True,limit_choices_to={'role': 1}
     )
     journal_reviewer = models.ForeignKey(
-        User, on_delete=models.CASCADE, related_name="subscriber_reviewer_journal",null=True, blank=True,limit_choices_to={'role': 'Reviewer'}
+        User, on_delete=models.CASCADE, related_name="subscriber_reviewer_journal",null=True, blank=True,limit_choices_to={'role': 3}
     )
     journal_matrix = models.ForeignKey(JournalMatrix,on_delete=models.CASCADE, related_name="journal_matrix",null=True, blank=True)
 

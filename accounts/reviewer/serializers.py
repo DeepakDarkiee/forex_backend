@@ -30,7 +30,7 @@ class LoginReviewerSerializer(serializers.Serializer):
 
     tokens = serializers.CharField(read_only=True)
     refresh_token = serializers.CharField(read_only=True)
-    role = serializers.CharField(read_only=True)
+    # role = serializers.CharField(read_only=True)
 
     class Meta:
         model = User
@@ -52,7 +52,7 @@ class LoginReviewerSerializer(serializers.Serializer):
                     "refresh_token": user.tokens().get("refresh"),
                     "password": user.password,
                     "message": message,
-                    "role" : user.role
+                    "role" : user.role.name
                 }
             else:
                 raise serializers.ValidationError("Your account is Deactivated")

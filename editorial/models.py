@@ -54,10 +54,10 @@ class Article(BaseModel):
     abstract = models.CharField(max_length=300)
     keywords = models.CharField(max_length=225)
     author_details = models.OneToOneField(
-        User, on_delete=models.CASCADE, related_name="article_author_details",limit_choices_to={'role': 'Author'}
+        User, on_delete=models.CASCADE, related_name="article_author_details",limit_choices_to={'role': 1}
     )
     editor_details = models.ForeignKey(
-        User, on_delete=models.CASCADE, related_name="article_editor_details",limit_choices_to={'role': 'Editor'},
+        User, on_delete=models.CASCADE, related_name="article_editor_details",limit_choices_to={'role': 2},
         null=True,blank=True
     )
     funding_source = models.CharField(max_length=100, choices=FUNDINFG_SOURCE)
@@ -153,7 +153,7 @@ class ArticleActivity(BaseModel):
     status = models.CharField(choices=STATUS_CHOICES,default="Pending",max_length=10)
     comment = models.TextField(null=True,blank=True)
     commented_by = models.ForeignKey(
-        User, on_delete=models.DO_NOTHING, related_name="editor_article_feed",null=True, blank=True,limit_choices_to={'role': 'Editor'}
+        User, on_delete=models.DO_NOTHING, related_name="editor_article_feed",null=True, blank=True,limit_choices_to={'role': 2}
     )
     approved_by = models.ForeignKey(
         User, on_delete=models.DO_NOTHING, related_name="Approver_article_feed",null=True, blank=True,
