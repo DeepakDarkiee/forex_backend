@@ -164,7 +164,11 @@ class UserListApiView(generics.GenericAPIView):
 
     def get(self, request, format=None):
         try:
-            user_obj = User.objects.all()
+            role = self.request.query_params.get('role')
+            if role:
+                user_obj = User.objects.filter(role__name=role)
+            else:
+                user_obj = User.objects.all()
             message = "Ok"
             serializer = UserDetailSerializer(user_obj, many=True)
             return rest_utils.build_response(

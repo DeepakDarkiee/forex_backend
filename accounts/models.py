@@ -8,7 +8,7 @@ from django.contrib.auth.models import (
 from rest_framework_simplejwt.tokens import RefreshToken
 from journal.base_model import BaseModel
 # Create your models here.
-
+from django.contrib.postgres.fields import ArrayField
 
 class UserManager(BaseUserManager):
     
@@ -89,7 +89,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     auth_provider = models.CharField(
         max_length=255, blank=False, null=False, default="email"
     )
-    role = models.OneToOneField("Role",on_delete=models.DO_NOTHING,null=True,blank=True)
+    role = models.ForeignKey("Role",on_delete=models.DO_NOTHING,null=True,blank=True)
     permissions = models.TextField(null=True,blank=True)
 
     USERNAME_FIELD = "email"

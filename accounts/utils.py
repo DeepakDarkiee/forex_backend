@@ -6,7 +6,6 @@ from accounts.models import Role
 def create_user(user, request_data, role=None):
     result, message, data = False, "Failed", None
     try:
-
         role = Role.objects.get(name=role)
         user.role = role
         user.set_password(request_data.get("password"))

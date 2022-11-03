@@ -130,7 +130,7 @@ class Article(BaseModel):
     page_number = models.ForeignKey(
         PageNumber, on_delete=models.CASCADE, related_name="article_page_number",null=True,blank=True
     )
-    doi = models.CharField(max_length=225,null=True,blank=True)
+    doi = models.URLField(max_length=225,null=True,blank=True)
     article_status = models.CharField(max_length=100, choices=ArticleStatus)
     citation = models.CharField(max_length=225,null=True,blank=True)
     download_count = models.CharField(max_length=225,null=True,blank=True)
