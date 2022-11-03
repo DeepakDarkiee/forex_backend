@@ -1,17 +1,13 @@
 from django.conf import settings
 from django.contrib.auth import authenticate
 
+from accounts.models import Role
+
 def create_user(user, request_data, role=None):
     result, message, data = False, "Failed", None
     try:
-        if role == "Editor":
-            user.role = "Editor"
-        elif role == "Reviewer":
-            user.role = "Reviewer"
-        elif role == "Both-ER":
-            user.role = "Both-ER"
-        else:
-            user.role = "Author"
+        role = Role.objects.get(name=role)
+        user.role = role
         user.set_password(request_data.get("password"))
         user = user.save()
         result, message, data = True, "User created successfully", None

@@ -1,2 +1,3 @@
 docker-compose exec app python manage.py createsuperuser
 docker-compose exec app python manage.py migrate
+sudo docker volume rm -f $(sudo docker volume ls -q)
