@@ -43,8 +43,17 @@ class UserDetailSerializer(serializers.ModelSerializer):
         model = User
         exclude = ("password",)
 
+    def to_representation(self, instance):
+        rep = super(UserDetailSerializer, self).to_representation(instance)
+        rep['role'] = instance.role.name if instance.role  else '' 
+        return rep
 
 class UserListSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         exclude = ("password",)
+
+    def to_representation(self, instance):
+        rep = super(UserListSerializer, self).to_representation(instance)
+        rep['role'] = instance.role.name if instance.role  else '' 
+        return rep
