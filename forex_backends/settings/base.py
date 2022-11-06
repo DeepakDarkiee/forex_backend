@@ -31,8 +31,8 @@ SECRET_KEY = "django-insecure-q!ae0k5ryz))5_bof@+kbl-118p&+gkpf@)zuzbv9@6su(qkyw
 # SECURITY WARNING: don't run with debug turned on in production!
 
 URL = config("URL")
-GOOGLE_CLIENT_ID = '575996508863-f4pqsbqbkm0s2pf1n7i1ve35oor2uqeh.apps.googleusercontent.com'
-GOOGLE_CLIENT_SECRET = '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'
+GOOGLE_CLIENT_ID = config("GOOGLE_CLIENT_ID")
+GOOGLE_CLIENT_SECRET = config("GOOGLE_CLIENT_SECRET")
 # Application definition
 
 INSTALLED_APPS = [
