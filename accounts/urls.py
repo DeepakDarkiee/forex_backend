@@ -2,7 +2,7 @@ from django.contrib import admin
 from django.urls import include, path
 
 from accounts.author.api import (
-    ForgetPasswordView,
+    # ForgetPasswordView,
     LoginAuthorAPIView,
     RegisterAuthorView,
 )
@@ -18,13 +18,14 @@ from accounts.reviewer.api import (
 )
 
 from accounts.join_us.api import RegisterRoleView
+from accounts.social_auth.views import GoogleSocialAuthView
 
 from accounts.views import UpdateProfileApiView, UserDetailApiView, UserListApiView,SingleUserDetailApiView,SingleUserUpdateApiView
-
 urlpatterns = [
+    path("google/", GoogleSocialAuthView.as_view(), name="google"),
     path("register/author/", RegisterAuthorView.as_view(), name="register_author"),
     path("login/author/", LoginAuthorAPIView.as_view(), name="login_author"),
-    path("forget/password/", ForgetPasswordView.as_view(), name="forget-password"),
+    # path("forget/password/", ForgetPasswordView.as_view(), name="forget-password"),
     # ------------------------------------------------------------------------------
     path("register/editor/", RegisterEditorView.as_view(), name="register_editor"),
     path("login/editor/", LoginEditorAPIView.as_view(), name="login_editor"),
