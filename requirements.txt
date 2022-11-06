@@ -40,3 +40,4 @@ stripe
 whitenoise
 gunicorn
 dj_database_url
+google-auth

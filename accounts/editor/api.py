@@ -12,9 +12,7 @@ from accounts.editor.serializers import (
 )
 from accounts.utils import (
     create_user,
-    forget_password_message_send,
-    forget_user_password,
-    verify_email_password,
+
 )
 
 from forex_backends.common import app_logger, rest_utils

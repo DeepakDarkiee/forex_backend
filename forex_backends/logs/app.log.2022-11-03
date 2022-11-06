@@ -1,0 +1,32 @@
+2022-11-03 00:16:06,954 DEBUG rest_utils.py:build_response:71  Response: 200 OK 200 User created successfully None None
+2022-11-03 00:16:33,675 DEBUG rest_utils.py:build_response:71  Response: 200 OK 200 User Successfully Login None None
+2022-11-03 19:47:23,381 DEBUG rest_utils.py:build_response:71  Response: 200 OK 200 User Successfully Login None None
+2022-11-03 19:47:46,861 DEBUG rest_utils.py:build_response:71  Response: 200 OK 200 Ok None None
+2022-11-03 21:23:34,500 DEBUG rest_utils.py:build_response:71  Response: 200 OK 200 Ok None None
+2022-11-03 21:26:11,757 DEBUG rest_utils.py:build_response:71  Response: 200 OK 200 Ok None None
+2022-11-03 21:26:22,938 DEBUG rest_utils.py:build_response:71  Response: 200 OK 200 Ok None None
+2022-11-03 21:26:36,853 DEBUG rest_utils.py:build_response:71  Response: 200 OK 200 Ok None None
+2022-11-03 21:26:52,199 ERROR rest_utils.py:build_response:57  Response: 400 Failed {'non_field_errors': [ErrorDetail(string='This email Already Exits', code='invalid')]} None
+2022-11-03 21:26:52,201 DEBUG rest_utils.py:build_response:71  Response: 200 OK 400 Failed {'non_field_errors': [ErrorDetail(string='This email Already Exits', code='invalid')]} None
+2022-11-03 21:27:01,703 DEBUG rest_utils.py:build_response:71  Response: 200 OK 200 User created successfully None None
+2022-11-03 21:27:23,085 ERROR rest_utils.py:build_response:57  Response: 400 Failed {'non_field_errors': [ErrorDetail(string='This email Already Exits', code='invalid')]} None
+2022-11-03 21:27:23,086 DEBUG rest_utils.py:build_response:71  Response: 200 OK 400 Failed {'non_field_errors': [ErrorDetail(string='This email Already Exits', code='invalid')]} None
+2022-11-03 21:27:32,512 DEBUG rest_utils.py:build_response:71  Response: 200 OK 200 User created successfully None None
+2022-11-03 21:27:36,359 DEBUG rest_utils.py:build_response:71  Response: 200 OK 200 Ok None None
+2022-11-03 21:27:54,867 ERROR rest_utils.py:build_response:57  Response: 400 duplicate key value violates unique constraint "accounts_user_role_id_key"
+DETAIL:  Key (role_id)=(2) already exists.
+ {'non_field_errors': ['duplicate key value violates unique constraint "accounts_user_role_id_key"\nDETAIL:  Key (role_id)=(2) already exists.\n']} None
+2022-11-03 21:27:54,870 DEBUG rest_utils.py:build_response:71  Response: 200 OK 400 duplicate key value violates unique constraint "accounts_user_role_id_key"
+DETAIL:  Key (role_id)=(2) already exists.
+ {'non_field_errors': ['duplicate key value violates unique constraint "accounts_user_role_id_key"\nDETAIL:  Key (role_id)=(2) already exists.\n']} None
+2022-11-03 21:30:41,578 DEBUG rest_utils.py:build_response:71  Response: 200 OK 200 Ok None None
+2022-11-03 21:57:15,184 ERROR rest_utils.py:build_response:57  Response: 400 Role matching query does not exist. {'non_field_errors': ['Role matching query does not exist.']} None
+2022-11-03 21:57:15,185 DEBUG rest_utils.py:build_response:71  Response: 200 OK 400 Role matching query does not exist. {'non_field_errors': ['Role matching query does not exist.']} None
+2022-11-03 21:58:24,042 ERROR rest_utils.py:build_response:57  Response: 400 Failed {'non_field_errors': [ErrorDetail(string='This email Already Exits', code='invalid')]} None
+2022-11-03 21:58:24,043 DEBUG rest_utils.py:build_response:71  Response: 200 OK 400 Failed {'non_field_errors': [ErrorDetail(string='This email Already Exits', code='invalid')]} None
+2022-11-03 22:00:50,604 DEBUG rest_utils.py:build_response:71  Response: 200 OK 200 Ok None None
+2022-11-03 22:00:55,110 DEBUG rest_utils.py:build_response:71  Response: 200 OK 200 Ok None None
+2022-11-03 22:04:30,631 DEBUG rest_utils.py:build_response:71  Response: 200 OK 200 Ok None None
+2022-11-03 22:06:40,863 DEBUG rest_utils.py:build_response:71  Response: 200 OK 200 Ok None None
+2022-11-03 22:07:16,251 DEBUG rest_utils.py:build_response:71  Response: 200 OK 200 Ok None None
+2022-11-03 22:11:08,710 DEBUG rest_utils.py:build_response:71  Response: 200 OK 200 Ok None None

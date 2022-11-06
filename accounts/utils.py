@@ -1,7 +1,6 @@
 from django.conf import settings
 from django.contrib.auth import authenticate
-
-from accounts.models import Role
+from accounts.models import Role, User
 
 def create_user(user, request_data, role=None):
     result, message, data = False, "Failed", None
@@ -53,26 +52,33 @@ def forget_user_password(user, random_password):
     return result, message, data
 
 
-def forget_password_message_send(phone, random_password):
-    result, message, data = False, "Failed", None
-    try:
-        message = f"Dear User, Your OTP new password {random_password} for SHEKUNJ Regards.%0AShekunj"
-        values = {
-            "authkey": settings.SMS_AUTH_TOKE,
-            "mobiles": f"91{phone}",
-            "message": message,
-            "sender": "Forex",
-            "route": 4,
-            "DLT_TE_ID": settings.SMS_DLT_ID,
+def register_social_user(provider, user_id, email, name,last_name):
+    filtered_user_by_email = User.objects.filter(
+        username=email, email=email, auth_provider="google"
+    )
+
+    if filtered_user_by_email.exists():
+        registered_user = authenticate(username=email, password=user_id)
+
+        return {
+            "username": registered_user.username,
+            "email": registered_user.email,
+            "tokens": registered_user.tokens(),
         }
-        postdata = urllib.parse.urlencode(values)
-        res = requests.get(settings.SEND_SMS_URL, params=postdata)
 
-        logger.debug(
-            f"Successfully sent new password for {phone} >>>>>>> Result >>>>>> {res.text}"
-        )
-
-        result, message, data = True, "New password sent on your contact number.", None
-    except Exception as e:
-        result, message, data = False, str(e), None
-    return result, message, data
+    else:
+        user = {
+            "username": email,
+            "name": name,
+            "email": email,
+            "password": user_id,
+            "is_verified": True,
+            "auth_provider": provider,
+            "last_name": last_name,
+        }
+        new_user = User.objects.create_user(**user)
+        return {
+            "email": new_user.email,
+            "username": new_user.username,
+            "tokens": new_user.tokens(),
+        }

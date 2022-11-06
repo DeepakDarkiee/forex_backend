@@ -14,9 +14,6 @@ from accounts.author.serializers import (
 )
 from accounts.utils import (
     create_user,
-    forget_password_message_send,
-    forget_user_password,
-    verify_email_password,
 )
 
 

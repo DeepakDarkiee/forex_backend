@@ -1,0 +1,11 @@
+2022-11-04 23:50:36,758 DEBUG rest_utils.py:build_response:71  Response: 200 OK 200 Ok None None
+2022-11-04 23:51:17,584 DEBUG rest_utils.py:build_response:71  Response: 200 OK 200 Ok None None
+2022-11-04 23:52:20,302 ERROR rest_utils.py:build_response:57  Response: 500 Internal server error {'non_field_errors': ['super(type, obj): obj must be an instance or subtype of type']} None
+2022-11-04 23:52:20,302 DEBUG rest_utils.py:build_response:71  Response: 200 OK 500 Internal server error {'non_field_errors': ['super(type, obj): obj must be an instance or subtype of type']} None
+2022-11-04 23:52:23,585 ERROR rest_utils.py:build_response:57  Response: 500 Internal server error {'non_field_errors': ['super(type, obj): obj must be an instance or subtype of type']} None
+2022-11-04 23:52:23,586 DEBUG rest_utils.py:build_response:71  Response: 200 OK 500 Internal server error {'non_field_errors': ['super(type, obj): obj must be an instance or subtype of type']} None
+2022-11-04 23:52:29,461 ERROR rest_utils.py:build_response:57  Response: 500 Internal server error {'non_field_errors': ['super(type, obj): obj must be an instance or subtype of type']} None
+2022-11-04 23:52:29,461 DEBUG rest_utils.py:build_response:71  Response: 200 OK 500 Internal server error {'non_field_errors': ['super(type, obj): obj must be an instance or subtype of type']} None
+2022-11-04 23:52:30,278 ERROR rest_utils.py:build_response:57  Response: 500 Internal server error {'non_field_errors': ['super(type, obj): obj must be an instance or subtype of type']} None
+2022-11-04 23:52:30,278 DEBUG rest_utils.py:build_response:71  Response: 200 OK 500 Internal server error {'non_field_errors': ['super(type, obj): obj must be an instance or subtype of type']} None
+2022-11-04 23:52:50,683 DEBUG rest_utils.py:build_response:71  Response: 200 OK 200 Ok None None
