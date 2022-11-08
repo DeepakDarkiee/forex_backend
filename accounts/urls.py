@@ -20,7 +20,7 @@ from accounts.reviewer.api import (
 from accounts.join_us.api import RegisterRoleView
 from accounts.social_auth.views import GoogleSocialAuthView
 
-from accounts.views import UpdateProfileApiView, UserDetailApiView, UserListApiView,SingleUserDetailApiView,SingleUserUpdateApiView
+from accounts.views import UpdateProfileApiView, UpdateRoleApiView, UserDetailApiView, UserListApiView,SingleUserDetailApiView,SingleUserUpdateApiView
 urlpatterns = [
     path("google/", GoogleSocialAuthView.as_view(), name="google"),
     path("register/author/", RegisterAuthorView.as_view(), name="register_author"),
@@ -55,6 +55,11 @@ urlpatterns = [
     path("user/list/", UserListApiView.as_view(), name="user_list"),
     path("single/user/detail/<int:id>/", SingleUserDetailApiView.as_view(), name="single_user_detail"),
     path("single/user/update/<int:id>/", SingleUserUpdateApiView.as_view(), name="single_user_update"),
+
+    path("/role/permission/update/<str:role>/", UpdateRoleApiView.as_view(), name="role_permission_update"),
+
+
+    
 
 
     
