@@ -1,0 +1,18 @@
+2022-11-06 20:06:56,801 ERROR rest_utils.py:build_response:57  Response: 400 Failed {'auth_token': [ErrorDetail(string='The token is either invalid or expired.', code='invalid')]} None
+2022-11-06 20:06:56,802 DEBUG rest_utils.py:build_response:71  Response: 200 OK 400 Failed {'auth_token': [ErrorDetail(string='The token is either invalid or expired.', code='invalid')]} None
+2022-11-06 20:08:02,850 ERROR rest_utils.py:build_response:57  Response: 400 Failed {'auth_token': [ErrorDetail(string='The token is either invalid or expired.', code='invalid')]} None
+2022-11-06 20:08:02,851 DEBUG rest_utils.py:build_response:71  Response: 200 OK 400 Failed {'auth_token': [ErrorDetail(string='The token is either invalid or expired.', code='invalid')]} None
+2022-11-06 20:08:06,738 ERROR rest_utils.py:build_response:57  Response: 400 Failed {'auth_token': [ErrorDetail(string='The token is either invalid or expired.', code='invalid')]} None
+2022-11-06 20:08:06,738 DEBUG rest_utils.py:build_response:71  Response: 200 OK 400 Failed {'auth_token': [ErrorDetail(string='The token is either invalid or expired.', code='invalid')]} None
+2022-11-06 20:08:19,128 ERROR rest_utils.py:build_response:57  Response: 400 Failed {'auth_token': [ErrorDetail(string='The token is either invalid or expired.', code='invalid')]} None
+2022-11-06 20:08:19,129 DEBUG rest_utils.py:build_response:71  Response: 200 OK 400 Failed {'auth_token': [ErrorDetail(string='The token is either invalid or expired.', code='invalid')]} None
+2022-11-06 20:08:43,655 ERROR rest_utils.py:build_response:57  Response: 400 Failed {'auth_token': [ErrorDetail(string='The token is either invalid or expired.', code='invalid')]} None
+2022-11-06 20:08:43,655 DEBUG rest_utils.py:build_response:71  Response: 200 OK 400 Failed {'auth_token': [ErrorDetail(string='The token is either invalid or expired.', code='invalid')]} None
+2022-11-06 20:09:25,987 ERROR rest_utils.py:build_response:57  Response: 400 Failed {'auth_token': [ErrorDetail(string='The token is either invalid or expired.', code='invalid')]} None
+2022-11-06 20:09:25,987 DEBUG rest_utils.py:build_response:71  Response: 200 OK 400 Failed {'auth_token': [ErrorDetail(string='The token is either invalid or expired.', code='invalid')]} None
+2022-11-06 20:13:38,633 ERROR rest_utils.py:build_response:57  Response: 400 Failed {'auth_token': [ErrorDetail(string='The token is either invalid or expired.', code='invalid')]} None
+2022-11-06 20:13:38,634 DEBUG rest_utils.py:build_response:71  Response: 200 OK 400 Failed {'auth_token': [ErrorDetail(string='The token is either invalid or expired.', code='invalid')]} None
+2022-11-06 20:21:15,385 ERROR rest_utils.py:build_response:57  Response: 500 Internal server error {'non_field_errors': ["GoogleSocialAuthSerializer.validate_auth_token() missing 1 required positional argument: 'role'"]} None
+2022-11-06 20:21:15,385 DEBUG rest_utils.py:build_response:71  Response: 200 OK 500 Internal server error {'non_field_errors': ["GoogleSocialAuthSerializer.validate_auth_token() missing 1 required positional argument: 'role'"]} None
+2022-11-06 20:22:36,763 ERROR rest_utils.py:build_response:57  Response: 400 Failed {'auth_token': [ErrorDetail(string='The token is either invalid or expired.', code='invalid')]} None
+2022-11-06 20:22:36,764 DEBUG rest_utils.py:build_response:71  Response: 200 OK 400 Failed {'auth_token': [ErrorDetail(string='The token is either invalid or expired.', code='invalid')]} None

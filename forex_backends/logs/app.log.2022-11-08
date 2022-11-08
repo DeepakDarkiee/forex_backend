@@ -1,0 +1,3 @@
+2022-11-08 23:57:36,022 ERROR rest_utils.py:build_response:57  Response: 400 Failed {'non_field_errors': [ErrorDetail(string='Your account is Deactivated', code='invalid')]} None
+2022-11-08 23:57:36,023 DEBUG rest_utils.py:build_response:71  Response: 200 OK 400 Failed {'non_field_errors': [ErrorDetail(string='Your account is Deactivated', code='invalid')]} None
+2022-11-08 23:58:56,930 DEBUG rest_utils.py:build_response:71  Response: 200 OK 200 Profile Successfully Updated None None

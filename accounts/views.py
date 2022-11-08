@@ -3,10 +3,11 @@ from django.shortcuts import render
 from rest_framework import generics, status
 from rest_framework.permissions import IsAuthenticated
 
-from accounts.models import User
-from accounts.serializers import UpdateProfileSerializer, UserDetailSerializer, UserListSerializer
+from accounts.models import Role, User
+from accounts.serializers import UpdateProfileSerializer, UpdateRolePermissionSerializer, UserDetailSerializer, UserListSerializer
 from forex_backends.common import rest_utils
 from rest_framework.parsers import MultiPartParser, FormParser,JSONParser
+from django.shortcuts import get_object_or_404
 # Create your views here.
 
 class UpdateProfileApiView(generics.GenericAPIView):
@@ -174,6 +175,63 @@ class UserListApiView(generics.GenericAPIView):
             return rest_utils.build_response(
                 status.HTTP_200_OK, message, data=serializer.data, errors=None
             )
+        except Exception as e:
+            message = rest_utils.HTTP_REST_MESSAGES["500"]
+            return rest_utils.build_response(
+                status.HTTP_500_INTERNAL_SERVER_ERROR, message, data=None, errors=str(e)
+            )
+
+class UpdateRoleApiView(generics.GenericAPIView):
+    serializer_class = UpdateRolePermissionSerializer
+    # permission_classes = [IsAuthenticated]
+
+    def put(self, request,role, format=None):
+        try:
+            role = Role.objects.get(name=role)
+            serializer = self.serializer_class(
+                role, data=request.data, context={"request": request}
+            )
+            if serializer.is_valid():
+                serializer.save()                
+                message = "Profile Successfully Updated"
+                return rest_utils.build_response(
+                    status.HTTP_200_OK, message, data=serializer.data, errors=None
+                )
+            else:
+                return rest_utils.build_response(
+                    status.HTTP_400_BAD_REQUEST,
+                    rest_utils.HTTP_REST_MESSAGES["400"],
+                    data=None,
+                    errors=serializer.errors,
+                )
+        except Exception as e:
+            message = rest_utils.HTTP_REST_MESSAGES["500"]
+            return rest_utils.build_response(
+                status.HTTP_500_INTERNAL_SERVER_ERROR, message, data=None, errors=str(e)
+            )
+    def patch(self, request,role, format=None):
+        try:
+            role = Role.objects.get(name=role)
+            serializer = self.serializer_class(
+                role, data=request.data, context={"request": request}
+            )
+            serializer = self.serializer_class(
+                role, data=request.data, context={"request": request},
+                partial=True
+            )
+            if serializer.is_valid():
+                serializer.save()
+                message = "Profile Successfully Updated"
+                return rest_utils.build_response(
+                    status.HTTP_200_OK, message, data=serializer.data, errors=None
+                )
+            else:
+                return rest_utils.build_response(
+                    status.HTTP_400_BAD_REQUEST,
+                    rest_utils.HTTP_REST_MESSAGES["400"],
+                    data=None,
+                    errors=serializer.errors,
+                )
         except Exception as e:
             message = rest_utils.HTTP_REST_MESSAGES["500"]
             return rest_utils.build_response(

@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from accounts.models import User
+from accounts.models import Permissions, Role, User
 
 from forex_backends.common.validations import Validator
 
@@ -57,3 +57,24 @@ class UserListSerializer(serializers.ModelSerializer):
         rep = super(UserListSerializer, self).to_representation(instance)
         rep['role'] = instance.role.name if instance.role  else '' 
         return rep
+
+class UpdateRolePermissionSerializer(serializers.ModelSerializer):
+    permissions = serializers.ListField()
+    class Meta:
+        model = Role
+        fields = ("permissions",)
+
+    def validate(self, data):
+        permissions_list = data.get("permissions", None)
+        try:
+            permissions = Permissions.objects.all()
+            if permissions:
+                model_permissions= [permission.name for permission in permissions]
+                if any(permission in model_permissions for permission in permissions_list):
+                    return data
+                else:
+                    raise serializers.ValidationError("Invalid Permissions not allowed")
+            else:
+                raise serializers.ValidationError("Permissions Model shoud not be empty")
+        except Exception as e:
+            raise serializers.ValidationError(str(e))

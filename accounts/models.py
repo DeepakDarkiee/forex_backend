@@ -111,3 +111,9 @@ class Role(BaseModel):
     
     def __str__(self) -> str:
         return self.name
+
+class Permissions(BaseModel):
+    name = models.CharField(max_length=100,unique=True)
+    description = models.TextField(null=True,blank=True)
+    def __str__(self) -> str:
+        return self.name
