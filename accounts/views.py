@@ -193,7 +193,7 @@ class UpdateRoleApiView(generics.GenericAPIView):
             )
             if serializer.is_valid():
                 serializer.save()                
-                message = "Profile Successfully Updated"
+                message = "Permission Successfully Updated"
                 return rest_utils.build_response(
                     status.HTTP_200_OK, message, data=serializer.data, errors=None
                 )
@@ -221,7 +221,7 @@ class UpdateRoleApiView(generics.GenericAPIView):
             )
             if serializer.is_valid():
                 serializer.save()
-                message = "Profile Successfully Updated"
+                message = "Permission Successfully Updated"
                 return rest_utils.build_response(
                     status.HTTP_200_OK, message, data=serializer.data, errors=None
                 )
