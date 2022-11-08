@@ -56,7 +56,7 @@ urlpatterns = [
     path("single/user/detail/<int:id>/", SingleUserDetailApiView.as_view(), name="single_user_detail"),
     path("single/user/update/<int:id>/", SingleUserUpdateApiView.as_view(), name="single_user_update"),
 
-    path("/role/permission/update/<str:role>/", UpdateRoleApiView.as_view(), name="role_permission_update"),
+    path("role/permission/update/<str:role>/", UpdateRoleApiView.as_view(), name="role_permission_update"),
 
 
     
